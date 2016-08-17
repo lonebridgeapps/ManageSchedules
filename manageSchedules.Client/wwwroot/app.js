@@ -1,0 +1,1 @@
+!function(){"use strict";angular.module("app",["ui.router"])}(),function(){"use strict";function a(a,b){a.state("main",{url:"/",templateUrl:"..app/main/main.html",controller:"mainCtrl",controllerAs:"vm"}),b.otherwise("/")}angular.module("app").config(a),a.$inject.$urlRouterProvider}(),function(){"use strict";function a(){}angular.module("app").controller("mainCtrl",a)}();
