@@ -1,8 +1,14 @@
 {
-	"name": "ASP.NET",
-	"private": true,
+  "name": "ASP.NET",
+  "private": true,
   "dependencies": {
-    "angular": "latest",
-    "angular-ui-router": "latest"  
+    "angular": "1.5.8",
+    "angular-ui-router": "0.3.1",
+    "ngstorage": "0.3.11",
+    "bootstrap": "3.3.7",
+    "Font-Awesome": "4.6.3"
+  },
+  "resolutions": {
+    "angular": "^1.0.8"
   }
 }

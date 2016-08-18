@@ -1,4 +1,5 @@
-﻿/*
+﻿/// <reference path="wwwroot/lib/ngStorage/src/angularLocalStorage.js" />
+/*
 This file in the main entry point for defining grunt tasks and using grunt plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkID=513275&clcid=0x409
 */
@@ -20,20 +21,24 @@ module.exports = function (grunt) {
         //        files: ['app/**/*.js'],
         //        tasks: ['uglify']
         //    }
-        //}
+        //},
 
         concat: {
-            options: {
-                sourceMap: true,
-            },
+            //options: {
+            //    sourceMap: true,
+            //},
             app: {
                 src: ['app/**/*.js'],
                 dest: 'wwwroot/js/app.js'
             },
             vendor: {
                 src: [
+                    './wwwroot/lib/jquery/dist/jquery.min.js',
+                    './wwwroot/lib/bootstrap/dist/js/bootstrap.js',
                     './wwwroot/lib/angular/angular.js',
-                    './wwwroot/lib/angular-ui-router/release/angular-ui-router.js'
+                    './wwwroot/lib/angular-ui-router/release/angular-ui-router.js',
+                    './wwwroot/lib/angular-cookies/angular-cookies.js',
+                    './wwwroot/lib/ngstorage/ngStorage.js'
                 ],
                 dest: 'wwwroot/js/vendor.js'
             }

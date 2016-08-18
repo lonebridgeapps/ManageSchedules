@@ -114,10 +114,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\schedule\schedule.html" />
+    <Content Include="app\schedule\scheduleCtrl.js" />
     <Content Include="packages.config" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="package.json" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
