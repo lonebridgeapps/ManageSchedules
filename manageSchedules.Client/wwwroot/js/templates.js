@@ -28,33 +28,74 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "    </div>\n" +
     "\n" +
     "    <div class=\"row\" style=\"height:50px;\">\n" +
-    "        <div class=\"col-xs-2\" style=\"vertical-align:middle\">Name</div>\n" +
+    "        <div class=\"col-xs-2\">Name</div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <a><i class=\"fa fa-plus-circle fa-2x\"></i></a>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-times fa-2x\"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <a><i class=\"fa fa-plus-circle fa-2x\"></i></a>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-times fa-2x\"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <a><i class=\"fa fa-plus-circle fa-2x\"></i></a>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <a><i class=\"fa fa-plus-circle fa-2x\"></i></a>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <a><i class=\"fa fa-plus-circle fa-2x\"></i></a>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <a><i class=\"fa fa-plus-circle fa-2x\"></i></a>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <a><i class=\"fa fa-plus-circle fa-2x\"></i></a>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
     "            <div>0</div>\n" +
     "            <div>0</div>\n" +
     "        </div>\n" +
+    "    </div>\n" +
     "\n" +
+    "    <!-- footer row -->\n" +
+    "    <div class=\"row\" style=\"height:50px;\">\n" +
+    "        <div class=\"col-xs-2\"></div>\n" +
+    "        <div class=\"col-xs-1 text-center\">\n" +
+    "            <div>0</div>\n" +
+    "            <div>0</div>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-xs-1 text-center\">\n" +
+    "            <div>0</div>\n" +
+    "            <div>0</div>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-xs-1 text-center\">\n" +
+    "            <div>0</div>\n" +
+    "            <div>0</div>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-xs-1 text-center\">\n" +
+    "            <div>0</div>\n" +
+    "            <div>0</div>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-xs-1 text-center\">\n" +
+    "            <div>0</div>\n" +
+    "            <div>0</div>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-xs-1 text-center\">\n" +
+    "            <div>0</div>\n" +
+    "            <div>0</div>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-xs-1 text-center\">\n" +
+    "            <div>0</div>\n" +
+    "            <div>0</div>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-xs-1 text-center\">\n" +
+    "        </div>\n" +
     "    </div>\n" +
     "\n" +
     "</div>\n" +

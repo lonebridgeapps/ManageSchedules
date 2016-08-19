@@ -16,12 +16,12 @@ module.exports = function (grunt) {
         //    }
         //},
 
-        //watch: {
-        //    scripts: {
-        //        files: ['app/**/*.js'],
-        //        tasks: ['uglify']
-        //    }
-        //},
+        watch: {
+            scripts: {
+                files: ['app/**/*.js']
+                //tasks: ['uglify']
+            }
+        },
 
         concat: {
             //options: {
@@ -58,5 +58,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
 
-    grunt.registerTask('default', ['concat', 'html2js']);
+    grunt.registerTask('default', ['concat', 'html2js', 'watch']);
 };
