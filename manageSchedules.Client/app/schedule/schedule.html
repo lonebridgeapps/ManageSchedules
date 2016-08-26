@@ -1,8 +1,17 @@
-﻿<div id="scheduleWrapper" class="container">
+﻿<style>
+    .gridbox {
+        padding: 10px;
+        border: aquamarine 1px solid;
+        margin: 2px;
+    }
+</style>
+
+
+<div id="scheduleWrapper" class="container">
     <h2>Schedules</h2>
 
     <div class="row text-center text-primary">
-        <div class="col-xs-2">Employee Name</div>
+        <div class="col-xs-2 col-xs-offset-1">Employee Name</div>
         <div class="col-xs-1">Sunday</div>
         <div class="col-xs-1">Monday </div>
         <div class="col-xs-1">Tuesday</div>
@@ -10,40 +19,42 @@
         <div class="col-xs-1">Thursday </div>
         <div class="col-xs-1">Friday</div>
         <div class="col-xs-1">Saturday</div>
-        <div class="col-xs-1">Totals</div>
+        <div class="col-xs-2">Totals</div>
     </div>
 
-    <div class="row">
-        <div class="col-xs-2">Name</div>
+    <div ></div>
+
+    <div class="row" ng-repeat="x in vm.employeeObj">
+        <div class="col-xs-2 col-xs-offset-1">{{x.name}}</div>
         <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
-            <div><a disabled><i class="fa fa-times fa-2x"></i></a></div>
+            <div class="gridbox"><a><i class="fa fa-plus-circle"></i></a></div>
+            <div class="gridbox"><a disabled><i class="fa fa-times"></i></a></div>
         </div>
         <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
-            <div><a><i class="fa fa-times fa-2x"></i></a></div>
+            <div><a><i class="fa fa-plus-circle"></i> Add</a></div>
+            <div><a><i class="fa fa-times "></i></a> N/A</div>
         </div>
         <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
+            <div><a><i class="fa fa-plus-circle "></i></a></div>
+            <div><a><i class="fa fa-plus-circle "></i></a></div>
         </div>
         <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
+            <div><a><i class="fa fa-plus-circle "></i></a></div>
+            <div><a><i class="fa fa-plus-circle "></i></a></div>
         </div>
         <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
+            <div><a><i class="fa fa-plus-circle "></i></a></div>
+            <div><a><i class="fa fa-plus-circle "></i></a></div>
         </div>
         <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
+            <div><a><i class="fa fa-plus-circle "></i></a></div>
+            <div><a><i class="fa fa-plus-circle "></i></a></div>
         </div>
         <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
-            <div><a><i class="fa fa-plus-circle fa-2x"></i></a></div>
+            <div><a><i class="fa fa-plus-circle "></i></a></div>
+            <div><a><i class="fa fa-plus-circle "></i></a></div>
         </div>
-        <div class="col-xs-1 text-center">
+        <div class="col-xs-2">
             <div>0</div>
             <div>0</div>
         </div>
@@ -51,7 +62,7 @@
 
     <!-- footer row -->
     <div class="row" style="height:100px;">
-        <div class="col-xs-2"></div>
+        <div class="col-xs-2 col-xs-offset-1"></div>
         <div class="col-xs-1 text-center">
             <div>0</div>
             <div>0</div>
@@ -80,7 +91,7 @@
             <div>0</div>
             <div>0</div>
         </div>
-        <div class="col-xs-1 text-center">
+        <div class="col-xs-2">
         </div>
     </div>
 

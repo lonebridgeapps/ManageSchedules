@@ -75,6 +75,24 @@
                 'name': 'Tim Tester',
                 'ttlShifts': 5,
                 'shifts': { 'Sunday': { 'AM': 0, 'PM': 0 }, 'Monday': { 'AM': 0, 'PM': 0 }, 'Tuesday': { 'AM': 0, 'PM': 0 }, 'Wednesday': { 'AM': 0, 'PM': 0 }, 'Thursday': { 'AM': 0, 'PM': 0 }, 'Friday': { 'AM': 0, 'PM': 0 }, 'Saturday': { 'AM': 0, 'PM': 0 } }
+            },
+            {
+                'id': 2,
+                'name': 'Jane Doe',
+                'ttlShifts': 5,
+                'shifts': { 'Sunday': { 'AM': 0, 'PM': 0 }, 'Monday': { 'AM': 0, 'PM': 0 }, 'Tuesday': { 'AM': 0, 'PM': 0 }, 'Wednesday': { 'AM': 0, 'PM': 0 }, 'Thursday': { 'AM': 0, 'PM': 0 }, 'Friday': { 'AM': 0, 'PM': 0 }, 'Saturday': { 'AM': 0, 'PM': 0 } }
+            },
+            {
+                'id': 3,
+                'name': 'John Doe',
+                'ttlShifts': 5,
+                'shifts': { 'Sunday': { 'AM': 0, 'PM': 0 }, 'Monday': { 'AM': 0, 'PM': 0 }, 'Tuesday': { 'AM': 0, 'PM': 0 }, 'Wednesday': { 'AM': 0, 'PM': 0 }, 'Thursday': { 'AM': 0, 'PM': 0 }, 'Friday': { 'AM': 0, 'PM': 0 }, 'Saturday': { 'AM': 0, 'PM': 0 } }
+            },
+            {
+                'id': 4,
+                'name': 'Seymour Butts',
+                'ttlShifts': 5,
+                'shifts': { 'Sunday': { 'AM': 0, 'PM': 0 }, 'Monday': { 'AM': 0, 'PM': 0 }, 'Tuesday': { 'AM': 0, 'PM': 0 }, 'Wednesday': { 'AM': 0, 'PM': 0 }, 'Thursday': { 'AM': 0, 'PM': 0 }, 'Friday': { 'AM': 0, 'PM': 0 }, 'Saturday': { 'AM': 0, 'PM': 0 } }
             }
         ];
     }

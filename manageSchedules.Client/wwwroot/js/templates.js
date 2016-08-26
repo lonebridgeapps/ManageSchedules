@@ -12,11 +12,20 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
 
 angular.module("../app/schedule/schedule.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../app/schedule/schedule.html",
+    "<style>\n" +
+    "    .gridbox {\n" +
+    "        padding: 10px;\n" +
+    "        border: aquamarine 1px solid;\n" +
+    "        margin: 2px;\n" +
+    "    }\n" +
+    "</style>\n" +
+    "\n" +
+    "\n" +
     "<div id=\"scheduleWrapper\" class=\"container\">\n" +
     "    <h2>Schedules</h2>\n" +
     "\n" +
     "    <div class=\"row text-center text-primary\">\n" +
-    "        <div class=\"col-xs-2\">Employee Name</div>\n" +
+    "        <div class=\"col-xs-2 col-xs-offset-1\">Employee Name</div>\n" +
     "        <div class=\"col-xs-1\">Sunday</div>\n" +
     "        <div class=\"col-xs-1\">Monday </div>\n" +
     "        <div class=\"col-xs-1\">Tuesday</div>\n" +
@@ -24,48 +33,50 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "        <div class=\"col-xs-1\">Thursday </div>\n" +
     "        <div class=\"col-xs-1\">Friday</div>\n" +
     "        <div class=\"col-xs-1\">Saturday</div>\n" +
-    "        <div class=\"col-xs-1\">Totals</div>\n" +
+    "        <div class=\"col-xs-2\">Totals</div>\n" +
     "    </div>\n" +
     "\n" +
-    "    <div class=\"row\" style=\"height:50px;\">\n" +
-    "        <div class=\"col-xs-2\">Name</div>\n" +
+    "    <div ></div>\n" +
+    "\n" +
+    "    <div class=\"row\" ng-repeat=\"x in vm.employeeObj\">\n" +
+    "        <div class=\"col-xs-2 col-xs-offset-1\">{{x.name}}</div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
-    "            <div><a><i class=\"fa fa-times fa-2x\"></i></a></div>\n" +
+    "            <div class=\"gridbox\"><a><i class=\"fa fa-plus-circle\"></i></a></div>\n" +
+    "            <div class=\"gridbox\"><a disabled><i class=\"fa fa-times\"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
-    "            <div><a><i class=\"fa fa-times fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle\"></i> Add</a></div>\n" +
+    "            <div><a><i class=\"fa fa-times \"></i></a> N/A</div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle \"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle \"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle \"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle \"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle \"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle \"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle \"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle \"></i></a></div>\n" +
     "        </div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
-    "            <div><a><i class=\"fa fa-plus-circle fa-2x\"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle \"></i></a></div>\n" +
+    "            <div><a><i class=\"fa fa-plus-circle \"></i></a></div>\n" +
     "        </div>\n" +
-    "        <div class=\"col-xs-1 text-center\">\n" +
+    "        <div class=\"col-xs-2\">\n" +
     "            <div>0</div>\n" +
     "            <div>0</div>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "\n" +
     "    <!-- footer row -->\n" +
-    "    <div class=\"row\" style=\"height:50px;\">\n" +
-    "        <div class=\"col-xs-2\"></div>\n" +
+    "    <div class=\"row\" style=\"height:100px;\">\n" +
+    "        <div class=\"col-xs-2 col-xs-offset-1\"></div>\n" +
     "        <div class=\"col-xs-1 text-center\">\n" +
     "            <div>0</div>\n" +
     "            <div>0</div>\n" +
@@ -94,7 +105,7 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "            <div>0</div>\n" +
     "            <div>0</div>\n" +
     "        </div>\n" +
-    "        <div class=\"col-xs-1 text-center\">\n" +
+    "        <div class=\"col-xs-2\">\n" +
     "        </div>\n" +
     "    </div>\n" +
     "\n" +
