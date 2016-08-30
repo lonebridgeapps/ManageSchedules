@@ -1,6 +1,52 @@
-﻿<h2>Main</h2>
-<div ui-view></div>
+﻿<style>
+    * {
+        -webkit-border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
+        border-radius: 0 !important;
+    }
 
-<a ui-sref="main.schedule">Schedules link</a>
+    .btn-disabled {
+        color: #808080;
+        background-color: #b5b5b5;
+        border-color: #808080;
+    }
 
-<div class="alert alert-info">Testing Bootstrap</div>
+    .btn-avail {
+      color: #0094ff;
+      background-color: #fff;
+      border-color: #0094ff;
+    }
+
+    .btn-avail:hover {
+      color: #082f9c;
+      background-color: #91c7fb;
+      border-color: #082f9c;
+    }
+
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div id="sideNavWrapper" class="col-xs-12 col-sm-3 col-md-2">
+            <h4>Side Nav</h4>
+            <div class="list-group">
+                <a class="list-group-item" ui-sref="main.schedule">Schedules link</a>
+                <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Generate Steps</h4>
+                    <p class="list-group-item-text">Load Employee Data</p>
+                    <p class="list-group-item-text">Add Employee Availability</p>
+                    <p class="list-group-item-text">Prioritize days / shifts</p>
+                    <p class="list-group-item-text">Populate shifts</p>
+                    <p class="list-group-item-text">Optimize shifts</p>
+                </a>
+            </div>
+        </div>
+        <div id="mainContentWrapper" class="col-xs-12 col-sm-9 col-md-10">
+            <div ui-view></div>
+        </div>
+    </div>
+</div>
+
+
+
+

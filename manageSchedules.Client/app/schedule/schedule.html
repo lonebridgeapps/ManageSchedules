@@ -1,98 +1,86 @@
 ﻿<style>
     .gridbox {
-        padding: 10px;
-        border: aquamarine 1px solid;
-        margin: 2px;
+        margin-top: 2px;
+    }
+
+    .gridbox a {
+        text-decoration: none;
+        vertical-align:middle;
+    }
+
+    table td {
+        padding:2px;
     }
 </style>
 
 
-<div id="scheduleWrapper" class="container">
-    <h2>Schedules</h2>
+<div id="scheduleWrapper">
+    <h4>Schedules</h4>
 
-    <div class="row text-center text-primary">
-        <div class="col-xs-2 col-xs-offset-1">Employee Name</div>
-        <div class="col-xs-1">Sunday</div>
-        <div class="col-xs-1">Monday </div>
-        <div class="col-xs-1">Tuesday</div>
-        <div class="col-xs-1">Wednesday</div>
-        <div class="col-xs-1">Thursday </div>
-        <div class="col-xs-1">Friday</div>
-        <div class="col-xs-1">Saturday</div>
-        <div class="col-xs-2">Totals</div>
+    <div></div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-striped text-center">
+                <thead>
+                    <tr class="text-center">
+                        <th>Employee</th>
+                        <th>Sun: 0 / 0</th>
+                        <th>Mon: 0 / 0</th>
+                        <th>Tue: 0 / 0</th>
+                        <th>Wed: 0 / 0</th>
+                        <th>Thu: 0 / 0</th>
+                        <th>Fri: 0 / 0</th>
+                        <th>Sat: 0 / 0</th>
+                        <th>Totals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.employeeObj">
+                        <td>
+                            <h5 class="text-primary">{{x.name}}</h5>
+                            <div>scheduled: 0</div>
+                            <div>available: {{x.ttlShifts}}</div>
+                        </td>
+                        <td>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Sunday.AM}}</a>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Sunday.PM}}</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-avail btn-block" ng-click="vm.updSchedule($index, x.shifts.Monday.AM)"><i class="fa fa-plus-circle "></i> {{x.shifts.Monday.AM}}</a>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Monday.PM}}</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-disabled btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Tuesday.AM}}</a>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Tuesday.PM}}</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Wednesday.AM}}</a>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Wednesday.PM}}</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Thursday.AM}}</a>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Thursday.PM}}</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Friday.AM}}</a>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Friday.PM}}</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Saturday.AM}}</a>
+                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.shifts.Saturday.PM}}</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> 0</a>
+                            <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> 0</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <div ></div>
+    
 
-    <div class="row" ng-repeat="x in vm.employeeObj">
-        <div class="col-xs-2 col-xs-offset-1">{{x.name}}</div>
-        <div class="col-xs-1 text-center">
-            <div class="gridbox"><a><i class="fa fa-plus-circle"></i></a></div>
-            <div class="gridbox"><a disabled><i class="fa fa-times"></i></a></div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle"></i> Add</a></div>
-            <div><a><i class="fa fa-times "></i></a> N/A</div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle "></i></a></div>
-            <div><a><i class="fa fa-plus-circle "></i></a></div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle "></i></a></div>
-            <div><a><i class="fa fa-plus-circle "></i></a></div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle "></i></a></div>
-            <div><a><i class="fa fa-plus-circle "></i></a></div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle "></i></a></div>
-            <div><a><i class="fa fa-plus-circle "></i></a></div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div><a><i class="fa fa-plus-circle "></i></a></div>
-            <div><a><i class="fa fa-plus-circle "></i></a></div>
-        </div>
-        <div class="col-xs-2">
-            <div>0</div>
-            <div>0</div>
-        </div>
-    </div>
-
-    <!-- footer row -->
-    <div class="row" style="height:100px;">
-        <div class="col-xs-2 col-xs-offset-1"></div>
-        <div class="col-xs-1 text-center">
-            <div>0</div>
-            <div>0</div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div>0</div>
-            <div>0</div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div>0</div>
-            <div>0</div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div>0</div>
-            <div>0</div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div>0</div>
-            <div>0</div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div>0</div>
-            <div>0</div>
-        </div>
-        <div class="col-xs-1 text-center">
-            <div>0</div>
-            <div>0</div>
-        </div>
-        <div class="col-xs-2">
-        </div>
-    </div>
 
 </div>

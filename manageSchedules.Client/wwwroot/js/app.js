@@ -95,6 +95,14 @@
                 'shifts': { 'Sunday': { 'AM': 0, 'PM': 0 }, 'Monday': { 'AM': 0, 'PM': 0 }, 'Tuesday': { 'AM': 0, 'PM': 0 }, 'Wednesday': { 'AM': 0, 'PM': 0 }, 'Thursday': { 'AM': 0, 'PM': 0 }, 'Friday': { 'AM': 0, 'PM': 0 }, 'Saturday': { 'AM': 0, 'PM': 0 } }
             }
         ];
+
+        vm.updSchedule = updSchedule;
+
+        function updSchedule(i, val) {
+            val == 0 ? 1 : 0;
+            console.log('employee', vm.employeeObj[i].name);
+            console.log('shifts', vm.employeeObj[i].shifts);
+        }
     }
 
 })();
