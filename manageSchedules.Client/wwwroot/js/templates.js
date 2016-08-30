@@ -104,32 +104,32 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                            <div>available: {{x.ttlShifts}}</div>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Sunday.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Sunday.PM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Sun.AM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Sun.PM}}</a>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
-    "                            <a class=\"btn btn-avail btn-block\" ng-click=\"vm.updSchedule($index, x.shifts.Monday.AM)\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Monday.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Monday.PM}}</a>\n" +
+    "                            <a class=\"btn btn-avail btn-block\" ng-click=\"vm.updSchedule($index, x.schedule.Mon.AM)\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Mon.AM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Mon.PM}}</a>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
-    "                            <a class=\"btn btn-disabled btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Tuesday.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Tuesday.PM}}</a>\n" +
+    "                            <a class=\"btn btn-disabled btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Tue.AM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Tue.PM}}</a>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Wednesday.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Wednesday.PM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Wed.AM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Wed.PM}}</a>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Thursday.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Thursday.PM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Thu.AM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Thu.PM}}</a>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Friday.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Friday.PM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Fri.AM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Fri.PM}}</a>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Saturday.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.shifts.Saturday.PM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Sat.AM}}</a>\n" +
+    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Sat.PM}}</a>\n" +
     "                        </td>\n" +
     "                        <td>\n" +
     "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-calendar-o \"></i> 0</a>\n" +
