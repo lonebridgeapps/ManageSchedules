@@ -47,7 +47,7 @@
                             <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Sun.PM}}</a>
                         </td>
                         <td>
-                            <a class="btn btn-avail btn-block" ng-click="vm.updSchedule($index, x.schedule.Mon.AM)"><i class="fa fa-plus-circle "></i> {{x.schedule.Mon.AM}}</a>
+                            <a class="btn btn-avail btn-block" ng-click="vm.updSchedule($index, x.id, x.dayId, x.shiftId)"><i class="fa fa-plus-circle "></i> {{x.schedule.Mon.AM}}</a>
                             <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Mon.PM}}</a>
                         </td>
                         <td>
