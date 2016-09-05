@@ -18,6 +18,14 @@
                 controllerAs:'vm'
             })
 
+            .state('main.employee',
+            {
+                url: '/employee',
+                templateUrl: '../app/employee/employee.html',
+                controller: 'employeeCtrl',
+                controllerAs: 'vm'
+            })
+
             .state('main.schedule',
             {
                 url: '/schedule',

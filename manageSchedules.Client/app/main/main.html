@@ -6,9 +6,9 @@
     }
 
     .btn-disabled {
-        color: #808080;
-        background-color: #b5b5b5;
-        border-color: #808080;
+        color: #b5b5b5;
+        background-color: #cfcfcf;
+        border-color: #b5b5b5;
     }
 
     .btn-avail {
@@ -23,6 +23,18 @@
       border-color: #082f9c;
     }
 
+    .btn-scheduled {
+        color: #2DA127;
+        background-color: #EDEDED;
+        border-color :#2DA127;
+    }
+
+    .btn-requestOff {
+        color: #ff0000;
+        background-color: #EDEDED;
+        border-color :#ff0000;
+    }
+        
 </style>
 
 <div class="container-fluid">
@@ -30,10 +42,15 @@
         <div id="sideNavWrapper" class="col-xs-12 col-sm-3 col-md-2">
             <h4>Side Nav</h4>
             <div class="list-group">
-                <a class="list-group-item" ui-sref="main.schedule">Schedules link</a>
+                <a class="list-group-item" ui-sref="main.schedule">
+                    <i class="fa fa-calendar-o"></i> Schedules</a>
+                <a class="list-group-item" ui-sref="main.schedule">
+                    <i class="fa fa-clock-o"></i> Shifts</a>
+                <a class="list-group-item" ui-sref="main.employee">
+                    <i class="fa fa-users"></i> Employees</a>
                 <a href="#" class="list-group-item active">
                     <h4 class="list-group-item-heading">Generate Steps</h4>
-                    <p class="list-group-item-text">Load Employee Data</p>
+                    <p class="list-group-item-text" style="text-decoration:line-through">Load Employee Data</p>
                     <p class="list-group-item-text">Add Employee Availability</p>
                     <p class="list-group-item-text">Prioritize days / shifts</p>
                     <p class="list-group-item-text">Populate shifts</p>

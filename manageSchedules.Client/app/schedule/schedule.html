@@ -39,37 +39,17 @@
                     <tr ng-repeat="x in vm.employeeObj">
                         <td>
                             <h5 class="text-primary">{{x.name}}</h5>
-                            <div>scheduled: 0</div>
-                            <div>available: {{x.ttlShifts}}</div>
+                            <div>scheduled: {{x.scheduled}}</div>
+                            <div>available: {{x.available}}</div>
                         </td>
-                        <td>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Sun.AM}}</a>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Sun.PM}}</a>
+
+                        <td ng-repeat="z in x.day">
+                            <a class="btn btn-block" ng-class="vm.getStatusColor($parent.$index, $index, 0)" ng-click="vm.updSchedule($parent.$index, $index, 0)">
+                                <i class="fa" ng-class="vm.getStatusIcon($parent.$index, $index, 0)"></i> {{z.shift[0].name}}</a>
+                            <a class="btn btn-block" ng-class="vm.getStatusColor($parent.$index, $index, 1)" ng-click="vm.updSchedule($parent.$index, $index, 1)">
+                                <i class="fa" ng-class="vm.getStatusIcon($parent.$index, $index, 1)"></i> {{z.shift[1].name}}</a>
                         </td>
-                        <td>
-                            <a class="btn btn-avail btn-block" ng-click="vm.updSchedule($index, x.id, x.dayId, x.shiftId)"><i class="fa fa-plus-circle "></i> {{x.schedule.Mon.AM}}</a>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Mon.PM}}</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-disabled btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Tue.AM}}</a>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Tue.PM}}</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Wed.AM}}</a>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Wed.PM}}</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Thu.AM}}</a>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Thu.PM}}</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Fri.AM}}</a>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Fri.PM}}</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Sat.AM}}</a>
-                            <a class="btn btn-default btn-block"><i class="fa fa-plus-circle "></i> {{x.schedule.Sat.PM}}</a>
-                        </td>
+                        
                         <td>
                             <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> 0</a>
                             <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> 0</a>

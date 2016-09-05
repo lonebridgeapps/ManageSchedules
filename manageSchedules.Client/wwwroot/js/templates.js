@@ -1,4 +1,14 @@
-angular.module('templates-main', ['../app/main/main.html', '../app/schedule/schedule.html']);
+angular.module('templates-main', ['../app/employee/employee.html', '../app/main/main.html', '../app/schedule/schedule.html']);
+
+angular.module("../app/employee/employee.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../app/employee/employee.html",
+    "<div id=\"employeeWrapper\">\n" +
+    "    <h4>Employee</h4>\n" +
+    "\n" +
+    "    <div></div>\n" +
+    "</div>\n" +
+    "");
+}]);
 
 angular.module("../app/main/main.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../app/main/main.html",
@@ -10,9 +20,9 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "    }\n" +
     "\n" +
     "    .btn-disabled {\n" +
-    "        color: #808080;\n" +
-    "        background-color: #b5b5b5;\n" +
-    "        border-color: #808080;\n" +
+    "        color: #b5b5b5;\n" +
+    "        background-color: #cfcfcf;\n" +
+    "        border-color: #b5b5b5;\n" +
     "    }\n" +
     "\n" +
     "    .btn-avail {\n" +
@@ -27,6 +37,18 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "      border-color: #082f9c;\n" +
     "    }\n" +
     "\n" +
+    "    .btn-scheduled {\n" +
+    "        color: #2DA127;\n" +
+    "        background-color: #EDEDED;\n" +
+    "        border-color :#2DA127;\n" +
+    "    }\n" +
+    "\n" +
+    "    .btn-requestOff {\n" +
+    "        color: #ff0000;\n" +
+    "        background-color: #EDEDED;\n" +
+    "        border-color :#ff0000;\n" +
+    "    }\n" +
+    "        \n" +
     "</style>\n" +
     "\n" +
     "<div class=\"container-fluid\">\n" +
@@ -34,10 +56,15 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "        <div id=\"sideNavWrapper\" class=\"col-xs-12 col-sm-3 col-md-2\">\n" +
     "            <h4>Side Nav</h4>\n" +
     "            <div class=\"list-group\">\n" +
-    "                <a class=\"list-group-item\" ui-sref=\"main.schedule\">Schedules link</a>\n" +
+    "                <a class=\"list-group-item\" ui-sref=\"main.schedule\">\n" +
+    "                    <i class=\"fa fa-calendar-o\"></i> Schedules</a>\n" +
+    "                <a class=\"list-group-item\" ui-sref=\"main.schedule\">\n" +
+    "                    <i class=\"fa fa-clock-o\"></i> Shifts</a>\n" +
+    "                <a class=\"list-group-item\" ui-sref=\"main.employee\">\n" +
+    "                    <i class=\"fa fa-users\"></i> Employees</a>\n" +
     "                <a href=\"#\" class=\"list-group-item active\">\n" +
     "                    <h4 class=\"list-group-item-heading\">Generate Steps</h4>\n" +
-    "                    <p class=\"list-group-item-text\">Load Employee Data</p>\n" +
+    "                    <p class=\"list-group-item-text\" style=\"text-decoration:line-through\">Load Employee Data</p>\n" +
     "                    <p class=\"list-group-item-text\">Add Employee Availability</p>\n" +
     "                    <p class=\"list-group-item-text\">Prioritize days / shifts</p>\n" +
     "                    <p class=\"list-group-item-text\">Populate shifts</p>\n" +
@@ -100,37 +127,17 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                    <tr ng-repeat=\"x in vm.employeeObj\">\n" +
     "                        <td>\n" +
     "                            <h5 class=\"text-primary\">{{x.name}}</h5>\n" +
-    "                            <div>scheduled: 0</div>\n" +
-    "                            <div>available: {{x.ttlShifts}}</div>\n" +
+    "                            <div>scheduled: {{x.scheduled}}</div>\n" +
+    "                            <div>available: {{x.available}}</div>\n" +
     "                        </td>\n" +
-    "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Sun.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Sun.PM}}</a>\n" +
+    "\n" +
+    "                        <td ng-repeat=\"z in x.day\">\n" +
+    "                            <a class=\"btn btn-block\" ng-class=\"vm.getStatusColor($parent.$index, $index, 0)\" ng-click=\"vm.updSchedule($parent.$index, $index, 0)\">\n" +
+    "                                <i class=\"fa\" ng-class=\"vm.getStatusIcon($parent.$index, $index, 0)\"></i> {{z.shift[0].name}}</a>\n" +
+    "                            <a class=\"btn btn-block\" ng-class=\"vm.getStatusColor($parent.$index, $index, 1)\" ng-click=\"vm.updSchedule($parent.$index, $index, 1)\">\n" +
+    "                                <i class=\"fa\" ng-class=\"vm.getStatusIcon($parent.$index, $index, 1)\"></i> {{z.shift[1].name}}</a>\n" +
     "                        </td>\n" +
-    "                        <td>\n" +
-    "                            <a class=\"btn btn-avail btn-block\" ng-click=\"vm.updSchedule($index, x.schedule.Mon.AM)\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Mon.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Mon.PM}}</a>\n" +
-    "                        </td>\n" +
-    "                        <td>\n" +
-    "                            <a class=\"btn btn-disabled btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Tue.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Tue.PM}}</a>\n" +
-    "                        </td>\n" +
-    "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Wed.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Wed.PM}}</a>\n" +
-    "                        </td>\n" +
-    "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Thu.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Thu.PM}}</a>\n" +
-    "                        </td>\n" +
-    "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Fri.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Fri.PM}}</a>\n" +
-    "                        </td>\n" +
-    "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Sat.AM}}</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-plus-circle \"></i> {{x.schedule.Sat.PM}}</a>\n" +
-    "                        </td>\n" +
+    "                        \n" +
     "                        <td>\n" +
     "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-calendar-o \"></i> 0</a>\n" +
     "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-calendar-o \"></i> 0</a>\n" +

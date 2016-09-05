@@ -114,6 +114,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\employee\employee.html" />
+    <Content Include="app\employee\employeeCtrl.js" />
     <Content Include="app\schedule\schedule.html" />
     <Content Include="app\schedule\scheduleCtrl.js" />
     <Content Include="packages.config" />
@@ -126,6 +128,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="wwwroot\resources\sampleData.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />

@@ -1,0 +1,3603 @@
+﻿[
+  {
+    "id": 1,
+    "name": "Barb J",
+    "available": 5,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Heather G",
+    "available": 8,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Lisa H",
+    "available": 5,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Robin M",
+    "available": 7,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 1,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Tara G",
+    "available": 5,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Jordan B",
+    "available": 5,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Jaime M",
+    "available": 5,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Beverly H",
+    "available": 5,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Diana D",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Gabby P",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Dawn M",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Sarah T",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Karyl P",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Carol W",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Thomas B",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Amanda D",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Stephanie",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "April B",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Alex M",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Chelsea S",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Becca Skyward",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Kelsey",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Nicole",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Rachel H",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Amanda G",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 3
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 3
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Josh",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Steph B",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Chris",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Katie",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 1
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "<blank>",
+    "available": 0,
+    "scheduled": 0,
+    "day": [
+      {
+        "id": 0,
+        "name": "Sun",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Mon",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Tue",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wed",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Thu",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Fri",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Sat",
+        "shift": [
+          {
+            "id": 0,
+            "name": "AM",
+            "status": 0
+          },
+          {
+            "id": 1,
+            "name": "PM",
+            "status": 0
+          }
+        ]
+      }
+    ]
+  }
+
+]
