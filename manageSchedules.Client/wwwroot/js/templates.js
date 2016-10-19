@@ -1,11 +1,100 @@
-angular.module('templates-main', ['../app/employee/employee.html', '../app/main/main.html', '../app/schedule/schedule.html']);
+angular.module('templates-main', ['../app/employee/employee.html', '../app/main/main.html', '../app/schedule/schedule.html', '../app/shift/shift.html']);
 
 angular.module("../app/employee/employee.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../app/employee/employee.html",
+    "<style>\n" +
+    "    .panel {\n" +
+    "        margin: 10px;\n" +
+    "    }\n" +
+    "    .alert {\n" +
+    "        margin: 10px;\n" +
+    "    }\n" +
+    "</style>\n" +
+    "\n" +
+    "\n" +
     "<div id=\"employeeWrapper\">\n" +
-    "    <h4>Employee</h4>\n" +
     "\n" +
     "    <div></div>\n" +
+    "\n" +
+    "    <div class=\"row\">\n" +
+    "\n" +
+    "        <div class=\"col-md-6\">\n" +
+    "            <div class=\"panel panel-primary\">\n" +
+    "                <div class=\"panel-heading\">\n" +
+    "                    Add Employees\n" +
+    "                </div>\n" +
+    "                <div class=\"panel-body\">\n" +
+    "                    <form id=\"addEmployee\">\n" +
+    "                        <div class=\"form-group\">\n" +
+    "                            <label for=\"txtName\">Employee Name</label>\n" +
+    "                            <input type=\"text\" class=\"form-control\" id=\"txtName\" placeholder=\"Name\" ng-model=\"vm.emp.name\">\n" +
+    "                        </div>\n" +
+    "\n" +
+    "                        <div class=\"row\">\n" +
+    "                            <div class=\"col-sm-6\">\n" +
+    "                                <div class=\"form-group\">\n" +
+    "                                    <label for=\"txtHireDate\">Hire Date</label>\n" +
+    "                                    <input type=\"date\" class=\"form-control\" id=\"txtHireDate\" placeholder=\"Hire Date\" ng-model=\"vm.emp.hiredate\">\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                            <div class=\"col-sm-6\">\n" +
+    "                                <div class=\"form-group\">\n" +
+    "                                    <label for=\"txtShifts\">Total Shifts</label>\n" +
+    "                                    <input type=\"number\" class=\"form-control\" id=\"txtShifts\" placeholder=\"Total Shifts\" ng-model=\"vm.emp.shifts\">\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "\n" +
+    "                        <div class=\"row\">\n" +
+    "                            <div class=\"col-xs-12\">\n" +
+    "                                <div class=\"pull-right\">\n" +
+    "                                    <button class=\"btn btn-success\" ng-click=\"vm.addEmployee()\"><i class=\"fa fa-plus\"></i> Add Employee</button>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "\n" +
+    "                        <div class=\"alert text-center\" ng-class=\"'alert-success'\">\n" +
+    "                            <i class=\"fa\" ng-class=\"'fa-check-circle-o'\"></i> Successfully Added Employee!\n" +
+    "                        </div>\n" +
+    "\n" +
+    "                    </form>\n" +
+    "\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            \n" +
+    "        </div>\n" +
+    "\n" +
+    "        <div class=\"col-md-6\">\n" +
+    "            <div class=\"panel panel-primary\">\n" +
+    "                <div class=\"panel-heading\">\n" +
+    "                    Employees <span class=\"badge pull-right\">0</span>\n" +
+    "                </div>\n" +
+    "                <div class=\"panel-body\">\n" +
+    "                    <div class=\"list-group\">\n" +
+    "                        <div class=\"list-group-item\" ng-repeat=\"items in vm.employee\">\n" +
+    "                            <div class=\"row\">\n" +
+    "                                <div class=\"col-xs-3\">{{items.name}}</div>\n" +
+    "                                <div class=\"col-xs-3\">{{items.hiredate}}</div>\n" +
+    "                                <div class=\"col-xs-3\">{{items.shifts}}</div>\n" +
+    "                                <div class=\"col-xs-3\">\n" +
+    "                                    <button class=\"btn btn-danger pull-right\" ng-click=\"vm.deleteEmployee()\"><i class=\"fa fa-remove\"></i></button>\n" +
+    "                                    <button class=\"btn btn-primary pull-right\" ng-click=\"vm.editEmployee()\"><i class=\"fa fa-pencil\"></i></button>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            \n" +
+    "        </div>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "    </div>\n" +
+    "\n" +
+    "    \n" +
+    "\n" +
+    "\n" +
     "</div>\n" +
     "");
 }]);
@@ -58,7 +147,7 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "            <div class=\"list-group\">\n" +
     "                <a class=\"list-group-item\" ui-sref=\"main.schedule\">\n" +
     "                    <i class=\"fa fa-calendar-o\"></i> Schedules</a>\n" +
-    "                <a class=\"list-group-item\" ui-sref=\"main.schedule\">\n" +
+    "                <a class=\"list-group-item\" ui-sref=\"main.shift\">\n" +
     "                    <i class=\"fa fa-clock-o\"></i> Shifts</a>\n" +
     "                <a class=\"list-group-item\" ui-sref=\"main.employee\">\n" +
     "                    <i class=\"fa fa-users\"></i> Employees</a>\n" +
@@ -145,6 +234,31 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                    </tr>\n" +
     "                </tbody>\n" +
     "            </table>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    \n" +
+    "\n" +
+    "\n" +
+    "</div>\n" +
+    "");
+}]);
+
+angular.module("../app/shift/shift.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("../app/shift/shift.html",
+    "<style>\n" +
+    "\n" +
+    "</style>\n" +
+    "\n" +
+    "\n" +
+    "<div id=\"shiftWrapper\">\n" +
+    "    <h4>Shifts</h4>\n" +
+    "\n" +
+    "    <div></div>\n" +
+    "\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-xs-12\">\n" +
+    "            \n" +
     "        </div>\n" +
     "    </div>\n" +
     "\n" +

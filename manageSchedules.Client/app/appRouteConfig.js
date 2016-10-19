@@ -20,7 +20,7 @@
 
             .state('main.employee',
             {
-                url: '/employee',
+                url: 'employee',
                 templateUrl: '../app/employee/employee.html',
                 controller: 'employeeCtrl',
                 controllerAs: 'vm'
@@ -28,9 +28,17 @@
 
             .state('main.schedule',
             {
-                url: '/schedule',
+                url: 'schedule',
                 templateUrl: '../app/schedule/schedule.html',
                 controller: 'scheduleCtrl',
+                controllerAs: 'vm'
+            })
+
+            .state('main.shift',
+            {
+                url: 'shift',
+                templateUrl: '../app/shift/shift.html',
+                controller: 'shiftCtrl',
                 controllerAs: 'vm'
             });
 

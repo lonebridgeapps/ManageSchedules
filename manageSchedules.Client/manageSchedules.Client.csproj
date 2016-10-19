@@ -118,6 +118,8 @@
     <Content Include="app\employee\employeeCtrl.js" />
     <Content Include="app\schedule\schedule.html" />
     <Content Include="app\schedule\scheduleCtrl.js" />
+    <Content Include="app\shift\shift.html" />
+    <Content Include="app\shift\shiftCtrl.js" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
     <Content Include=".bowerrc" />
@@ -129,6 +131,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="wwwroot\resources\sampleData.json" />
+    <Content Include="wwwroot\resources\employees.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />

@@ -1,0 +1,94 @@
+﻿<style>
+    .panel {
+        margin: 10px;
+    }
+    .alert {
+        margin: 10px;
+    }
+</style>
+
+
+<div id="employeeWrapper">
+
+    <div></div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Add Employees
+                </div>
+                <div class="panel-body">
+                    <form id="addEmployee">
+                        <div class="form-group">
+                            <label for="txtName">Employee Name</label>
+                            <input type="text" class="form-control" id="txtName" placeholder="Name" ng-model="vm.emp.name">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtHireDate">Hire Date</label>
+                                    <input type="date" class="form-control" id="txtHireDate" placeholder="Hire Date" ng-model="vm.emp.hiredate">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="txtShifts">Total Shifts</label>
+                                    <input type="number" class="form-control" id="txtShifts" placeholder="Total Shifts" ng-model="vm.emp.shifts">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="pull-right">
+                                    <button class="btn btn-success" ng-click="vm.addEmployee()"><i class="fa fa-plus"></i> Add Employee</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert text-center" ng-class="'alert-success'">
+                            <i class="fa" ng-class="'fa-check-circle-o'"></i> Successfully Added Employee!
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Employees <span class="badge pull-right">0</span>
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <div class="list-group-item" ng-repeat="items in vm.employee">
+                            <div class="row">
+                                <div class="col-xs-3">{{items.name}}</div>
+                                <div class="col-xs-3">{{items.hiredate}}</div>
+                                <div class="col-xs-3">{{items.shifts}}</div>
+                                <div class="col-xs-3">
+                                    <button class="btn btn-danger pull-right" ng-click="vm.deleteEmployee()"><i class="fa fa-remove"></i></button>
+                                    <button class="btn btn-primary pull-right" ng-click="vm.editEmployee()"><i class="fa fa-pencil"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+
+    </div>
+
+    
+
+
+</div>

@@ -26,7 +26,7 @@
 
             .state('main.employee',
             {
-                url: '/employee',
+                url: 'employee',
                 templateUrl: '../app/employee/employee.html',
                 controller: 'employeeCtrl',
                 controllerAs: 'vm'
@@ -34,9 +34,17 @@
 
             .state('main.schedule',
             {
-                url: '/schedule',
+                url: 'schedule',
                 templateUrl: '../app/schedule/schedule.html',
                 controller: 'scheduleCtrl',
+                controllerAs: 'vm'
+            })
+
+            .state('main.shift',
+            {
+                url: 'shift',
+                templateUrl: '../app/shift/shift.html',
+                controller: 'shiftCtrl',
                 controllerAs: 'vm'
             });
 
@@ -49,14 +57,62 @@
 
     angular
         .module('app')
-        .controller('employeeCtrl', ['$http', function ($http) {
-            var vm = this;
+        .controller("employeeCtrl", ["$http", function($http) {
 
-            
-        }])
+            var vm = this;
+            vm.emp = {};
+            vm.employee = {};
+
+            activate();
+
+            vm.addEmployee = addEmployee;
+            vm.editEmployee = editEmployee;
+            vm.deleteEmployee = deleteEmployee;
+
+            function activate() {
+                getEmployeeData();
+            }
+
+            function openLocalDB() {
+                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+            }
+
+            function getEmployeeData() {
+                $http.get('resources/employees.json')
+                    .success(function (data) {
+                        vm.employee = data;
+                        console.log(data);
+                    })
+                    .error(function () { console.log('ERROR LOADING') });
+            }
+
+            function addEmployee() {
+
+                //write to database
+                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)', [vm.emp.name, vm.emp.hiredate, vm.emp.shifts]);
+                });
+
+                //push to employee array
+                vm.employee.push = vm.emp;
+                console.log(vm.employee);
+
+                //reset form object
+                vm.emp = {};
+            }
+
+            function editEmployee() {
+                
+            }
+
+            function deleteEmployee() {
+
+            }
+
+        }]);
 
 })();
-
 (function () {
     'use strict';
 
@@ -68,6 +124,18 @@
 
     function mainCtrl() {
         var vm = this;
+
+        createDb();
+
+        function createDb() {
+            var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+            db.transaction(function(tx) {
+                tx.executeSql('CREATE TABLE IF NOT EXIST employee (empid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT, hiredate TEXT, shifts INTEGER)');
+                tx.executeSql('CREATE TABLE IF NOT EXIST shifts (shiftid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT, day INTEGER, segment INTEGER, createdate TEXT)');
+                tx.executeSql('CREATE TABLE IF NOT EXIST shiftOrder (shiftid INTEGER, order INTEGER)');
+            });
+            console.log('successfull created database and tables');
+        }
     }
 
 })();
@@ -174,5 +242,16 @@
 
         }
     }])
+
+})();
+(function () {
+    'use strict';
+
+    angular
+        .module('app')
+        .controller("shiftCtrl", ["$http", function($http) {
+        var vm = this;
+
+    }]);
 
 })();
