@@ -35,12 +35,22 @@
         border-color :#ff0000;
     }
         
+    .loadingBar {
+        padding: 20px;
+        background-color: #696969;
+        color: #ffffff;
+    }
 </style>
 
 <div class="container-fluid">
+    <div class="row loadingBar" ng-show="vm.showLoadingBar">
+        <div class="col-xs-12 text-center">
+            <i class="fa fa-gear fa-spin"></i> {{vm.headerMsg}}
+        </div>
+    </div>
     <div class="row">
-        <div id="sideNavWrapper" class="col-xs-12 col-sm-3 col-md-2">
-            <h4>Side Nav</h4>
+        <div id="sideNavWrapper" class="col-xs-12 col-sm-4 col-md-3">
+            <h4>Schedule Manager</h4>
             <div class="list-group">
                 <a class="list-group-item" ui-sref="main.schedule">
                     <i class="fa fa-calendar-o"></i> Schedules</a>
@@ -48,9 +58,14 @@
                     <i class="fa fa-clock-o"></i> Shifts</a>
                 <a class="list-group-item" ui-sref="main.employee">
                     <i class="fa fa-users"></i> Employees</a>
+
+                <a class="list-group-item">
+                    <button class="btn btn-block btn-default" ng-click="vm.createDb()"><i class="fa fa-database"></i> Create Database</button>
+                </a>
+
                 <a href="#" class="list-group-item active">
                     <h4 class="list-group-item-heading">Generate Steps</h4>
-                    <p class="list-group-item-text" style="text-decoration:line-through">Load Employee Data</p>
+                    <p class="list-group-item-text" style="text-decoration: line-through">Load Employee Data</p>
                     <p class="list-group-item-text">Add Employee Availability</p>
                     <p class="list-group-item-text">Prioritize days / shifts</p>
                     <p class="list-group-item-text">Populate shifts</p>
@@ -58,7 +73,7 @@
                 </a>
             </div>
         </div>
-        <div id="mainContentWrapper" class="col-xs-12 col-sm-9 col-md-10">
+        <div id="mainContentWrapper" class="col-xs-12 col-sm-8 col-md-9">
             <div ui-view></div>
         </div>
     </div>

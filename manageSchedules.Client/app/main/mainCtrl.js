@@ -10,16 +10,33 @@
     function mainCtrl() {
         var vm = this;
 
-        createDb();
+        vm.showLoadingBar = false;
+        vm.headerMsg = "";
+
+        vm.createDb = createDb;
 
         function createDb() {
-            var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+            //
+            vm.headerMsg = "Creating Database ...";
+            vm.showLoadingBar = true;
+
+            //
+            var db = openDatabase("mainDB", "1.0", "application main database", 2 * 1024 * 1024);
             db.transaction(function(tx) {
-                tx.executeSql('CREATE TABLE IF NOT EXIST employee (empid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT, hiredate TEXT, shifts INTEGER)');
-                tx.executeSql('CREATE TABLE IF NOT EXIST shifts (shiftid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, name TEXT, day INTEGER, segment INTEGER, createdate TEXT)');
-                tx.executeSql('CREATE TABLE IF NOT EXIST shiftOrder (shiftid INTEGER, order INTEGER)');
+                //create employee table
+                tx.executeSql("CREATE TABLE IF NOT EXISTS employee (empid INTEGER PRIMARY KEY, name TEXT, hiredate TEXT, shifts INTEGER)", []);
+                //populate employee table with defaults
             });
-            console.log('successfull created database and tables');
+
+            db.transaction(function(tx) {
+                //create shift table
+                tx.executeSql("CREATE TABLE IF NOT EXISTS shift (shiftid INTEGER PRIMARY KEY, name TEXT, day INTEGER, segment INTEGER, createdate TEXT, order INTEGER)", []);
+                //populate shift table with defaults
+            });
+
+
+            console.log("successfull created database and tables");
+            vm.showLoadingBar = false;
         }
     }
 

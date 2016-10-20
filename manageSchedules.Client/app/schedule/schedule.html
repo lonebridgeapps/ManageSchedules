@@ -21,46 +21,51 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <table class="table table-striped text-center">
-                <thead>
-                    <tr class="text-center">
-                        <th>Employee</th>
-                        <th>Sun: 0 / 0</th>
-                        <th>Mon: 0 / 0</th>
-                        <th>Tue: 0 / 0</th>
-                        <th>Wed: 0 / 0</th>
-                        <th>Thu: 0 / 0</th>
-                        <th>Fri: 0 / 0</th>
-                        <th>Sat: 0 / 0</th>
-                        <th>Totals</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="x in vm.employeeObj">
-                        <td>
-                            <h5 class="text-primary">{{x.name}}</h5>
-                            <div>scheduled: {{x.scheduled}}</div>
-                            <div>available: {{x.available}}</div>
-                        </td>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Week of: xx/xx/xxxx - xx/xx/xxxx
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped text-center">
+                        <thead>
+                        <tr class="text-center">
+                            <th class="text-center">Employee</th>
+                            <th class="text-center">Sun <br /> 0 / 0</th>
+                            <th class="text-center">Mon <br /> 0 / 0</th>
+                            <th class="text-center">Tue <br /> 0 / 0</th>
+                            <th class="text-center">Wed <br /> 0 / 0</th>
+                            <th class="text-center">Thu <br /> 0 / 0</th>
+                            <th class="text-center">Fri <br /> 0 / 0</th>
+                            <th class="text-center">Sat <br /> 0 / 0</th>
+                            <th class="text-center">Totals</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="x in vm.employeeObj">
+                            <td>
+                                <h5 class="text-primary">{{x.name}}</h5>
+                                <div>scheduled: {{x.scheduled}}</div>
+                                <div>available: {{x.available}}</div>
+                            </td>
 
-                        <td ng-repeat="z in x.day">
-                            <a class="btn btn-block" ng-class="vm.getStatusColor($parent.$index, $index, 0)" ng-click="vm.updSchedule($parent.$index, $index, 0)">
-                                <i class="fa" ng-class="vm.getStatusIcon($parent.$index, $index, 0)"></i> {{z.shift[0].name}}</a>
-                            <a class="btn btn-block" ng-class="vm.getStatusColor($parent.$index, $index, 1)" ng-click="vm.updSchedule($parent.$index, $index, 1)">
-                                <i class="fa" ng-class="vm.getStatusIcon($parent.$index, $index, 1)"></i> {{z.shift[1].name}}</a>
-                        </td>
-                        
-                        <td>
-                            <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> 0</a>
-                            <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> 0</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            <td ng-repeat="z in x.day">
+                                <a class="btn btn-block" ng-class="vm.getStatusColor($parent.$index, $index, 0)" ng-click="vm.updSchedule($parent.$index, $index, 0)">
+                                    <i class="fa" ng-class="vm.getStatusIcon($parent.$index, $index, 0)"></i> {{z.shift[0].name}}
+                                </a>
+                                <a class="btn btn-block" ng-class="vm.getStatusColor($parent.$index, $index, 1)" ng-click="vm.updSchedule($parent.$index, $index, 1)">
+                                    <i class="fa" ng-class="vm.getStatusIcon($parent.$index, $index, 1)"></i> {{z.shift[1].name}}
+                                </a>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> 0</a>
+                                <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> 0</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-
-    
-
-
 </div>
