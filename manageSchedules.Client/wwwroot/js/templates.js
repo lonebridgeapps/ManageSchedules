@@ -14,6 +14,10 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "        font-weight: bold;\n" +
     "        color: #cccccc;\n" +
     "    }\n" +
+    "\n" +
+    "    .btn-icon {\n" +
+    "        padding: 0 10px;\n" +
+    "    }\n" +
     "</style>\n" +
     "\n" +
     "\n" +
@@ -80,8 +84,8 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                                <div class=\"col-xs-5\">{{items.name}}</div>\n" +
     "                                <div class=\"col-xs-2\">{{items.shifts}}</div>\n" +
     "                                <div class=\"col-xs-5\">\n" +
-    "                                    <button class=\"btn btn-danger pull-right\" ng-click=\"vm.deleteEmployee()\"><i class=\"fa fa-remove\"></i></button>\n" +
-    "                                    <button class=\"btn btn-primary pull-right\" ng-click=\"vm.loadEmployee(items.id)\"><i class=\"fa fa-pencil\"></i></button>\n" +
+    "                                    <a class=\"text-danger pull-right btn-icon\" ng-click=\"vm.deleteEmployee()\"><i class=\"fa fa-remove\"></i></a>\n" +
+    "                                    <a class=\"text-primary pull-right btn-icon\" ng-click=\"vm.loadEmployee(items.id)\"><i class=\"fa fa-pencil\"></i></a>\n" +
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
@@ -89,7 +93,7 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                        <div class=\"list-group-item noRecords\" ng-if=\"vm.employee\">\n" +
     "                            <div class=\"row\">\n" +
     "                                <div class=\"col-xs-12 text-center\">\n" +
-    "                                    No records exists! <button class=\"btn btn-default pull-right\" ng-click=\"vm.uploadEmployee()\"><i class=\"fa fa-upload\"></i></button>\n" +
+    "                                    No records exists! <a class=\"pull-right\" ng-click=\"vm.uploadEmployee()\"><i class=\"fa fa-upload\"></i></a>\n" +
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
@@ -185,7 +189,12 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "                    <p class=\"list-group-item-text\">Populate shifts</p>\n" +
     "                    <p class=\"list-group-item-text\">Optimize shifts</p>\n" +
     "                </a>\n" +
+    "\n" +
+    "                <!-- database information -->\n" +
+    "                <a class=\"list-group-item\"><i class=\"fa fa-database\"></i> Database Tables</a>\n" +
+    "                <a class=\"list-group-item\"><i class=\"fa fa-table\"></i></a>\n" +
     "            </div>\n" +
+    "\n" +
     "        </div>\n" +
     "        <div id=\"mainContentWrapper\" class=\"col-xs-12 col-sm-8 col-md-9\">\n" +
     "            <div ui-view></div>\n" +
@@ -289,13 +298,54 @@ angular.module("../app/shift/shift.html", []).run(["$templateCache", function($t
     "\n" +
     "    <div class=\"row\">\n" +
     "        <div class=\"col-xs-12\">\n" +
-    "            \n" +
+    "\n" +
     "        </div>\n" +
     "    </div>\n" +
     "\n" +
-    "    \n" +
+    "            <div class=\"panel panel-primary\">\n" +
+    "                <div class=\"panel-heading\">\n" +
+    "                    Shift Priority (top to bottom)\n" +
+    "                </div>\n" +
+    "                <div class=\"panel-body\">\n" +
+    "                    <div class=\"list-group\">\n" +
+    "                        <a class=\"list-group-item\">\n" +
+    "                            <div class=\"row\">\n" +
+    "                                <div class=\"col-xs-10\"></div>\n" +
+    "                                <div class=\"col-xs-2\">\n" +
+    "                                    <i class=\"fa fa-ellipsis-v pull-right\"></i>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </a>\n" +
     "\n" +
+    "                        <a class=\"list-group-item\">\n" +
+    "                            <div class=\"row\">\n" +
+    "                                <div class=\"col-xs-10\"></div>\n" +
+    "                                <div class=\"col-xs-2\">\n" +
+    "                                    <i class=\"fa fa-ellipsis-v pull-right\"></i>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </a>\n" +
     "\n" +
-    "</div>\n" +
+    "                        <a class=\"list-group-item\">\n" +
+    "                            <div class=\"row\">\n" +
+    "                                <div class=\"col-xs-10\"></div>\n" +
+    "                                <div class=\"col-xs-2\">\n" +
+    "                                    <i class=\"fa fa-ellipsis-v pull-right\"></i>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </a>\n" +
+    "\n" +
+    "                        <a class=\"list-group-item\">\n" +
+    "                            <div class=\"row\">\n" +
+    "                                <div class=\"col-xs-10\"></div>\n" +
+    "                                <div class=\"col-xs-2\">\n" +
+    "                                    <i class=\"fa fa-ellipsis-v pull-right\"></i>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </a>\n" +
+    "                    </div>\n" +
+    "\n" +
+    "                </div>\n" +
+    "            </div>\n" +
     "");
 }]);

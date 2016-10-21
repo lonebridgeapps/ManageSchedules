@@ -10,6 +10,10 @@
         font-weight: bold;
         color: #cccccc;
     }
+
+    .btn-icon {
+        padding: 0 10px;
+    }
 </style>
 
 
@@ -76,8 +80,8 @@
                                 <div class="col-xs-5">{{items.name}}</div>
                                 <div class="col-xs-2">{{items.shifts}}</div>
                                 <div class="col-xs-5">
-                                    <button class="btn btn-danger pull-right" ng-click="vm.deleteEmployee()"><i class="fa fa-remove"></i></button>
-                                    <button class="btn btn-primary pull-right" ng-click="vm.loadEmployee(items.id)"><i class="fa fa-pencil"></i></button>
+                                    <a class="text-danger pull-right btn-icon" ng-click="vm.deleteEmployee()"><i class="fa fa-remove"></i></a>
+                                    <a class="text-primary pull-right btn-icon" ng-click="vm.loadEmployee(items.id)"><i class="fa fa-pencil"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +89,7 @@
                         <div class="list-group-item noRecords" ng-if="vm.employee">
                             <div class="row">
                                 <div class="col-xs-12 text-center">
-                                    No records exists! <button class="btn btn-default pull-right" ng-click="vm.uploadEmployee()"><i class="fa fa-upload"></i></button>
+                                    No records exists! <a class="pull-right" ng-click="vm.uploadEmployee()"><i class="fa fa-upload"></i></a>
                                 </div>
                             </div>
                         </div>

@@ -61,7 +61,6 @@
                         if (results.rows.length > 0) {
                             console.log(results.rows.item(0));
                         }
-                        console.log(results);
                     });
                 });
             }
