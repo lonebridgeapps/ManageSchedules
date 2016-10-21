@@ -1,6 +1,6 @@
 ﻿(function() {
-    'use strict';
+    "use strict";
 
-    angular.module('app', ['templates-main', 'ui.router', 'ngStorage']);
+    angular.module("app", ["templates-main", "ui.router", "ngStorage"]);
 
 })();

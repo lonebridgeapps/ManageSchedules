@@ -1,0 +1,86 @@
+﻿[
+  {
+    "shiftId": 0,
+    "name": "Sunday Morning",
+    "abbrev": "Sun AM",
+    "timespan": "AM"
+  },
+  {
+    "shiftId": 1,
+    "name": "Sunday Evening",
+    "abbrev": "Sun PM",
+    "timespan": "PM"
+  },
+  {
+    "shiftId": 2,
+    "name": "Monday Morning",
+    "abbrev": "Mon AM",
+    "timespan": "AM"
+  },
+  {
+    "shiftId": 3,
+    "name": "Monday Evening",
+    "abbrev": "Mon PM",
+    "timespan": "PM"
+  },
+  {
+    "shiftId": 4,
+    "name": "Tuesday Morning",
+    "abbrev": "Tues AM",
+    "timespan": "AM"
+  },
+  {
+    "shiftId": 5,
+    "name": "Tuesday Evening",
+    "abbrev": "Tues PM",
+    "timespan": "PM"
+  },
+  {
+    "shiftId": 6,
+    "name": "Wednesday Morning",
+    "abbrev": "Wed AM",
+    "timespan": "AM"
+  },
+  {
+    "shiftId": 7,
+    "name": "Wednesday Evening",
+    "abbrev": "Wed PM",
+    "timespan": "PM"
+  },
+  {
+    "shiftId": 8,
+    "name": "Thursday Morning",
+    "abbrev": "Thur AM",
+    "timespan": "AM"
+  },
+  {
+    "shiftId": 9,
+    "name": "Thursday Evening",
+    "abbrev": "Thur PM",
+    "timespan": "PM"
+  },
+  {
+    "shiftId": 10,
+    "name": "Friday Morning",
+    "abbrev": "Fri AM",
+    "timespan": "AM"
+  },
+  {
+    "shiftId": 11,
+    "name": "Friday Evening",
+    "abbrev": "Fri PM",
+    "timespan": "PM"
+  },
+  {
+    "shiftId": 12,
+    "name": "Saturday Morning",
+    "abbrev": "Sat AM",
+    "timespan": "AM"
+  },
+  {
+    "shiftId": 13,
+    "name": "Saturday Evening",
+    "abbrev": "Sat PM",
+    "timespan": "PM"
+  }
+]

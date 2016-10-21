@@ -1,7 +1,7 @@
 (function() {
-    'use strict';
+    "use strict";
 
-    angular.module('app', ['templates-main', 'ui.router', 'ngStorage']);
+    angular.module("app", ["templates-main", "ui.router", "ngStorage"]);
 
 })();
 (function() {
@@ -84,12 +84,19 @@
             function addEmployee() {
 
                 vm.showFormMsg = false;
+                var empName = vm.emp.name;
+                var empHireDate = vm.emp.hiredate;
+                var empShifts = vm.emp.shifts;
 
                 //write to database
                 var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
-
+                console.log('employee object: ', vm.emp);
+                console.log('employee name: ', vm.emp.name);
+                console.log('employee hiredate: ', vm.emp.hiredate);
+                console.log('employee shifts: ', vm.emp.shifts);
                 db.transaction(function (tx) {
-                    tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)', [vm.emp.name, vm.emp.hiredate, vm.emp.shifts],
+                    tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
+                        [empName, empHireDate, empShifts],
                         function(tx, results) {
                             vm.emp.id = results.insertId;
                             console.log('new employee id: ', vm.emp.id);
@@ -130,14 +137,11 @@
             function uploadEmployee() {
                 $http.get('resources/employees.json')
                     .success(function (data) {
-                        //vm.employee = data;
-                        //console.log(data[0].name);
-                        for (var i = 0; i <= data.length; i++) {
+
+                        for (var i = 0; i < data.length; i++) {
                             vm.emp.name = data[i].name;
                             vm.emp.hiredate = data[i].hiredate;
                             vm.emp.shifts = data[i].shifts;
-                            console.log(i);
-                            console.log(vm.emp);
                             addEmployee();
                         }
                     })
@@ -161,6 +165,8 @@
 
         vm.showLoadingBar = false;
         vm.headerMsg = "";
+
+        vm.dbTables = [];
 
         vm.createDb = createDb;
         vm.getDatabaseTableNames = getDatabaseTableNames;
@@ -192,15 +198,19 @@
         }
 
         function getDatabaseTableNames() {
+            vm.dbTables = [];
             var db = openDatabase("mainDB", "1.0", "application main database", 2 * 1024 * 1024);
             db.transaction(function (tx) {
                 tx.executeSql("SELECT tbl_name, sql from sqlite_master WHERE type = 'table'", [],
                     function (tx, results) {
                         if (results.rows.length > 0) {
-                            console.log(results.rows.item(0));
-                    }
+                            for (var i=0; i < results.rows.length; i++) {
+                                vm.dbTables.push(results.rows.item(i).tbl_name);
+                            }
+                        }
                 });
             });
+            console.log("Tables: ", vm.dbTables);
         }
     }
 
@@ -316,8 +326,26 @@
     angular
         .module('app')
         .controller("shiftCtrl", ["$http", function($http) {
-        var vm = this;
 
-    }]);
+            var vm = this;
 
+            vm.shifts = {};
+
+            vm.uploadShifts = uploadShifts;
+
+            activate();
+
+            function activate() {
+                uploadShifts();
+            }
+
+            function uploadShifts() {
+                $http.get('resources/shifts.json')
+                    .success(function (data) {
+                        vm.shifts = data;
+                    })
+                    .error(function () { console.log('ERROR LOADING') });
+            }
+
+        }]);
 })();

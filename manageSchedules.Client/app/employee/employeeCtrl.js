@@ -30,12 +30,19 @@
             function addEmployee() {
 
                 vm.showFormMsg = false;
+                var empName = vm.emp.name;
+                var empHireDate = vm.emp.hiredate;
+                var empShifts = vm.emp.shifts;
 
                 //write to database
                 var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
-
+                console.log('employee object: ', vm.emp);
+                console.log('employee name: ', vm.emp.name);
+                console.log('employee hiredate: ', vm.emp.hiredate);
+                console.log('employee shifts: ', vm.emp.shifts);
                 db.transaction(function (tx) {
-                    tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)', [vm.emp.name, vm.emp.hiredate, vm.emp.shifts],
+                    tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
+                        [empName, empHireDate, empShifts],
                         function(tx, results) {
                             vm.emp.id = results.insertId;
                             console.log('new employee id: ', vm.emp.id);
@@ -76,14 +83,11 @@
             function uploadEmployee() {
                 $http.get('resources/employees.json')
                     .success(function (data) {
-                        //vm.employee = data;
-                        //console.log(data[0].name);
-                        for (var i = 0; i <= data.length; i++) {
+
+                        for (var i = 0; i < data.length; i++) {
                             vm.emp.name = data[i].name;
                             vm.emp.hiredate = data[i].hiredate;
                             vm.emp.shifts = data[i].shifts;
-                            console.log(i);
-                            console.log(vm.emp);
                             addEmployee();
                         }
                     })
