@@ -1,86 +1,142 @@
 ﻿[
   {
     "shiftId": 0,
+    "day": 0,
     "name": "Sunday Morning",
     "abbrev": "Sun AM",
-    "timespan": "AM"
+    "timespan": "AM",
+    "segment": 0,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 1,
+    "day": 0,
     "name": "Sunday Evening",
     "abbrev": "Sun PM",
-    "timespan": "PM"
+    "timespan": "PM",
+    "segment": 1,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 2,
+    "day": 1,
     "name": "Monday Morning",
     "abbrev": "Mon AM",
-    "timespan": "AM"
+    "timespan": "AM",
+    "segment": 0,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 3,
+    "day": 1,
     "name": "Monday Evening",
     "abbrev": "Mon PM",
-    "timespan": "PM"
+    "timespan": "PM",
+    "segment": 1,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 4,
+    "day": 2,
     "name": "Tuesday Morning",
     "abbrev": "Tues AM",
-    "timespan": "AM"
+    "timespan": "AM",
+    "segment": 0,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 5,
+    "day": 2,
     "name": "Tuesday Evening",
     "abbrev": "Tues PM",
-    "timespan": "PM"
+    "timespan": "PM",
+    "segment": 1,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 6,
+    "day": 3,
     "name": "Wednesday Morning",
     "abbrev": "Wed AM",
-    "timespan": "AM"
+    "timespan": "AM",
+    "segment": 0,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 7,
+    "day": 3,
     "name": "Wednesday Evening",
     "abbrev": "Wed PM",
-    "timespan": "PM"
+    "timespan": "PM",
+    "segment": 1,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 8,
+    "day": 4,
     "name": "Thursday Morning",
     "abbrev": "Thur AM",
-    "timespan": "AM"
+    "timespan": "AM",
+    "segment": 0,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 9,
+    "day": 4,
     "name": "Thursday Evening",
     "abbrev": "Thur PM",
-    "timespan": "PM"
+    "timespan": "PM",
+    "segment": 1,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 10,
+    "day": 5,
     "name": "Friday Morning",
     "abbrev": "Fri AM",
-    "timespan": "AM"
+    "timespan": "AM",
+    "segment": 0,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 11,
+    "day": 5,
     "name": "Friday Evening",
     "abbrev": "Fri PM",
-    "timespan": "PM"
+    "timespan": "PM",
+    "segment": 1,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 12,
+    "day": 6,
     "name": "Saturday Morning",
     "abbrev": "Sat AM",
-    "timespan": "AM"
+    "timespan": "AM",
+    "segment": 0,
+    "staffing": 5,
+    "order": 0
   },
   {
     "shiftId": 13,
+    "day": 6,
     "name": "Saturday Evening",
     "abbrev": "Sat PM",
-    "timespan": "PM"
+    "timespan": "PM",
+    "segment" : 1,
+    "staffing": 5,
+    "order": 0
   }
 ]

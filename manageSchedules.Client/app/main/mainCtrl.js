@@ -33,7 +33,7 @@
 
             db.transaction(function(tx) {
                 //create shift table
-                tx.executeSql("CREATE TABLE IF NOT EXISTS shift (shiftid INTEGER PRIMARY KEY NOT NULL, name TEXT, day INTEGER, segment INTEGER, createdate TEXT, order INTEGER)", []);
+                tx.executeSql("CREATE TABLE IF NOT EXISTS shift (shiftid INTEGER PRIMARY KEY NOT NULL, name TEXT, day INTEGER, segment INTEGER, staffing INTEGER, order INTEGER)", []);
                 //populate shift table with defaults
             });
 

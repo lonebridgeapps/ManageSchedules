@@ -85,7 +85,7 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                                <div class=\"col-xs-2\">{{items.shifts}}</div>\n" +
     "                                <div class=\"col-xs-5\">\n" +
     "                                    <a class=\"text-danger pull-right btn-icon\" ng-click=\"vm.deleteEmployee()\"><i class=\"fa fa-remove\"></i></a>\n" +
-    "                                    <a class=\"text-primary pull-right btn-icon\" ng-click=\"vm.loadEmployee(items.id)\"><i class=\"fa fa-pencil\"></i></a>\n" +
+    "                                    <a class=\"text-primary pull-right btn-icon\" ng-click=\"vm.loadEmployee(items.empId)\"><i class=\"fa fa-pencil\"></i></a>\n" +
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
@@ -236,6 +236,19 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "        <div class=\"col-xs-12\">\n" +
     "            <div class=\"panel panel-primary\">\n" +
     "                <div class=\"panel-heading\">\n" +
+    "                    <i class=\"fa fa-cogs\"></i> ToolBox\n" +
+    "                </div>\n" +
+    "                <div class=\"panel-body\">\n" +
+    "                    <a class=\"btn btn-default\" ng-click=\"\"><i class=\"fa fa-calendar-plus-o\"></i> Run Schedule</a>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-xs-12\">\n" +
+    "            <div class=\"panel panel-primary\">\n" +
+    "                <div class=\"panel-heading\">\n" +
     "                    Week of: xx/xx/xxxx - xx/xx/xxxx\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\">\n" +
@@ -299,34 +312,46 @@ angular.module("../app/shift/shift.html", []).run(["$templateCache", function($t
     "\n" +
     "    <div class=\"row\">\n" +
     "        <div class=\"col-xs-12\">\n" +
-    "\n" +
+    "            <div class=\"panel panel-primary\">\n" +
+    "                <div class=\"panel-heading\">\n" +
+    "                    <i class=\"fa fa-cogs\"></i> ToolBox\n" +
+    "                </div>\n" +
+    "                <div class=\"panel-body\">\n" +
+    "                    <a class=\"btn btn-default\" ng-click=\"vm.uploadShifts()\">\n" +
+    "                        <i class=\"fa fa-upload\"></i> Upload Shifts from .json\n" +
+    "                    </a>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "\n" +
-    "    <div class=\"panel panel-primary\">\n" +
-    "        <div class=\"panel-heading\">\n" +
-    "            Priority Scheduling (top to bottom)\n" +
-    "        </div>\n" +
-    "        <div class=\"panel-body\">\n" +
-    "            \n" +
-    "            <div class=\"list-group\">\n" +
-    "                <a class=\"list-group-item\" ng-repeat=\"shift in vm.shifts\">\n" +
-    "                    <div class=\"row\">\n" +
-    "                        <div class=\"col-xs-10\">{{shift.name}}</div>\n" +
-    "                        <div class=\"col-xs-2\">\n" +
-    "                            <i class=\"fa fa-ellipsis-v pull-right\"></i>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                </a>\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-xs-12\">\n" +
+    "            <div class=\"panel panel-primary\">\n" +
+    "                <div class=\"panel-heading\">\n" +
+    "                    Priority Scheduling (top to bottom)\n" +
+    "                </div>\n" +
+    "                <div class=\"panel-body\">\n" +
+    "\n" +
+    "                    <ul class=\"list-group\" ui-sortable=\"vm.sortableOptions\" ng-model=\"vm.shifts\">\n" +
+    "                        <li class=\"list-group-item\" ng-repeat=\"item in vm.shifts\">\n" +
+    "                            <div class=\"row\">\n" +
+    "                                <div class=\"col-xs-5\">{{item.name}}</div>\n" +
+    "                                <div class=\"col-xs-5\">{{item.staffing}}</div>\n" +
+    "                                <div class=\"col-xs-2\">\n" +
+    "                                    <i class=\"fa fa-ellipsis-v pull-right\"></i>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </li>\n" +
+    "                    </ul>\n" +
+    "\n" +
+    "                </div>\n" +
     "            </div>\n" +
     "\n" +
-    "\n" +
-    "            <ul class=\"list-group\" ui-sortable ng-model=\"vm.shifts\">\n" +
-    "                <li class=\"list-group-item\" ng-repeat=\"s in vm.shifts\">{{ s.name }}</li>\n" +
-    "            </ul>\n" +
-    "\n" +
     "        </div>\n" +
     "    </div>\n" +
     "\n" +
-    "</div>");
+    "\n" +
+    "</div>\n" +
+    "");
 }]);

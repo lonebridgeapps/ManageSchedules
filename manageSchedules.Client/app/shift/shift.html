@@ -10,33 +10,44 @@
 
     <div class="row">
         <div class="col-xs-12">
-
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <i class="fa fa-cogs"></i> ToolBox
+                </div>
+                <div class="panel-body">
+                    <a class="btn btn-default" ng-click="vm.uploadShifts()">
+                        <i class="fa fa-upload"></i> Upload Shifts from .json
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            Priority Scheduling (top to bottom)
-        </div>
-        <div class="panel-body">
-            
-            <div class="list-group">
-                <a class="list-group-item" ng-repeat="shift in vm.shifts">
-                    <div class="row">
-                        <div class="col-xs-10">{{shift.name}}</div>
-                        <div class="col-xs-2">
-                            <i class="fa fa-ellipsis-v pull-right"></i>
-                        </div>
-                    </div>
-                </a>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Priority Scheduling (top to bottom)
+                </div>
+                <div class="panel-body">
+
+                    <ul class="list-group" ui-sortable="vm.sortableOptions" ng-model="vm.shifts">
+                        <li class="list-group-item" ng-repeat="item in vm.shifts">
+                            <div class="row">
+                                <div class="col-xs-5">{{item.name}}</div>
+                                <div class="col-xs-5">{{item.staffing}}</div>
+                                <div class="col-xs-2">
+                                    <i class="fa fa-ellipsis-v pull-right"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
             </div>
 
-
-            <ul class="list-group" ui-sortable ng-model="vm.shifts">
-                <li class="list-group-item" ng-repeat="s in vm.shifts">{{ s.name }}</li>
-            </ul>
-
         </div>
     </div>
+
 
 </div>

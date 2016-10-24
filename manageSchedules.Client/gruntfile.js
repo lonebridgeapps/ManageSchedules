@@ -38,9 +38,11 @@ module.exports = function (grunt) {
             vendor: {
                 src: [
                     './wwwroot/lib/jquery/dist/jquery.min.js',
+                    './wwwroot/lib/jquery-ui/jquery-ui.js',
                     './wwwroot/lib/bootstrap/dist/js/bootstrap.js',
                     './wwwroot/lib/angular/angular.js',
                     './wwwroot/lib/angular-ui-router/release/angular-ui-router.js',
+                    './wwwroot/lib/angular-ui-sortable/sortable.js',
                     './wwwroot/lib/angular-cookies/angular-cookies.js',
                     './wwwroot/lib/ngstorage/ngStorage.js'
                 ],

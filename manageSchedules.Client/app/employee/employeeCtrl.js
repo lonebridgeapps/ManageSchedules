@@ -7,7 +7,7 @@
 
             var vm = this;
             vm.showFormMsg = false;
-            vm.showFormMsg = "";
+            vm.formMsg = "";
             vm.emp = {};
             vm.employee = [];
 
@@ -36,24 +36,25 @@
 
                 //write to database
                 var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
-                console.log('employee object: ', vm.emp);
-                console.log('employee name: ', vm.emp.name);
-                console.log('employee hiredate: ', vm.emp.hiredate);
-                console.log('employee shifts: ', vm.emp.shifts);
                 db.transaction(function (tx) {
                     tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
                         [empName, empHireDate, empShifts],
                         function(tx, results) {
                             vm.emp.id = results.insertId;
-                            console.log('new employee id: ', vm.emp.id);
                         });
                 });
+
+                //**********//
+                //make promise chains
+                //creating race condition and id not added to vm.emp 
+                //before pushing to vm.employee array
 
                 //update user messaging
                 vm.formMsg = "Successfully Added Employee!";
                 vm.showFormMsg = true;
 
                 //push to employee array
+                console.log("emp record: ", vm.emp);
                 vm.employee.push(vm.emp);
 
                 //reset form object
@@ -65,6 +66,7 @@
                 var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
                 db.transaction(function (tx) {
                     tx.executeSql('SELECT * FROM employee WHERE ?', [empId], function(tx, results) {
+                        console.log("empid: ", empId);
                         if (results.rows.length > 0) {
                             console.log(results.rows.item(0));
                         }
