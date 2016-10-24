@@ -118,6 +118,7 @@
     <Content Include="app\employee\employeeCtrl.js" />
     <Content Include="app\schedule\schedule.html" />
     <Content Include="app\schedule\scheduleCtrl.js" />
+    <Content Include="app\services\mainService.js" />
     <Content Include="app\shift\shift.html" />
     <Content Include="app\shift\shiftCtrl.js" />
     <Content Include="packages.config" />

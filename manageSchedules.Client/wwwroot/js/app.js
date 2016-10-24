@@ -57,7 +57,7 @@
 
     angular
         .module('app')
-        .controller("employeeCtrl", ["$http", function($http) {
+        .controller("employeeCtrl", ["$http", "$q", function($http, $q) {
 
             var vm = this;
             vm.showFormMsg = false;
@@ -81,6 +81,24 @@
                 var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
             }
 
+            function postEmployee(eName, eDate, eShifts) {
+                var deferred = $q.defer();
+
+                var insertId = 0;
+                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
+                        [eName, eDate, eShifts],
+                        function (tx, results) {
+                            insertId = results.insertId;
+                            deferred.resolve(insertId);
+                        });
+                });
+
+                return deferred.promise;
+
+            }
+
             function addEmployee() {
 
                 vm.showFormMsg = false;
@@ -89,30 +107,50 @@
                 var empShifts = vm.emp.shifts;
 
                 //write to database
-                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
-                db.transaction(function (tx) {
-                    tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
-                        [empName, empHireDate, empShifts],
-                        function(tx, results) {
-                            vm.emp.id = results.insertId;
-                        });
-                });
+                //var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                //db.transaction(function (tx) {
+                //    tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
+                //        [empName, empHireDate, empShifts],
+                //        function(tx, results) {
+                //            vm.emp.id = results.insertId;
+                //        });
+                //});
+
+                //mainService
+                postEmployee(vm.emp.name, vm.emp.hiredate, vm.emp.shifts)
+                    .then(function (empId) {
+                        vm.emp.id = empId;
+
+                        //update user messaging
+                        vm.formMsg = "Successfully Added Employee!";
+                        vm.showFormMsg = true;
+
+                        //output
+                        console.log(vm.emp);
+
+                        //push to employee array
+                        vm.employee.push(vm.emp);
+
+                        //reset form object
+                        vm.emp = {};
+                    });
+
 
                 //**********//
                 //make promise chains
                 //creating race condition and id not added to vm.emp 
                 //before pushing to vm.employee array
 
-                //update user messaging
-                vm.formMsg = "Successfully Added Employee!";
-                vm.showFormMsg = true;
+                ////update user messaging
+                //vm.formMsg = "Successfully Added Employee!";
+                //vm.showFormMsg = true;
 
-                //push to employee array
-                console.log("emp record: ", vm.emp);
-                vm.employee.push(vm.emp);
+                ////push to employee array
+                //console.log("emp record: ", vm.emp);
+                //vm.employee.push(vm.emp);
 
-                //reset form object
-                vm.emp = {};
+                ////reset form object
+                //vm.emp = {};
             }
 
             function loadEmployee(empId) {
@@ -322,6 +360,42 @@
     }])
 
 })();
+(function() {
+    "use strict";
+
+    angular.module("app").service("mainService", mainService);
+
+    mainService.$inject = ["$http", "$q"];
+
+    function mainService($http, $q) {
+
+        var service = {
+            postEmployee: postEmployee
+        };
+
+        return service;
+
+        //-------------------------------------------------------------//
+
+        function postEmployee(eName, eDate, eShifts) {
+            var deferred = $q.defer();
+
+            var insertId = 0;
+            var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+            db.transaction(function (tx) {
+                tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
+                    [eName, eDate, eShifts],
+                    function(tx, results) {
+                        insertId = results.insertId;
+                        deferred.resolve(insertId);
+                    });
+            });
+
+            return deferred.promise;
+
+        }
+    }
+});
 (function () {
     'use strict';
 
