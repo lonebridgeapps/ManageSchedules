@@ -75,7 +75,8 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "        <div class=\"col-md-6\">\n" +
     "            <div class=\"panel panel-primary\">\n" +
     "                <div class=\"panel-heading\">\n" +
-    "                    Employees <span class=\"badge pull-right\">0</span>\n" +
+    "                    Employees\n" +
+    "                    <span class=\"badge pull-right\">{{vm.empCount}}</span>\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\">\n" +
     "                    <div class=\"list-group\">\n" +
@@ -85,15 +86,15 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                                <div class=\"col-xs-2\">{{items.shifts}}</div>\n" +
     "                                <div class=\"col-xs-5\">\n" +
     "                                    <a class=\"text-danger pull-right btn-icon\" ng-click=\"vm.deleteEmployee()\"><i class=\"fa fa-remove\"></i></a>\n" +
-    "                                    <a class=\"text-primary pull-right btn-icon\" ng-click=\"vm.loadEmployee(items.empId)\"><i class=\"fa fa-pencil\"></i></a>\n" +
+    "                                    <a class=\"text-primary pull-right btn-icon\" ng-click=\"vm.loadEmployee(items.empid)\"><i class=\"fa fa-pencil\"></i></a>\n" +
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
     "\n" +
-    "                        <div class=\"list-group-item noRecords\" ng-if=\"vm.employee\">\n" +
+    "                        <div class=\"list-group-item noRecords\" ng-show=\"vm.noRecords\">\n" +
     "                            <div class=\"row\">\n" +
     "                                <div class=\"col-xs-12 text-center\">\n" +
-    "                                    No records exists! <a class=\"pull-right\" ng-click=\"vm.uploadEmployee()\"><i class=\"fa fa-upload\"></i></a>\n" +
+    "                                    No records exists!\n" +
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
@@ -179,7 +180,6 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "\n" +
     "                <a class=\"list-group-item\">\n" +
     "                    <button class=\"btn btn-block btn-default\" ng-click=\"vm.createDb()\"><i class=\"fa fa-database\"></i> Create Database</button>\n" +
-    "                    <button class=\"btn btn-block btn-default\" ng-click=\"vm.getDatabaseTableNames()\"><i class=\"fa fa-table\"></i> Get Database Tables</button>\n" +
     "                </a>\n" +
     "\n" +
     "                <a href=\"#\" class=\"list-group-item active\">\n" +
@@ -191,9 +191,6 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "                    <p class=\"list-group-item-text\">Optimize shifts</p>\n" +
     "                </a>\n" +
     "\n" +
-    "                <!-- database information -->\n" +
-    "                <a class=\"list-group-item\"><i class=\"fa fa-database\"></i> Database Tables <span class=\"badge pull-right\">0</span></a>\n" +
-    "                <a class=\"list-group-item\" ng-repeat=\"t in vm.dbTables\"><i class=\"fa fa-table\"></i> {{t.tbl_name}}</a>\n" +
     "            </div>\n" +
     "\n" +
     "        </div>\n" +
@@ -310,20 +307,18 @@ angular.module("../app/shift/shift.html", []).run(["$templateCache", function($t
     "\n" +
     "    <div></div>\n" +
     "\n" +
-    "    <div class=\"row\">\n" +
+    "    <!--<div class=\"row\">\n" +
     "        <div class=\"col-xs-12\">\n" +
     "            <div class=\"panel panel-primary\">\n" +
     "                <div class=\"panel-heading\">\n" +
     "                    <i class=\"fa fa-cogs\"></i> ToolBox\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\">\n" +
-    "                    <a class=\"btn btn-default\" ng-click=\"vm.uploadShifts()\">\n" +
-    "                        <i class=\"fa fa-upload\"></i> Upload Shifts from .json\n" +
-    "                    </a>\n" +
+    "                   \n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
-    "    </div>\n" +
+    "    </div>-->\n" +
     "\n" +
     "    <div class=\"row\">\n" +
     "        <div class=\"col-xs-12\">\n" +

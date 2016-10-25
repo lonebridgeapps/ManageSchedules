@@ -62,6 +62,9 @@
             var vm = this;
             vm.showFormMsg = false;
             vm.formMsg = "";
+            vm.noRecords = true;
+            vm.empCount = 0;
+
             vm.emp = {};
             vm.employee = [];
 
@@ -71,21 +74,20 @@
             vm.loadEmployee = loadEmployee;
             vm.updateEmployee = updateEmployee;
             vm.deleteEmployee = deleteEmployee;
-            vm.uploadEmployee = uploadEmployee;
 
             function activate() {
-                //getEmployeeData();
+                getAllEmployees();
             }
 
             function openLocalDB() {
-                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
             }
 
             function postEmployee(eName, eDate, eShifts) {
                 var deferred = $q.defer();
 
                 var insertId = 0;
-                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
                 db.transaction(function (tx) {
                     tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
                         [eName, eDate, eShifts],
@@ -102,19 +104,6 @@
             function addEmployee() {
 
                 vm.showFormMsg = false;
-                var empName = vm.emp.name;
-                var empHireDate = vm.emp.hiredate;
-                var empShifts = vm.emp.shifts;
-
-                //write to database
-                //var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
-                //db.transaction(function (tx) {
-                //    tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
-                //        [empName, empHireDate, empShifts],
-                //        function(tx, results) {
-                //            vm.emp.id = results.insertId;
-                //        });
-                //});
 
                 //mainService
                 postEmployee(vm.emp.name, vm.emp.hiredate, vm.emp.shifts)
@@ -135,32 +124,35 @@
                         vm.emp = {};
                     });
 
-
-                //**********//
-                //make promise chains
-                //creating race condition and id not added to vm.emp 
-                //before pushing to vm.employee array
-
-                ////update user messaging
-                //vm.formMsg = "Successfully Added Employee!";
-                //vm.showFormMsg = true;
-
-                ////push to employee array
-                //console.log("emp record: ", vm.emp);
-                //vm.employee.push(vm.emp);
-
-                ////reset form object
-                //vm.emp = {};
             }
 
             function loadEmployee(empId) {
                 //read from database
-                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
                 db.transaction(function (tx) {
                     tx.executeSql('SELECT * FROM employee WHERE ?', [empId], function(tx, results) {
-                        console.log("empid: ", empId);
                         if (results.rows.length > 0) {
                             console.log(results.rows.item(0));
+                        }
+                    });
+                });
+            }
+
+            function getAllEmployees() {
+                //read from database
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql("SELECT * FROM employee", [], function (tx, results) {
+                        if (results.rows.length > 0) {
+                            for (var i = 0; i < results.rows.length; i++) {
+                                vm.employee.push(results.rows.item(i));
+                            }
+                            vm.noRecords = false;
+                            vm.empCount = results.rows.length;
+                        }
+                        else {
+                            vm.noRecords = true;
+                            vm.empCount = 1;
                         }
                     });
                 });
@@ -174,85 +166,97 @@
 
             }
 
-            function uploadEmployee() {
-                $http.get('resources/employees.json')
-                    .success(function (data) {
-
-                        for (var i = 0; i < data.length; i++) {
-                            vm.emp.name = data[i].name;
-                            vm.emp.hiredate = data[i].hiredate;
-                            vm.emp.shifts = data[i].shifts;
-                            addEmployee();
-                        }
-                    })
-                    .error(function () { console.log('ERROR LOADING') });
-            }
-
         }]);
 
 })();
-(function () {
-    'use strict';
+(function() {
+        'use strict';
 
-    angular
-        .module('app')
-        .controller('mainCtrl', mainCtrl);
+        angular
+            .module('app')
+            .controller('mainCtrl', ["$http", "$q", function($http, $q) {
+                var vm = this;
 
-    //mainCtrl.$inject[];
+                vm.showLoadingBar = false;
+                vm.headerMsg = "";
 
-    function mainCtrl() {
-        var vm = this;
+                vm.dbTables = [];
 
-        vm.showLoadingBar = false;
-        vm.headerMsg = "";
+                vm.createDb = createDb;
 
-        vm.dbTables = [];
+                function createDb() {
+                    //
+                    vm.headerMsg = "Creating Database ...";
+                    vm.showLoadingBar = true;
 
-        vm.createDb = createDb;
-        vm.getDatabaseTableNames = getDatabaseTableNames;
+                    //
+                    var db = openDatabase("mainDB", "1.0", "application main database", 10 * 1024 * 1024);
+                    db.transaction(function(tx) {
+                        //create employee table
+                        tx.executeSql("CREATE TABLE IF NOT EXISTS employee (empid INTEGER PRIMARY KEY NOT NULL, name TEXT, hiredate TEXT, shifts INTEGER)", []);
+                        //populate employee table with defaults
+                        uploadEmployeeJson()
+                            .then(function (empList) {
+                                db.transaction(function(tx) {
+                                    for (var i = 0; i < empList.data.length; i++) {
+                                        var empName = empList.data[i].name;
+                                        var empHiredate = empList.data[i].hiredate;
+                                        var empShifts = empList.data[i].shifts;
+                                        tx.executeSql("INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)",
+                                            [empName, empHiredate, empShifts],
+                                            function(tx, results) {
+                                                var insertId = results.insertId;
+                                            });
+                                    }
+                                });
+                            });
+                    });
 
-        function createDb() {
-            //
-            vm.headerMsg = "Creating Database ...";
-            vm.showLoadingBar = true;
+                    db.transaction(function(tx) {
+                        //create shift table
+                        tx.executeSql("CREATE TABLE IF NOT EXISTS shift (shiftid INTEGER PRIMARY KEY NOT NULL, name TEXT, dayid INTEGER, segment INTEGER, staff INTEGER, priority INTEGER)", []);
+                        //populate shift table with defaults
+                        uploadShiftJson()
+                            .then(function (shiftList) {
+                                db.transaction(function (tx) {
+                                    for (var i = 0; i < shiftList.data.length; i++) {
+                                        var shiftName = shiftList.data[i].name;
+                                        var shiftDay = shiftList.data[i].day;
+                                        var shiftSegment = shiftList.data[i].segment;
+                                        var shiftStaffing = shiftList.data[i].staffing;
+                                        var shiftPriority = shiftList.data[i].order;
+                                        tx.executeSql("INSERT INTO shift (name, dayid, segment, staff, priority) VALUES (?,?,?,?,?)",
+                                            [shiftName, shiftDay, shiftSegment, shiftStaffing, shiftPriority],
+                                            function(tx, results) {
+                                                var insertId = results.insertId;
+                                            });
+                                    }
+                                });
+                            });
+                    });
 
-            //
-            var db = openDatabase("mainDB", "1.0", "application main database", 2 * 1024 * 1024);
-            db.transaction(function(tx) {
-                //create employee table
-                tx.executeSql("CREATE TABLE IF NOT EXISTS employee (empid INTEGER PRIMARY KEY NOT NULL, name TEXT, hiredate TEXT, shifts INTEGER)", []);
-                //populate employee table with defaults
-            });
+                    db.transaction(function(tx) {
+                        //create shift table
+                        tx.executeSql("CREATE TABLE IF NOT EXISTS schedule (empid INTEGER, shiftid INTEGER, status INTEGER)", []);
+                        //populate shift table with defaults
+                    });
 
-            db.transaction(function(tx) {
-                //create shift table
-                tx.executeSql("CREATE TABLE IF NOT EXISTS shift (shiftid INTEGER PRIMARY KEY NOT NULL, name TEXT, day INTEGER, segment INTEGER, staffing INTEGER, order INTEGER)", []);
-                //populate shift table with defaults
-            });
+                    console.log("successfull created database and tables");
+                    vm.showLoadingBar = false;
+                }
 
 
-            console.log("successfull created database and tables");
-            vm.showLoadingBar = false;
+                //employees
+                function uploadEmployeeJson() {
+                    return $http.get("resources/employees.json");
+                }
 
-            getDatabaseTableNames();
-        }
+                //shifts
+                function uploadShiftJson() {
+                    return $http.get('resources/shifts.json');
+                }
 
-        function getDatabaseTableNames() {
-            vm.dbTables = [];
-            var db = openDatabase("mainDB", "1.0", "application main database", 2 * 1024 * 1024);
-            db.transaction(function (tx) {
-                tx.executeSql("SELECT tbl_name, sql from sqlite_master WHERE type = 'table'", [],
-                    function (tx, results) {
-                        if (results.rows.length > 0) {
-                            for (var i=0; i < results.rows.length; i++) {
-                                vm.dbTables.push(results.rows.item(i).tbl_name);
-                            }
-                        }
-                });
-            });
-            console.log("Tables: ", vm.dbTables);
-        }
-    }
+            }]);
 
 })();
 (function () {
@@ -410,30 +414,12 @@
             vm.shifts = [];
 
             vm.addShift = addShift;
-            vm.uploadShifts = uploadShifts;
+            vm.getAllShifts = getAllShifts;
 
             activate();
 
             function activate() {
-
-            }
-
-            function uploadShifts() {
-                $http.get('resources/shifts.json')
-                    .success(function (data) {
-                        //vm.shifts = data;
-                        console.log(data.length);
-                        for (var i = 0; i < data.length; i++) {
-                            vm.shift.name = data[i].name;
-                            vm.shift.day = data[i].day;
-                            vm.shift.segment = data[i].segment;
-                            vm.shift.staffing = data[i].staffing;
-                            vm.shift.order = data[i].order;
-                            console.log(i);
-                            addShift();
-                        }
-                    })
-                    .error(function () { console.log('ERROR LOADING') });
+                getAllShifts();
             }
 
             function addShift() {
@@ -446,9 +432,9 @@
                 var shiftOrder = vm.shift.order;
 
                 //write to database
-                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
                 db.transaction(function (tx) {
-                    tx.executeSql('INSERT INTO shifts (name, day, segment, staffing, order) VALUES (?,?,?,?,?)',
+                    tx.executeSql("SELECT name, staffing, proirity FROM shifts)",
                         [shiftName, shiftDay, shiftSegment, shiftStaffing, shiftOrder],
                         function (tx, results) {
                             vm.shift.id = results.insertId;
@@ -464,6 +450,21 @@
 
                 //reset form object
                 vm.shift = {};
+            }
+
+
+            function getAllShifts() {
+                //read from database
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql("SELECT name, staff, priority FROM shift", [], function (tx, results) {
+                        if (results.rows.length > 0) {
+                            for (var i = 0; i < results.rows.length; i++) {
+                                vm.shifts.push(results.rows.item(i));
+                            }
+                        }
+                    });
+                });
             }
 
 

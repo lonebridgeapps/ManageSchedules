@@ -61,7 +61,6 @@
 
                 <a class="list-group-item">
                     <button class="btn btn-block btn-default" ng-click="vm.createDb()"><i class="fa fa-database"></i> Create Database</button>
-                    <button class="btn btn-block btn-default" ng-click="vm.getDatabaseTableNames()"><i class="fa fa-table"></i> Get Database Tables</button>
                 </a>
 
                 <a href="#" class="list-group-item active">
@@ -73,9 +72,6 @@
                     <p class="list-group-item-text">Optimize shifts</p>
                 </a>
 
-                <!-- database information -->
-                <a class="list-group-item"><i class="fa fa-database"></i> Database Tables <span class="badge pull-right">0</span></a>
-                <a class="list-group-item" ng-repeat="t in vm.dbTables"><i class="fa fa-table"></i> {{t.tbl_name}}</a>
             </div>
 
         </div>

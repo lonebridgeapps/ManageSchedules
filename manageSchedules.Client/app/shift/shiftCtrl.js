@@ -12,30 +12,12 @@
             vm.shifts = [];
 
             vm.addShift = addShift;
-            vm.uploadShifts = uploadShifts;
+            vm.getAllShifts = getAllShifts;
 
             activate();
 
             function activate() {
-
-            }
-
-            function uploadShifts() {
-                $http.get('resources/shifts.json')
-                    .success(function (data) {
-                        //vm.shifts = data;
-                        console.log(data.length);
-                        for (var i = 0; i < data.length; i++) {
-                            vm.shift.name = data[i].name;
-                            vm.shift.day = data[i].day;
-                            vm.shift.segment = data[i].segment;
-                            vm.shift.staffing = data[i].staffing;
-                            vm.shift.order = data[i].order;
-                            console.log(i);
-                            addShift();
-                        }
-                    })
-                    .error(function () { console.log('ERROR LOADING') });
+                getAllShifts();
             }
 
             function addShift() {
@@ -48,9 +30,9 @@
                 var shiftOrder = vm.shift.order;
 
                 //write to database
-                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
                 db.transaction(function (tx) {
-                    tx.executeSql('INSERT INTO shifts (name, day, segment, staffing, order) VALUES (?,?,?,?,?)',
+                    tx.executeSql("SELECT name, staffing, proirity FROM shifts)",
                         [shiftName, shiftDay, shiftSegment, shiftStaffing, shiftOrder],
                         function (tx, results) {
                             vm.shift.id = results.insertId;
@@ -66,6 +48,21 @@
 
                 //reset form object
                 vm.shift = {};
+            }
+
+
+            function getAllShifts() {
+                //read from database
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql("SELECT name, staff, priority FROM shift", [], function (tx, results) {
+                        if (results.rows.length > 0) {
+                            for (var i = 0; i < results.rows.length; i++) {
+                                vm.shifts.push(results.rows.item(i));
+                            }
+                        }
+                    });
+                });
             }
 
 
