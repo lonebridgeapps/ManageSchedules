@@ -52,6 +52,19 @@
 
                         <div class="row">
                             <div class="col-xs-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Shift Availability
+                                    </div>
+                                    <div class="panel-body" ng-show="true">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
                                 <div class="pull-right">
                                     <button class="btn btn-success" ng-click="vm.addEmployee()"><i class="fa" ng-class="'fa-plus'"></i> Add Employee</button>
                                 </div>
@@ -87,10 +100,10 @@
                             </div>
                         </div>
 
-                        <div class="list-group-item noRecords" ng-show="vm.noRecords">
+                        <div class="list-group-item noRecords" ng-show="vm.showListMsg">
                             <div class="row">
                                 <div class="col-xs-12 text-center">
-                                    No records exists!
+                                    <i class="fa fa-spin" ng-class="'fa-refresh'"></i> {{vm.listMsg}}
                                 </div>
                             </div>
                         </div>

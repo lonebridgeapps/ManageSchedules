@@ -56,6 +56,19 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "\n" +
     "                        <div class=\"row\">\n" +
     "                            <div class=\"col-xs-12\">\n" +
+    "                                <div class=\"panel panel-primary\">\n" +
+    "                                    <div class=\"panel-heading\">\n" +
+    "                                        Shift Availability\n" +
+    "                                    </div>\n" +
+    "                                    <div class=\"panel-body\" ng-show=\"true\">\n" +
+    "\n" +
+    "                                    </div>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "\n" +
+    "                        <div class=\"row\">\n" +
+    "                            <div class=\"col-xs-12\">\n" +
     "                                <div class=\"pull-right\">\n" +
     "                                    <button class=\"btn btn-success\" ng-click=\"vm.addEmployee()\"><i class=\"fa\" ng-class=\"'fa-plus'\"></i> Add Employee</button>\n" +
     "                                </div>\n" +
@@ -91,10 +104,10 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                            </div>\n" +
     "                        </div>\n" +
     "\n" +
-    "                        <div class=\"list-group-item noRecords\" ng-show=\"vm.noRecords\">\n" +
+    "                        <div class=\"list-group-item noRecords\" ng-show=\"vm.showListMsg\">\n" +
     "                            <div class=\"row\">\n" +
     "                                <div class=\"col-xs-12 text-center\">\n" +
-    "                                    No records exists!\n" +
+    "                                    <i class=\"fa fa-spin\" ng-class=\"'fa-refresh'\"></i> {{vm.listMsg}}\n" +
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +

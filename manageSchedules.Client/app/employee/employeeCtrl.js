@@ -8,7 +8,10 @@
             var vm = this;
             vm.showFormMsg = false;
             vm.formMsg = "";
-            vm.noRecords = true;
+
+            vm.showListMsg = true;
+            vm.listMsg = "Loading Employees";
+
             vm.empCount = 0;
 
             vm.emp = {};
@@ -72,13 +75,16 @@
 
             }
 
-            function loadEmployee(empId) {
+            function loadEmployee(empid) {
                 //read from database
                 var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
                 db.transaction(function (tx) {
-                    tx.executeSql('SELECT * FROM employee WHERE ?', [empId], function(tx, results) {
+                    tx.executeSql('SELECT name, hiredate, shifts FROM employee WHERE empid = ?', [empid], function(tx, results) {
                         if (results.rows.length > 0) {
                             console.log(results.rows.item(0));
+                            vm.emp.name = results.rows.item(0).name;
+                            vm.emp.hiredate = results.rows.item(0).hiredate;
+                            vm.emp.shifts = results.rows.item(0).shifts;
                         }
                     });
                 });
@@ -93,11 +99,12 @@
                             for (var i = 0; i < results.rows.length; i++) {
                                 vm.employee.push(results.rows.item(i));
                             }
-                            vm.noRecords = false;
+                            vm.showListMsg = false;
                             vm.empCount = results.rows.length;
                         }
                         else {
-                            vm.noRecords = true;
+                            vm.showListMsg = true;
+                            vm.listMsg = "Error Loading Employees!";
                             vm.empCount = 1;
                         }
                     });
