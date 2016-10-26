@@ -57,7 +57,7 @@
 
     angular
         .module('app')
-        .controller("employeeCtrl", ["$http", "$q", function($http, $q) {
+        .controller("employeeCtrl", ["$http", "$q", "mainService", function($http, $q, mainService) {
 
             var vm = this;
             vm.showFormMsg = false;
@@ -66,6 +66,8 @@
             vm.showListMsg = true;
             vm.listMsg = "Loading Employees";
 
+            vm.showShifts = false;
+
             vm.empCount = 0;
 
             vm.emp = {};
@@ -73,88 +75,122 @@
 
             activate();
 
-            vm.addEmployee = addEmployee;
+            vm.saveEmployee = saveEmployee;
             vm.loadEmployee = loadEmployee;
             vm.updateEmployee = updateEmployee;
             vm.deleteEmployee = deleteEmployee;
+            vm.resetForm = resetForm;
 
             function activate() {
                 getAllEmployees();
             }
 
-            function openLocalDB() {
-                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
-            }
-
-            function postEmployee(eName, eDate, eShifts) {
+            function getData(query, params) {
                 var deferred = $q.defer();
-
-                var insertId = 0;
                 var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
                 db.transaction(function (tx) {
-                    tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
-                        [eName, eDate, eShifts],
+                    tx.executeSql(query, params,
                         function (tx, results) {
-                            insertId = results.insertId;
-                            deferred.resolve(insertId);
+                            deferred.resolve(results.rows);
                         });
                 });
-
                 return deferred.promise;
-
             }
 
-            function addEmployee() {
+            function postData(query, params) {
+                var deferred = $q.defer();
+                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql(query, params,
+                        function (tx, results) {
+                            deferred.resolve(results.insertId);
+                        });
+                });
+                return deferred.promise;
+            }
 
+            function putData(query, params) {
+                var deferred = $q.defer();
+                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql(query, params,
+                        function (tx, results) {
+                            deferred.resolve(results.rowsAffected);
+                        });
+                });
+                return deferred.promise;
+            }
+
+            //function used to insert or update based on if employee already exists
+            function saveEmployee() {
                 vm.showFormMsg = false;
 
-                //mainService
-                postEmployee(vm.emp.name, vm.emp.hiredate, vm.emp.shifts)
-                    .then(function (empId) {
-                        vm.emp.id = empId;
+                //check if employee exists
+                getData("SELECT empid FROM employee WHERE name = ?", [vm.emp.name])
+                    .then(function(empObj) {
+                        var empid = 0;
+                        if (empObj.length > 0) {
+                            //UPDATE
+                            empid = empObj.item(0).empid;
+                            var updQuery = "UPDATE employee SET name = ?, shifts = ? WHERE empid = ?";
+                            var updParam = [vm.emp.name, vm.emp.shifts, empid];
 
-                        //update user messaging
-                        vm.formMsg = "Successfully Added Employee!";
+                            putData(updQuery, updParam)
+                                .then(function(numRowsAffected) {
+                                    vm.formMsg = "Successfully Updated " + vm.emp.name + "!";
+                                });
+                        } else {
+                            //INSERT
+                            var insQuery = "INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)";
+                            var insParam = [vm.emp.name, vm.emp.hiredate, vm.emp.shifts];
+
+                            postData(insQuery, insParam)
+                                .then(function(insertId) {
+                                    empid = insertId;
+                                    vm.formMsg = "Successfully Added " + vm.emp.name + "!";
+                                });
+                        }
+
+                        return getAllEmployees();
+                    })
+                    .then(function (empid) {
+                        console.log("empid: ", empid);
                         vm.showFormMsg = true;
-
-                        //output
-                        console.log(vm.emp);
-
-                        //push to employee array
-                        vm.employee.push(vm.emp);
-
-                        //reset form object
                         vm.emp = {};
+                        //return DELETE  SHIFTS
                     });
+                //.then(function(INCLUDING SHIFTS)
+                //INSERT SHIFTS
 
             }
+
 
             function loadEmployee(empid) {
                 //read from database
-                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
-                db.transaction(function (tx) {
-                    tx.executeSql('SELECT name, hiredate, shifts FROM employee WHERE empid = ?', [empid], function(tx, results) {
-                        if (results.rows.length > 0) {
-                            console.log(results.rows.item(0));
-                            vm.emp.name = results.rows.item(0).name;
-                            vm.emp.hiredate = results.rows.item(0).hiredate;
-                            vm.emp.shifts = results.rows.item(0).shifts;
+                getData("SELECT name, hiredate, shifts FROM employee WHERE empid = ?", [empid])
+                    .then(function(empObj) {
+                        if (empObj.length > 0) {
+                            console.log(empObj.item(0));
+                            vm.emp.name = empObj.item(0).name;
+                            vm.emp.hiredate = empObj.item(0).hiredate;
+                            vm.emp.shifts = empObj.item(0).shifts;
                         }
                     });
-                });
             }
 
             function getAllEmployees() {
+                vm.showListMsg = true;
+                vm.employee = [];
                 //read from database
-                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
-                db.transaction(function (tx) {
-                    tx.executeSql("SELECT * FROM employee", [], function (tx, results) {
-                        if (results.rows.length > 0) {
-                            for (var i = 0; i < results.rows.length; i++) {
-                                vm.employee.push(results.rows.item(i));
+                getData("SELECT * FROM employee", [])
+                    .then(function(employeeObj) {
+                        console.log(employeeObj);
+                        if (employeeObj.length > 0) {
+                            for (var i = 0; i < employeeObj.length; i++) {
+                                vm.employee.push(employeeObj.item(i));
                             }
                             vm.showListMsg = false;
-                            vm.empCount = results.rows.length;
+                            vm.empCount = employeeObj.length;
                         }
                         else {
                             vm.showListMsg = true;
@@ -162,7 +198,6 @@
                             vm.empCount = 1;
                         }
                     });
-                });
             }
 
             function updateEmployee() {
@@ -171,6 +206,13 @@
 
             function deleteEmployee() {
 
+            }
+
+            function resetForm() {
+                vm.emp = {};
+
+                vm.showFormMsg = false;
+                vm.formMsg = "";
             }
 
         }]);
@@ -374,45 +416,55 @@
 (function() {
     "use strict";
 
-    angular.module("app").service("mainService", mainService);
+    angular.module("app")
+        .factory("mainService", function($http, $q) {
 
-    mainService.$inject = ["$http", "$q"];
+        return {
+            getData: function(query, params) {
+                var deferred = $q.defer();
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql(query, params,
+                        function (tx, results) {
+                            deferred.resolve(results.rows);
+                        });
+                });
+                return deferred.promise;
+            },
 
-    function mainService($http, $q) {
+            postData: function(query, params) {
+                var deferred = $q.defer();
+                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql(query, params,
+                        function (tx, results) {
+                            deferred.resolve(results.insertId);
+                        });
+                });
+                return deferred.promise;
+            },
 
-        var service = {
-            postEmployee: postEmployee
-        };
-
-        return service;
-
-        //-------------------------------------------------------------//
-
-        function postEmployee(eName, eDate, eShifts) {
-            var deferred = $q.defer();
-
-            var insertId = 0;
-            var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
-            db.transaction(function (tx) {
-                tx.executeSql('INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)',
-                    [eName, eDate, eShifts],
-                    function(tx, results) {
-                        insertId = results.insertId;
-                        deferred.resolve(insertId);
-                    });
-            });
-
-            return deferred.promise;
-
+            putData: function(query, params) {
+                var deferred = $q.defer();
+                var db = openDatabase('mainDB', '1.0', 'application main database', 2 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql(query, params,
+                        function (tx, results) {
+                            deferred.resolve(results.rowsAffected);
+                        });
+                });
+                return deferred.promise;
+            }    
         }
-    }
+    });
+
 });
 (function () {
     'use strict';
 
     angular
         .module('app')
-        .controller("shiftCtrl", ["$http", "$scope", function($http, $scope) {
+        .controller("shiftCtrl", ["$http", "$q", function($http, $q) {
 
             var vm = this;
             var sortingLog = [];
@@ -427,6 +479,18 @@
 
             function activate() {
                 getAllShifts();
+            }
+
+            function getData(query, params) {
+                var deferred = $q.defer();
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql(query, params,
+                        function (tx, results) {
+                            deferred.resolve(results.rows);
+                        });
+                });
+                return deferred.promise;
             }
 
             function addShift() {

@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .controller("shiftCtrl", ["$http", "$scope", function($http, $scope) {
+        .controller("shiftCtrl", ["$http", "$q", function($http, $q) {
 
             var vm = this;
             var sortingLog = [];
@@ -18,6 +18,18 @@
 
             function activate() {
                 getAllShifts();
+            }
+
+            function getData(query, params) {
+                var deferred = $q.defer();
+                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
+                db.transaction(function (tx) {
+                    tx.executeSql(query, params,
+                        function (tx, results) {
+                            deferred.resolve(results.rows);
+                        });
+                });
+                return deferred.promise;
             }
 
             function addShift() {

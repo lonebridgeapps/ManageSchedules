@@ -12,7 +12,7 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "\n" +
     "    .noRecords {\n" +
     "        font-weight: bold;\n" +
-    "        color: #cccccc;\n" +
+    "        color: #696969;\n" +
     "    }\n" +
     "\n" +
     "    .btn-icon {\n" +
@@ -33,23 +33,32 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                    Add Employees\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\">\n" +
-    "                    <form id=\"addEmployee\">\n" +
+    "                    <form id=\"frmEmployee\" name=\"frmEmployee\" ng-submit=\"vm.saveEmployee(frmEmployee.$valid)\">\n" +
     "                        <div class=\"form-group\">\n" +
     "                            <label for=\"txtName\">Employee Name</label>\n" +
-    "                            <input type=\"text\" class=\"form-control\" id=\"txtName\" placeholder=\"Name\" ng-model=\"vm.emp.name\">\n" +
+    "                            <input type=\"text\" class=\"form-control\" id=\"txtName\" placeholder=\"Name\" ng-model=\"vm.emp.name\" required>\n" +
     "                        </div>\n" +
     "\n" +
     "                        <div class=\"row\">\n" +
-    "                            <div class=\"col-sm-6\">\n" +
+    "                            <div class=\"col-sm-12\">\n" +
     "                                <div class=\"form-group\">\n" +
     "                                    <label for=\"txtHireDate\">Hire Date</label>\n" +
     "                                    <input type=\"date\" class=\"form-control\" id=\"txtHireDate\" placeholder=\"Hire Date\" ng-model=\"vm.emp.hiredate\">\n" +
     "                                </div>\n" +
     "                            </div>\n" +
+    "                        </div>\n" +
+    "\n" +
+    "                        <div class=\"row\">\n" +
     "                            <div class=\"col-sm-6\">\n" +
     "                                <div class=\"form-group\">\n" +
     "                                    <label for=\"txtShifts\">Total Shifts</label>\n" +
-    "                                    <input type=\"number\" class=\"form-control\" id=\"txtShifts\" placeholder=\"Total Shifts\" ng-model=\"vm.emp.shifts\">\n" +
+    "                                    <input type=\"number\" class=\"form-control\" id=\"txtShifts\" placeholder=\"Total Shifts\" ng-model=\"vm.emp.shifts\" required>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                            <div class=\"col-sm-6\">\n" +
+    "                                <div class=\"form-group\">\n" +
+    "                                    <label for=\"txtHours\">Total Hours</label>\n" +
+    "                                    <input type=\"number\" class=\"form-control\" id=\"txtHours\" placeholder=\"Total Hours\" ng-model=\"vm.emp.hours\" >\n" +
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
@@ -57,10 +66,12 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                        <div class=\"row\">\n" +
     "                            <div class=\"col-xs-12\">\n" +
     "                                <div class=\"panel panel-primary\">\n" +
-    "                                    <div class=\"panel-heading\">\n" +
+    "                                    <div class=\"panel-heading \">\n" +
     "                                        Shift Availability\n" +
+    "                                        <button class=\"btn btn-primary btn-sm pull-right\"ng-click=\"vm.showShifts = !vm.showShifts\"><i class=\"fa fa-plus\"></i></button>\n" +
+    "                                        <div class=\"clearfix\"></div>\n" +
     "                                    </div>\n" +
-    "                                    <div class=\"panel-body\" ng-show=\"true\">\n" +
+    "                                    <div class=\"panel-body\" ng-show=\"vm.showShifts\">\n" +
     "\n" +
     "                                    </div>\n" +
     "                                </div>\n" +
@@ -70,7 +81,8 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                        <div class=\"row\">\n" +
     "                            <div class=\"col-xs-12\">\n" +
     "                                <div class=\"pull-right\">\n" +
-    "                                    <button class=\"btn btn-success\" ng-click=\"vm.addEmployee()\"><i class=\"fa\" ng-class=\"'fa-plus'\"></i> Add Employee</button>\n" +
+    "                                    <button type=\"submit\" class=\"btn btn-default\" ng-click=\"vm.resetForm()\"><i class=\"fa\" ng-class=\"'fa-undo'\"></i> Reset</button>\n" +
+    "                                    <button type=\"submit\" class=\"btn btn-success\" ng-disabled=\"frmEmployee.$invalid\"><i class=\"fa\" ng-class=\"'fa-save'\"></i> Save</button>\n" +
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
