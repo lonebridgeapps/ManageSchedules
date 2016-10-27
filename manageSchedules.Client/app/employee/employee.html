@@ -64,11 +64,21 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading ">
                                         Shift Availability
-                                        <button class="btn btn-primary btn-sm pull-right"ng-click="vm.showShifts = !vm.showShifts"><i class="fa fa-plus"></i></button>
+                                        <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.showShifts = !vm.showShifts">
+                                            <i class="fa" ng-class="{'fa-plus':!vm.showShifts, 'fa-minus':vm.showShifts}"></i>
+                                        </button>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="panel-body" ng-show="vm.showShifts">
-
+                                        <div class="list-group">
+                                            <a class="list-group-item text-center">Select shift availablity</a>
+                                            <a class="list-group-item" ng-repeat="sItem in vm.shifts" ng-click="vm.toggleShift(sItem.shiftid)">
+                                                <div class="row">
+                                                    <div class="col-xs-4 text-center text-success"><i class="fa" ng-class="{'fa-check': vm.isChecked()}"></i></div>
+                                                    <div class="col-xs-8">{{sItem.name}}</div>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

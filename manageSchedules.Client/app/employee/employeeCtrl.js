@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .controller("employeeCtrl", ["$http", "$q", "mainService", function($http, $q, mainService) {
+        .controller("employeeCtrl", ["$http", "$q", function($http, $q) {
 
             var vm = this;
             vm.showFormMsg = false;
@@ -25,10 +25,12 @@
             vm.loadEmployee = loadEmployee;
             vm.updateEmployee = updateEmployee;
             vm.deleteEmployee = deleteEmployee;
+            vm.isChecked = isChecked;
             vm.resetForm = resetForm;
 
             function activate() {
                 getAllEmployees();
+                getAllShifts();
             }
 
             function getData(query, params) {
@@ -130,7 +132,6 @@
                 //read from database
                 getData("SELECT * FROM employee", [])
                     .then(function(employeeObj) {
-                        console.log(employeeObj);
                         if (employeeObj.length > 0) {
                             for (var i = 0; i < employeeObj.length; i++) {
                                 vm.employee.push(employeeObj.item(i));
@@ -154,6 +155,30 @@
 
             }
 
+            //shifts
+            function getAllShifts() {
+                vm.shifts = [];
+                //read from database
+                getData("SELECT * FROM shift", [])
+                    .then(function (shiftObj) {
+                        console.log(shiftObj);
+                        if (shiftObj.length > 0) {
+                            for (var i = 0; i < shiftObj.length; i++) {
+                                vm.shifts.push(shiftObj.item(i));
+                            }
+                        }
+                        else {
+                            vm.showErrMsg = true;
+                            vm.errMsg = "Error Loading Shifts!";
+                        }
+                    });
+            }
+
+            function isChecked() {
+                return true;
+            }
+
+            //reset form
             function resetForm() {
                 vm.emp = {};
 

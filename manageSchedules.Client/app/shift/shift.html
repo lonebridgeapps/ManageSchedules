@@ -1,5 +1,8 @@
 ﻿<style>
-
+    .noRecords {
+        font-weight: bold;
+        color: #696969;
+    }
 </style>
 
 
@@ -39,8 +42,15 @@
                                 </div>
                             </div>
                         </li>
-                    </ul>
 
+                        <li class="list-group-item noRecords" ng-show="vm.showListMsg">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    <i class="fa fa-spin" ng-class="'fa-refresh'"></i> {{vm.listMsg}}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 

@@ -11,6 +11,9 @@
             vm.shift = {};
             vm.shifts = [];
 
+            vm.showListMsg = true;
+            vm.listMsg = "";
+
             vm.addShift = addShift;
             vm.getAllShifts = getAllShifts;
 
@@ -62,19 +65,25 @@
                 vm.shift = {};
             }
 
-
             function getAllShifts() {
+                vm.showListMsg = true;
+                vm.listMsg = "Loading shifts...";
+
+                vm.shifts = [];
                 //read from database
-                var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
-                db.transaction(function (tx) {
-                    tx.executeSql("SELECT name, staff, priority FROM shift", [], function (tx, results) {
-                        if (results.rows.length > 0) {
-                            for (var i = 0; i < results.rows.length; i++) {
-                                vm.shifts.push(results.rows.item(i));
+                getData("SELECT * FROM shift", [])
+                    .then(function (shiftObj) {
+                        console.log(shiftObj);
+                        if (shiftObj.length > 0) {
+                            for (var i = 0; i < shiftObj.length; i++) {
+                                vm.shifts.push(shiftObj.item(i));
                             }
+                            vm.showListMsg = false;
+                        }
+                        else {
+                            vm.listMsg = "Error Loading Shifts!";
                         }
                     });
-                });
             }
 
 

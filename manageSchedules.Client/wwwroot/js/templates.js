@@ -68,11 +68,21 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                                <div class=\"panel panel-primary\">\n" +
     "                                    <div class=\"panel-heading \">\n" +
     "                                        Shift Availability\n" +
-    "                                        <button class=\"btn btn-primary btn-sm pull-right\"ng-click=\"vm.showShifts = !vm.showShifts\"><i class=\"fa fa-plus\"></i></button>\n" +
+    "                                        <button type=\"button\" class=\"btn btn-primary btn-sm pull-right\" ng-click=\"vm.showShifts = !vm.showShifts\">\n" +
+    "                                            <i class=\"fa\" ng-class=\"{'fa-plus':!vm.showShifts, 'fa-minus':vm.showShifts}\"></i>\n" +
+    "                                        </button>\n" +
     "                                        <div class=\"clearfix\"></div>\n" +
     "                                    </div>\n" +
     "                                    <div class=\"panel-body\" ng-show=\"vm.showShifts\">\n" +
-    "\n" +
+    "                                        <div class=\"list-group\">\n" +
+    "                                            <a class=\"list-group-item text-center\">Select shift availablity</a>\n" +
+    "                                            <a class=\"list-group-item\" ng-repeat=\"sItem in vm.shifts\" ng-click=\"vm.toggleShift(sItem.shiftid)\">\n" +
+    "                                                <div class=\"row\">\n" +
+    "                                                    <div class=\"col-xs-4 text-center text-success\"><i class=\"fa\" ng-class=\"{'fa-check': vm.isChecked()}\"></i></div>\n" +
+    "                                                    <div class=\"col-xs-8\">{{sItem.name}}</div>\n" +
+    "                                                </div>\n" +
+    "                                            </a>\n" +
+    "                                        </div>\n" +
     "                                    </div>\n" +
     "                                </div>\n" +
     "                            </div>\n" +
@@ -323,7 +333,10 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
 angular.module("../app/shift/shift.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../app/shift/shift.html",
     "<style>\n" +
-    "\n" +
+    "    .noRecords {\n" +
+    "        font-weight: bold;\n" +
+    "        color: #696969;\n" +
+    "    }\n" +
     "</style>\n" +
     "\n" +
     "\n" +
@@ -363,8 +376,15 @@ angular.module("../app/shift/shift.html", []).run(["$templateCache", function($t
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </li>\n" +
-    "                    </ul>\n" +
     "\n" +
+    "                        <li class=\"list-group-item noRecords\" ng-show=\"vm.showListMsg\">\n" +
+    "                            <div class=\"row\">\n" +
+    "                                <div class=\"col-xs-12 text-center\">\n" +
+    "                                    <i class=\"fa fa-spin\" ng-class=\"'fa-refresh'\"></i> {{vm.listMsg}}\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </li>\n" +
+    "                    </ul>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
