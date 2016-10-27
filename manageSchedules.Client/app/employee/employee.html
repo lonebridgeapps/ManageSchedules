@@ -26,7 +26,7 @@
         <div class="col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    Add Employees
+                    Manage Employee
                 </div>
                 <div class="panel-body">
                     <form id="frmEmployee" name="frmEmployee" ng-submit="vm.saveEmployee(frmEmployee.$valid)">
@@ -72,9 +72,19 @@
                                     <div class="panel-body" ng-show="vm.showShifts">
                                         <div class="list-group">
                                             <a class="list-group-item text-center">Select shift availablity</a>
+                                            <a class="list-group-item" ng-click="vm.toggleAllShifts()">
+                                                <div class="row">
+                                                    <div class="col-xs-4 text-center text-success">
+                                                        <i class="fa" ng-class="vm.shifts.length != vm.emp.availableShift.length ? 'fa-check' : 'fa-square-o'"></i>
+                                                    </div>
+                                                    <div class="col-xs-8">{{vm.massSelection}}</div>
+                                                </div>
+                                            </a>
                                             <a class="list-group-item" ng-repeat="sItem in vm.shifts" ng-click="vm.toggleShift(sItem.shiftid)">
                                                 <div class="row">
-                                                    <div class="col-xs-4 text-center text-success"><i class="fa" ng-class="{'fa-check': vm.isChecked()}"></i></div>
+                                                    <div class="col-xs-4 text-center text-success">
+                                                        <i class="fa" ng-class="vm.emp.availableShift.indexOf(sItem.shiftid) >= 0 ? 'fa-check' : 'fa-square-o'"></i>
+                                                    </div>
                                                     <div class="col-xs-8">{{sItem.name}}</div>
                                                 </div>
                                             </a>

@@ -19,13 +19,17 @@
             vm.emp = {};
             vm.employee = [];
 
+            vm.massSelection = "Select All";
+            vm.emp.availableShift = [];
+
             activate();
 
             vm.saveEmployee = saveEmployee;
             vm.loadEmployee = loadEmployee;
             vm.updateEmployee = updateEmployee;
             vm.deleteEmployee = deleteEmployee;
-            vm.isChecked = isChecked;
+            vm.toggleShift = toggleShift;
+            vm.toggleAllShifts = toggleAllShifts;
             vm.resetForm = resetForm;
 
             function activate() {
@@ -161,7 +165,6 @@
                 //read from database
                 getData("SELECT * FROM shift", [])
                     .then(function (shiftObj) {
-                        console.log(shiftObj);
                         if (shiftObj.length > 0) {
                             for (var i = 0; i < shiftObj.length; i++) {
                                 vm.shifts.push(shiftObj.item(i));
@@ -174,8 +177,29 @@
                     });
             }
 
-            function isChecked() {
-                return true;
+            //
+            function toggleShift(shiftid) {
+                var index = vm.emp.availableShift.indexOf(shiftid);
+                if (index >= 0) {
+                    vm.emp.availableShift.splice(index, 1);
+                }
+                else {
+                    vm.emp.availableShift.push(shiftid);
+                }
+            }
+
+            //
+            function toggleAllShifts() {
+                if (vm.shifts.length == vm.emp.availableShift.length) {
+                    vm.massSelection = "Select All";
+                    vm.emp.availableShift = [];
+                }
+                else {
+                    vm.massSelection = "Deselect All";
+                    for (var i = 0; i < vm.shifts.length; i++) {
+                        vm.emp.availableShift.push(vm.shifts[i].shiftid);
+                    }
+                }
             }
 
             //reset form
@@ -184,6 +208,9 @@
 
                 vm.showFormMsg = false;
                 vm.formMsg = "";
+
+                vm.massSelection = "Select All";
+                vm.showShifts = false;
             }
 
         }]);

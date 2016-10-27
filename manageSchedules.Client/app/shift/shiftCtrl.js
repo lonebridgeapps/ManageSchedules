@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .controller("shiftCtrl", ["$http", "$q", function($http, $q) {
+        .controller("shiftCtrl", ["$http", "$q", "$scope", function($http, $q, $scope) {
 
             var vm = this;
             var sortingLog = [];

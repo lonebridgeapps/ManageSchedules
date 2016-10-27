@@ -30,7 +30,7 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "        <div class=\"col-md-6\">\n" +
     "            <div class=\"panel panel-primary\">\n" +
     "                <div class=\"panel-heading\">\n" +
-    "                    Add Employees\n" +
+    "                    Manage Employee\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\">\n" +
     "                    <form id=\"frmEmployee\" name=\"frmEmployee\" ng-submit=\"vm.saveEmployee(frmEmployee.$valid)\">\n" +
@@ -76,9 +76,19 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                                    <div class=\"panel-body\" ng-show=\"vm.showShifts\">\n" +
     "                                        <div class=\"list-group\">\n" +
     "                                            <a class=\"list-group-item text-center\">Select shift availablity</a>\n" +
+    "                                            <a class=\"list-group-item\" ng-click=\"vm.toggleAllShifts()\">\n" +
+    "                                                <div class=\"row\">\n" +
+    "                                                    <div class=\"col-xs-4 text-center text-success\">\n" +
+    "                                                        <i class=\"fa\" ng-class=\"vm.shifts.length != vm.emp.availableShift.length ? 'fa-check' : 'fa-square-o'\"></i>\n" +
+    "                                                    </div>\n" +
+    "                                                    <div class=\"col-xs-8\">{{vm.massSelection}}</div>\n" +
+    "                                                </div>\n" +
+    "                                            </a>\n" +
     "                                            <a class=\"list-group-item\" ng-repeat=\"sItem in vm.shifts\" ng-click=\"vm.toggleShift(sItem.shiftid)\">\n" +
     "                                                <div class=\"row\">\n" +
-    "                                                    <div class=\"col-xs-4 text-center text-success\"><i class=\"fa\" ng-class=\"{'fa-check': vm.isChecked()}\"></i></div>\n" +
+    "                                                    <div class=\"col-xs-4 text-center text-success\">\n" +
+    "                                                        <i class=\"fa\" ng-class=\"vm.emp.availableShift.indexOf(sItem.shiftid) >= 0 ? 'fa-check' : 'fa-square-o'\"></i>\n" +
+    "                                                    </div>\n" +
     "                                                    <div class=\"col-xs-8\">{{sItem.name}}</div>\n" +
     "                                                </div>\n" +
     "                                            </a>\n" +
@@ -194,6 +204,7 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "        background-color: #696969;\n" +
     "        color: #ffffff;\n" +
     "    }\n" +
+    "\n" +
     "</style>\n" +
     "\n" +
     "<div class=\"container-fluid\">\n" +
@@ -385,6 +396,7 @@ angular.module("../app/shift/shift.html", []).run(["$templateCache", function($t
     "                            </div>\n" +
     "                        </li>\n" +
     "                    </ul>\n" +
+    "\n" +
     "                </div>\n" +
     "            </div>\n" +
     "\n" +
