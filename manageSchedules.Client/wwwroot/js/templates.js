@@ -22,8 +22,14 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "\n" +
     "\n" +
     "<div id=\"employeeWrapper\">\n" +
+    "    <h4>Employees</h4>\n" +
     "\n" +
     "    <div></div>\n" +
+    "\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-xs-12\">\n" +
+    "        </div>\n" +
+    "    </div>\n" +
     "\n" +
     "    <div class=\"row\">\n" +
     "\n" +
@@ -221,6 +227,12 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "                    <i class=\"fa fa-calendar-o\"></i> Schedules</a>\n" +
     "                <a class=\"list-group-item\" ui-sref=\"main.shift\">\n" +
     "                    <i class=\"fa fa-clock-o\"></i> Shifts</a>\n" +
+    "\n" +
+    "                <a href=\"#\" class=\"list-group-item active\">\n" +
+    "                    <p class=\"list-group-item-text\">Save shift options</p>\n" +
+    "                    <p class=\"list-group-item-text\">Higlight changed items</p>\n" +
+    "                </a>\n" +
+    "\n" +
     "                <a class=\"list-group-item\" ui-sref=\"main.employee\">\n" +
     "                    <i class=\"fa fa-users\"></i> Employees</a>\n" +
     "\n" +
@@ -277,14 +289,6 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "\n" +
     "    <div class=\"row\">\n" +
     "        <div class=\"col-xs-12\">\n" +
-    "            <div class=\"panel panel-primary\">\n" +
-    "                <div class=\"panel-heading\">\n" +
-    "                    <i class=\"fa fa-cogs\"></i> ToolBox\n" +
-    "                </div>\n" +
-    "                <div class=\"panel-body\">\n" +
-    "                    <a class=\"btn btn-default\" ng-click=\"\"><i class=\"fa fa-calendar-plus-o\"></i> Run Schedule</a>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
     "\n" +
@@ -293,28 +297,114 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "            <div class=\"panel panel-primary\">\n" +
     "                <div class=\"panel-heading\">\n" +
     "                    Week of: xx/xx/xxxx - xx/xx/xxxx\n" +
+    "                    <div class=\"btn-group pull-right\">\n" +
+    "                        <button type=\"button\" class=\"btn btn-primary btn-sm\" ng-click=\"\"><i class=\"fa\" ng-class=\"'fa-arrow-down'\"></i> Expand</button>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"clearfix\"></div>\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\">\n" +
+    "                    <div>\n" +
+    "                        <h4>AM Shifts</h4>\n" +
+    "                        <nvd3 options=\"vm.chartOptions\" data=\"vm.chartDataAM\"></nvd3>\n" +
+    "                    </div>\n" +
+    "                    <div>\n" +
+    "                        <h4>PM Shifts</h4>\n" +
+    "                        <nvd3 options=\"vm.chartOptions\" data=\"vm.chartDataPM\"></nvd3>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-xs-12\">\n" +
+    "            <div class=\"panel panel-primary\">\n" +
+    "                <div class=\"panel-heading\">\n" +
+    "                    Week of: xx/xx/xxxx - xx/xx/xxxx\n" +
+    "                    <div class=\"btn-group pull-right\">\n" +
+    "                        <button type=\"button\" class=\"btn btn-primary btn-sm\" ng-click=\"\"><i class=\"fa fa-calendar-plus-o\"></i> Run</button>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"clearfix\"></div>\n" +
+    "                </div>\n" +
+    "                <div class=\"panel-body\">\n" +
+    "\n" +
+    "                    <table class=\"table table-striped\">\n" +
+    "                        <thead>\n" +
+    "                            <tr class=\"\">\n" +
+    "                                <th class=\"text-center\">Employee</th>\n" +
+    "                                <th class=\"text-center\" colspan=\"2\">\n" +
+    "                                    <button type=\"button\" class=\"btn btn-default\">Sun</button>\n" +
+    "                                </th>\n" +
+    "                                <th class=\"text-center\" colspan=\"2\">Mon</th>\n" +
+    "                                <th class=\"text-center\" colspan=\"2\">Tue</th>\n" +
+    "                                <th class=\"text-center\" colspan=\"2\">Wed</th>\n" +
+    "                                <th class=\"text-center\" colspan=\"2\">Thu</th>\n" +
+    "                                <th class=\"text-center\" colspan=\"2\">Fri</th>\n" +
+    "                                <th class=\"text-center\" colspan=\"2\">Sat</th>\n" +
+    "                                <th class=\"text-center\">Totals</th>\n" +
+    "                            </tr>\n" +
+    "                            <tr class=\"\">\n" +
+    "                                <th></th>\n" +
+    "                                <th class=\"text-center\">AM</th>\n" +
+    "                                <th class=\"text-center\">PM</th>\n" +
+    "                                <th class=\"text-center\">AM</th>\n" +
+    "                                <th class=\"text-center\">PM</th>\n" +
+    "                                <th class=\"text-center\">AM</th>\n" +
+    "                                <th class=\"text-center\">PM</th>\n" +
+    "                                <th class=\"text-center\">AM</th>\n" +
+    "                                <th class=\"text-center\">PM</th>\n" +
+    "                                <th class=\"text-center\">AM</th>\n" +
+    "                                <th class=\"text-center\">PM</th>\n" +
+    "                                <th class=\"text-center\">AM</th>\n" +
+    "                                <th class=\"text-center\">PM</th>\n" +
+    "                                <th class=\"text-center\">AM</th>\n" +
+    "                                <th class=\"text-center\">PM</th>\n" +
+    "                                <th></th>\n" +
+    "                            </tr>      \n" +
+    "                        </thead>\n" +
+    "                        <tbody>\n" +
+    "                            <tr>\n" +
+    "                                <td>\n" +
+    "                                    <a class=\"btn btn-block\" ng-class=\"\" ng-click=\"\">\n" +
+    "                                        <div>\n" +
+    "                                             <i class=\"fa fa-user-circle fa-2x\"></i>\n" +
+    "                                            <div>\n" +
+    "                                                <h5 class=\"\">employeename</h5>\n" +
+    "                                                <div class=\"userSubItem\">scheduled</div>\n" +
+    "                                            </div>\n" +
+    "                                        </div>\n" +
+    "                                    </a>\n" +
+    "                                </td>\n" +
+    "                            </tr>\n" +
+    "                        </tbody>\n" +
+    "                    </table>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
     "                    <table class=\"table table-striped text-center\">\n" +
     "                        <thead>\n" +
     "                        <tr class=\"text-center\">\n" +
     "                            <th class=\"text-center\">Employee</th>\n" +
-    "                            <th class=\"text-center\">Sun <br /> 0 / 0</th>\n" +
-    "                            <th class=\"text-center\">Mon <br /> 0 / 0</th>\n" +
-    "                            <th class=\"text-center\">Tue <br /> 0 / 0</th>\n" +
-    "                            <th class=\"text-center\">Wed <br /> 0 / 0</th>\n" +
-    "                            <th class=\"text-center\">Thu <br /> 0 / 0</th>\n" +
-    "                            <th class=\"text-center\">Fri <br /> 0 / 0</th>\n" +
-    "                            <th class=\"text-center\">Sat <br /> 0 / 0</th>\n" +
+    "                            <th class=\"text-center\">Sun</th>\n" +
+    "                            <th class=\"text-center\">Mon</th>\n" +
+    "                            <th class=\"text-center\">Tue</th>\n" +
+    "                            <th class=\"text-center\">Wed</th>\n" +
+    "                            <th class=\"text-center\">Thu</th>\n" +
+    "                            <th class=\"text-center\">Fri</th>\n" +
+    "                            <th class=\"text-center\">Sat</th>\n" +
     "                            <th class=\"text-center\">Totals</th>\n" +
     "                        </tr>\n" +
     "                        </thead>\n" +
     "                        <tbody>\n" +
     "                        <tr ng-repeat=\"x in vm.employeeObj\">\n" +
     "                            <td>\n" +
-    "                                <h5 class=\"text-primary\">{{x.name}}</h5>\n" +
-    "                                <div>scheduled: {{x.scheduled}}</div>\n" +
-    "                                <div>available: {{x.available}}</div>\n" +
+    "                                <a class=\"btn btn-block\" ng-class=\"\" ng-click=\"\">\n" +
+    "                                    <h5 class=\"\">{{x.name}}</h5>\n" +
+    "                                    <div class=\"\">available</div>\n" +
+    "                                    <div class=\"\">scheduled</div>\n" +
+    "                                </a>\n" +
     "                            </td>\n" +
     "\n" +
     "                            <td ng-repeat=\"z in x.day\">\n" +
@@ -337,6 +427,7 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
+    "\n" +
     "</div>\n" +
     "");
 }]);
@@ -380,11 +471,12 @@ angular.module("../app/shift/shift.html", []).run(["$templateCache", function($t
     "                    <ul class=\"list-group\" ui-sortable=\"vm.sortableOptions\" ng-model=\"vm.shifts\">\n" +
     "                        <li class=\"list-group-item\" ng-repeat=\"item in vm.shifts\">\n" +
     "                            <div class=\"row\">\n" +
-    "                                <div class=\"col-xs-5\">{{item.name}}</div>\n" +
-    "                                <div class=\"col-xs-5\">{{item.staffing}}</div>\n" +
-    "                                <div class=\"col-xs-2\">\n" +
-    "                                    <i class=\"fa fa-ellipsis-v pull-right\"></i>\n" +
+    "                                <div class=\"col-xs-1\">\n" +
+    "                                    <i class=\"fa fa-ellipsis-v pull-left\"></i>\n" +
     "                                </div>\n" +
+    "                                <div class=\"col-xs-6\">{{item.name}}</div>\n" +
+    "                                <div class=\"col-xs-5\">{{item.staff}}</div>\n" +
+    "\n" +
     "                            </div>\n" +
     "                        </li>\n" +
     "\n" +

@@ -7,7 +7,7 @@
     "timespan": "AM",
     "segment": 0,
     "staffing": 5,
-    "order": 0
+    "order": 8
   },
   {
     "shiftId": 1,
@@ -17,7 +17,7 @@
     "timespan": "PM",
     "segment": 1,
     "staffing": 5,
-    "order": 0
+    "order": 3
   },
   {
     "shiftId": 2,
@@ -27,7 +27,7 @@
     "timespan": "AM",
     "segment": 0,
     "staffing": 5,
-    "order": 0
+    "order": 13
   },
   {
     "shiftId": 3,
@@ -37,7 +37,7 @@
     "timespan": "PM",
     "segment": 1,
     "staffing": 5,
-    "order": 0
+    "order": 6
   },
   {
     "shiftId": 4,
@@ -47,7 +47,7 @@
     "timespan": "AM",
     "segment": 0,
     "staffing": 5,
-    "order": 0
+    "order": 12
   },
   {
     "shiftId": 5,
@@ -57,7 +57,7 @@
     "timespan": "PM",
     "segment": 1,
     "staffing": 5,
-    "order": 0
+    "order": 5
   },
   {
     "shiftId": 6,
@@ -67,7 +67,7 @@
     "timespan": "AM",
     "segment": 0,
     "staffing": 5,
-    "order": 0
+    "order": 11
   },
   {
     "shiftId": 7,
@@ -77,7 +77,7 @@
     "timespan": "PM",
     "segment": 1,
     "staffing": 5,
-    "order": 0
+    "order": 4
   },
   {
     "shiftId": 8,
@@ -87,7 +87,7 @@
     "timespan": "AM",
     "segment": 0,
     "staffing": 5,
-    "order": 0
+    "order": 10
   },
   {
     "shiftId": 9,
@@ -97,7 +97,7 @@
     "timespan": "PM",
     "segment": 1,
     "staffing": 5,
-    "order": 0
+    "order": 2
   },
   {
     "shiftId": 10,
@@ -107,7 +107,7 @@
     "timespan": "AM",
     "segment": 0,
     "staffing": 5,
-    "order": 0
+    "order": 9
   },
   {
     "shiftId": 11,
@@ -127,7 +127,7 @@
     "timespan": "AM",
     "segment": 0,
     "staffing": 5,
-    "order": 0
+    "order": 7
   },
   {
     "shiftId": 13,
@@ -137,6 +137,6 @@
     "timespan": "PM",
     "segment" : 1,
     "staffing": 5,
-    "order": 0
+    "order": 1
   }
 ]

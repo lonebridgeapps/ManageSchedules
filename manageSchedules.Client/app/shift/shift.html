@@ -35,11 +35,12 @@
                     <ul class="list-group" ui-sortable="vm.sortableOptions" ng-model="vm.shifts">
                         <li class="list-group-item" ng-repeat="item in vm.shifts">
                             <div class="row">
-                                <div class="col-xs-5">{{item.name}}</div>
-                                <div class="col-xs-5">{{item.staffing}}</div>
-                                <div class="col-xs-2">
-                                    <i class="fa fa-ellipsis-v pull-right"></i>
+                                <div class="col-xs-1">
+                                    <i class="fa fa-ellipsis-v pull-left"></i>
                                 </div>
+                                <div class="col-xs-6">{{item.name}}</div>
+                                <div class="col-xs-5">{{item.staff}}</div>
+
                             </div>
                         </li>
 

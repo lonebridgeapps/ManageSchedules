@@ -71,7 +71,7 @@
 
                 vm.shifts = [];
                 //read from database
-                getData("SELECT * FROM shift", [])
+                getData("SELECT * FROM shift ORDER BY priority", [])
                     .then(function (shiftObj) {
                         console.log(shiftObj);
                         if (shiftObj.length > 0) {
@@ -89,19 +89,11 @@
 
             vm.sortableOptions = {
                 update: function (e, ui) {
-                    var logEntry = vm.shifts.map(function (i) {
-                        return i.value;
-                    }).join(', ');
-                    sortingLog.push('Update: ' + logEntry);
-                    console.log(sortingLog);
+                    console.log("UPDATE");
                 },
                 stop: function (e, ui) {
                     // this callback has the changed model
-                    var logEntry = vm.shifts.map(function (i) {
-                        return i.value;
-                    }).join(', ');
-                    sortingLog.push('Stop: ' + logEntry);
-                    console.log(sortingLog);
+                    console.log("STOP!" + " | shifts:" + vm.shifts.name);
                 }
             };
         }]);
