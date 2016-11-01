@@ -78,13 +78,15 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body" ng-show="vm.showStaffStats">
-                    <div>
-                        <h4>AM Shifts</h4>
-                        <nvd3 options="vm.chartOptions" data="vm.chartDataAM"></nvd3>
-                    </div>
-                    <div>
-                        <h4>PM Shifts</h4>
-                        <nvd3 options="vm.chartOptions" data="vm.chartDataPM"></nvd3>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <h4>AM Shifts</h4>
+                            <nvd3 options="vm.chartOptions" data="vm.chartDataAM"></nvd3>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <h4>PM Shifts</h4>
+                            <nvd3 options="vm.chartOptions" data="vm.chartDataPM"></nvd3>
+                        </div>
                     </div>
                 </div>
 
@@ -104,7 +106,6 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
-
                     <table class="table table-striped">
                         <thead>
                             <tr class="">
@@ -131,8 +132,8 @@
 
                             <!-- days of week cells -->
                             <td>
-                                <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-times-circle-o'"></i> 
+                                <a class="btn btn-block" ng-class="'btn-avail'" ng-click="vm.updSchedule()">
+                                    <i class="fa" ng-class="'fa-plus'"></i> 
                                 </a>
                             </td>
                             <td>
@@ -142,27 +143,27 @@
                             </td>
                             <td>
                                 <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-plus-square-o'"></i>
+                                    <i class="fa" ng-class="'fa-plus'"></i>
                                 </a>
                             </td>
                             <td>
                                 <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-plus-circle'"></i>
+                                    <i class="fa" ng-class="'fa-plus'"></i>
                                 </a>
                             </td>
                             <td>
                                 <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-plus-square'"></i>
+                                    <i class="fa" ng-class="'fa-times'"></i>
                                 </a>
                             </td>
                             <td>
                                 <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-times-circle'"></i>
+                                    <i class="fa" ng-class="'fa-times'"></i>
                                 </a>
                             </td>
                             <td>
-                                <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-window-close'"></i>
+                                <a class="btn btn-block" ng-class="'btn-muted'" ng-click="vm.updSchedule()">
+                                    <i class="fa" ng-class="'fa-times'"></i>
                                 </a>
                             </td>
                             <td>

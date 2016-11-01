@@ -5,34 +5,33 @@
         border-radius: 0 !important;
     }
 
-    .btn-disabled {
-        color: #b5b5b5;
-        background-color: #cfcfcf;
-        border-color: #b5b5b5;
+    .btn-muted {
+        color: #777777;
+        background-color: #fff;
+        border-color: #ccc;
     }
 
     .btn-avail {
-      color: #0094ff;
+      color: #337ab7;
       background-color: #fff;
-      border-color: #0094ff;
+      border-color: #337ab7;
     }
 
     .btn-avail:hover {
-      color: #082f9c;
-      background-color: #91c7fb;
-      border-color: #082f9c;
+      color: #337ab7;
+      background-color: #EEF7FA;
     }
 
     .btn-scheduled {
-        color: #2DA127;
-        background-color: #EDEDED;
-        border-color :#2DA127;
+        color: #3c763d;
+        background-color: #fff;
+        border-color :#3c763d;
     }
 
     .btn-requestOff {
-        color: #ff0000;
-        background-color: #EDEDED;
-        border-color :#ff0000;
+        color: #a94442;
+        background-color: #fff;
+        border-color :#a94442;
     }
         
     .loadingBar {
@@ -55,6 +54,25 @@
             <div class="list-group">
                 <a class="list-group-item" ui-sref="main.schedule">
                     <i class="fa fa-calendar-o"></i> Schedules</a>
+
+                <a id="scheduleLegend" class="list-group-item" ng-if="vm.isCurrentState('main.schedule');">
+                    <p>Scheduling Legend</p>
+                    <div class="row">
+                        <div class="col-xs-12 text-primary">
+                            <i class="fa fa-square"></i> Available
+                        </div>
+                        <div class="col-xs-12 text-success">
+                            <i class="fa fa-square"></i> Scheduled
+                        </div>
+                        <div class="col-xs-12 text-danger">
+                            <i class="fa fa-square"></i> Request Off
+                        </div>
+                        <div class="col-xs-12 text-muted">
+                            <i class="fa fa-square"></i> Unavailable
+                        </div>
+                    </div>
+                </a>
+
                 <a class="list-group-item" ui-sref="main.shift">
                     <i class="fa fa-clock-o"></i> Shifts</a>
 

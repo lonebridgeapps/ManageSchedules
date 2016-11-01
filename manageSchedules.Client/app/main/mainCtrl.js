@@ -3,7 +3,7 @@
 
         angular
             .module('app')
-            .controller('mainCtrl', ["$http", "$q", function($http, $q) {
+            .controller('mainCtrl', ["$http", "$q", "$state", function($http, $q, $state) {
                 var vm = this;
 
                 vm.showLoadingBar = false;
@@ -12,6 +12,7 @@
                 vm.dbTables = [];
 
                 vm.createDb = createDb;
+                vm.isCurrentState = isCurrentState;
 
                 function createDb() {
                     //
@@ -102,6 +103,11 @@
                 //scheduled
                 function uploadScheduleJson() {
                     return $http.get('resources/schedule.json');
+                }
+
+                //
+                function isCurrentState(stateName) {
+                    return ($state.current.name == stateName) ? true : false;
                 }
 
             }]);

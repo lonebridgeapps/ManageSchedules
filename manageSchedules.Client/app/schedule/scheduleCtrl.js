@@ -38,8 +38,8 @@
 
                 function activate() {
                     getAllEmployees();
+                    getEmployeeAvailability();
                 }
-
 
                 function getData(query, params) {
                     var deferred = $q.defer();
@@ -55,7 +55,6 @@
 
 
                 function getAllEmployees() {
-                    vm.showListMsg = true;
                     vm.employee = [];
                     //read from database
                     getData("SELECT * FROM employee", [])
@@ -72,17 +71,21 @@
                 }
 
 
-
-
-
-
-                function getSampleData() {
-                    $http.get('resources/sampleData.json')
-                        .success(function(data) {
-                            vm.employeeObj = data;
-                            console.log(data);
-                        })
-                        .error(function() { console.log('ERROR LOADING') });
+                function getEmployeeAvailability() {
+                    vm.avail = [];
+                    //read from database
+                    getData("SELECT * FROM schedule", [])
+                        .then(function (availObj) {
+                            if (availObj.length > 0) {
+                                for (var i = 0; i < availObj.length; i++) {
+                                    vm.avail.push(availObj.item(i));
+                                }
+                            }
+                            else {
+                                console.log("Error Loading Schedules!");
+                            }
+                        });
+                    console.log('Availability: ', vm.avail);
                 }
 
                 function getStatusColor(p, i, e) {
