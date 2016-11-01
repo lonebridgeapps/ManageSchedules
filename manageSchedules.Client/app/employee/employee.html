@@ -44,6 +44,21 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
+                                    <label for="selEmpType">Employee Type</label>
+                                    <select class="form-control" id="selEmpType" ng-model="vm.emp.type" required>
+                                        <option value="1">Server</option>
+                                        <option value="2">Busser</option>
+                                        <option value="3">Hostess</option>
+                                        <option value="4">Bartender</option>
+                                        <option value="5">Bar Back</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
                                     <label for="txtHireDate">Hire Date</label>
                                     <input type="date" class="form-control" id="txtHireDate" placeholder="Hire Date" ng-model="vm.emp.hiredate">
                                 </div>

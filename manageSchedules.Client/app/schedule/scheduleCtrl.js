@@ -3,10 +3,11 @@
 
     angular
         .module('app')
-        .controller('scheduleCtrl',
-        [
-            '$http', function($http) {
+        .controller('scheduleCtrl', ['$http', '$q', function($http, $q) {
                 var vm = this;
+
+                vm.showStaffStats = false;
+                vm.showEmployeeDetails = false;
 
                 //shift key
                 // 0 = not available
@@ -26,12 +27,54 @@
 
 
                 vm.employeeObj = [];
+                vm.employee = [];
 
-                getSampleData();
+                activate();
 
                 vm.getStatusColor = getStatusColor;
                 vm.getStatusIcon = getStatusIcon;
                 vm.updSchedule = updSchedule;
+
+
+                function activate() {
+                    getAllEmployees();
+                }
+
+
+                function getData(query, params) {
+                    var deferred = $q.defer();
+                    var db = openDatabase('mainDB', '1.0', 'application main database', 10 * 1024 * 1024);
+                    db.transaction(function (tx) {
+                        tx.executeSql(query, params,
+                            function (tx, results) {
+                                deferred.resolve(results.rows);
+                            });
+                    });
+                    return deferred.promise;
+                }
+
+
+                function getAllEmployees() {
+                    vm.showListMsg = true;
+                    vm.employee = [];
+                    //read from database
+                    getData("SELECT * FROM employee", [])
+                        .then(function (employeeObj) {
+                            if (employeeObj.length > 0) {
+                                for (var i = 0; i < employeeObj.length; i++) {
+                                    vm.employee.push(employeeObj.item(i));
+                                }
+                            }
+                            else {
+                                console.log("Error Loading Employees!");
+                            }
+                        });
+                }
+
+
+
+
+
 
                 function getSampleData() {
                     $http.get('resources/sampleData.json')
@@ -104,6 +147,8 @@
                     //push change to employee schedule object
 
                 }
+
+
 
                 //
                 vm.chartOptions = {

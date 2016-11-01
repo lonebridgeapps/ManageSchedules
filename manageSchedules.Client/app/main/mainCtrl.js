@@ -68,6 +68,20 @@
                         //create shift table
                         tx.executeSql("CREATE TABLE IF NOT EXISTS schedule (empid INTEGER, shiftid INTEGER, status INTEGER)", []);
                         //populate shift table with defaults
+                        uploadScheduleJson()
+                        .then(function (scheduleList) {
+                            db.transaction(function (tx) {
+                                for (var i = 0; i < scheduleList.data.length; i++) {
+                                    var empid = scheduleList.data[i].empid;
+                                    var shiftid = scheduleList.data[i].shiftid;
+                                    tx.executeSql("INSERT INTO schedule (empid, shiftid) VALUES (?,?)",
+                                        [empid, shiftid],
+                                        function(tx, results) {
+                                            var insertId = results.insertId;
+                                        });
+                                }
+                            });
+                        });
                     });
 
                     console.log("successfull created database and tables");
@@ -83,6 +97,11 @@
                 //shifts
                 function uploadShiftJson() {
                     return $http.get('resources/shifts.json');
+                }
+
+                //scheduled
+                function uploadScheduleJson() {
+                    return $http.get('resources/schedule.json');
                 }
 
             }]);

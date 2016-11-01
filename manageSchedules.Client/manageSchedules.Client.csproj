@@ -134,6 +134,7 @@
     <Content Include="wwwroot\resources\sampleData.json" />
     <Content Include="wwwroot\resources\employees.json" />
     <Content Include="wwwroot\resources\shifts.json" />
+    <Content Include="wwwroot\resources\schedule.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
