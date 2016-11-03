@@ -80,12 +80,16 @@
                 <div class="panel-body" ng-show="vm.showStaffStats">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
-                            <h4>AM Shifts</h4>
-                            <nvd3 options="vm.chartOptions" data="vm.chartDataAM"></nvd3>
+                            <div class="well">
+                                <h4>AM Shifts</h4>
+                                <nvd3 options="vm.chartOptions" data="vm.chartDataAM"></nvd3>
+                            </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <h4>PM Shifts</h4>
-                            <nvd3 options="vm.chartOptions" data="vm.chartDataPM"></nvd3>
+                            <div class="well">
+                                <h4>PM Shifts</h4>
+                                <nvd3 options="vm.chartOptions" data="vm.chartDataPM"></nvd3>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,7 +126,7 @@
                            
                         </thead>
                         <tbody>
-                        <tr ng-repeat="i in vm.employee">
+                        <tr ng-repeat="i in vm.employee track by $index">
                             <!-- employee cell -->
                             <td class="text-left">
                                 <a class="btn btn-default btn-block" ng-click="vm.showEmployeeDetails = !vm.showEmployeeDetails">
@@ -137,27 +141,27 @@
                                 </a>
                             </td>
                             <td>
-                                <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
+                                <a class="btn btn-block" ng-class="'btn-avail'" ng-click="vm.updSchedule()">
                                     <i class="fa" ng-class="'fa-plus'"></i> 
                                 </a>
                             </td>
                             <td>
-                                <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
+                                <a class="btn btn-block" ng-class="'btn-avail'" ng-click="vm.updSchedule()">
                                     <i class="fa" ng-class="'fa-plus'"></i>
                                 </a>
                             </td>
                             <td>
-                                <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
+                                <a class="btn btn-block" ng-class="'btn-avail'" ng-click="vm.updSchedule()">
                                     <i class="fa" ng-class="'fa-plus'"></i>
                                 </a>
                             </td>
                             <td>
-                                <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
+                                <a class="btn btn-block" ng-class="'btn-muted'" ng-click="vm.updSchedule()">
                                     <i class="fa" ng-class="'fa-times'"></i>
                                 </a>
                             </td>
                             <td>
-                                <a class="btn btn-block" ng-class="'btn-default'" ng-click="vm.updSchedule()">
+                                <a class="btn btn-block" ng-class="'btn-muted'" ng-click="vm.updSchedule()">
                                     <i class="fa" ng-class="'fa-times'"></i>
                                 </a>
                             </td>

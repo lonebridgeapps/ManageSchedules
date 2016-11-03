@@ -37,8 +37,9 @@
 
 
                 function activate() {
-                    getAllEmployees();
-                    getEmployeeAvailability();
+                    getEmployeeWithAvailability();
+
+
                 }
 
                 function getData(query, params) {
@@ -64,29 +65,57 @@
                                     vm.employee.push(employeeObj.item(i));
                                 }
                             }
-                            else {
-                                console.log("Error Loading Employees!");
-                            }
                         });
                 }
 
 
-                function getEmployeeAvailability() {
-                    vm.avail = [];
-                    //read from database
-                    getData("SELECT * FROM schedule", [])
-                        .then(function (availObj) {
-                            if (availObj.length > 0) {
-                                for (var i = 0; i < availObj.length; i++) {
-                                    vm.avail.push(availObj.item(i));
-                                }
-                            }
-                            else {
-                                console.log("Error Loading Schedules!");
-                            }
+                function getEmployeeWithAvailability() {
+
+                    getData("SELECT * FROM employee", [])
+                        .then(function (employeeObj) {
+                            //console.log(employeeObj);
+                            getData("SELECT schedule.*, shift.* FROM schedule INNER JOIN shift ON schedule.shiftid = shift.shiftid", [])
+                                .then(function(availObj) {
+                                    //console.log(availObj);
+
+                                    if (employeeObj.length > 0) {
+                                        for (var i = 0; i < employeeObj.length; i++) {
+                                            vm.employee.push({
+                                                "empid": employeeObj.item(i).empid,
+                                                "name": employeeObj.item(i).name,
+                                                "ttlShifts": employeeObj.item(i).shifts,
+                                                "aShifts": getShiftsFilterByEmpid(employeeObj.item(i).empid, availObj)
+                                        });
+                                        }
+                                    }
+                                })
+                                .then(function() {
+                                    console.log("finished: ", vm.employee);
+                                });
                         });
-                    console.log('Availability: ', vm.avail);
+                    
                 }
+
+
+                //return array of objects filtered by empid
+                function getShiftsFilterByEmpid(id, arr) {
+                    var employeeShifts = [];
+
+                    for (var i = 0; i > arr.length; i++) {
+                        if (arr[i].empid == id) {
+                            employeeShifts.push(
+                            {
+                                "dayid" : arr[i].dayid, 
+                                "segment" : arr[i].segment,
+                                "status" : arr[i].status
+                            });
+                        }
+                    }
+                    //employeeShifts = [{ "dayid": 0, "segment": 0, "status": 0 }];
+
+                    return employeeShifts;
+                }
+
 
                 function getStatusColor(p, i, e) {
                     var status = vm.employeeObj[p].day[i].shift[e].status;
