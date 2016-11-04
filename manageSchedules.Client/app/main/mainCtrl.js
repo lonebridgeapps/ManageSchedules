@@ -23,17 +23,18 @@
                     var db = openDatabase("mainDB", "1.0", "application main database", 10 * 1024 * 1024);
                     db.transaction(function(tx) {
                         //create employee table
-                        tx.executeSql("CREATE TABLE IF NOT EXISTS employee (empid INTEGER PRIMARY KEY NOT NULL, name TEXT, hiredate TEXT, shifts INTEGER)", []);
+                        tx.executeSql("CREATE TABLE IF NOT EXISTS employee (empid INTEGER PRIMARY KEY NOT NULL, name TEXT, type INTEGER, hiredate TEXT, shifts INTEGER)", []);
                         //populate employee table with defaults
                         uploadEmployeeJson()
                             .then(function (empList) {
                                 db.transaction(function(tx) {
                                     for (var i = 0; i < empList.data.length; i++) {
                                         var empName = empList.data[i].name;
+                                        var empType = empList.data[i].type;
                                         var empHiredate = empList.data[i].hiredate;
                                         var empShifts = empList.data[i].shifts;
-                                        tx.executeSql("INSERT INTO employee (name, hiredate, shifts) VALUES (?,?,?)",
-                                            [empName, empHiredate, empShifts],
+                                        tx.executeSql("INSERT INTO employee (name, type, hiredate, shifts) VALUES (?,?,?,?)",
+                                            [empName, empType, empHiredate, empShifts],
                                             function(tx, results) {
                                                 var insertId = results.insertId;
                                             });

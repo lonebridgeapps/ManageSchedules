@@ -121,7 +121,7 @@
                                 <th class="text-center"><button type="button" class="btn btn-default btn-block">Thu</button></th>
                                 <th class="text-center"><button type="button" class="btn btn-default btn-block">Fri</button></th>
                                 <th class="text-center"><button type="button" class="btn btn-default btn-block">Sat</button></th>
-                                <th class="text-center">Totals</th>
+                                <th></th>
                             </tr>
                            
                         </thead>
@@ -135,44 +135,16 @@
                             </td>
 
                             <!-- days of week cells -->
-                            <td>
-                                <a class="btn btn-block" ng-class="'btn-avail'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-plus'"></i> 
+                            <td ng-repeat="day in vm.days">
+                                <a class="btn btn-block" ng-class="vm.getStatusColor($parent.$index, $index)" ng-click="vm.updSchedule()">
+                                    <i class="fa" ng-class="vm.getStatusIcon($parent.$index, $index)"></i> 
                                 </a>
                             </td>
-                            <td>
-                                <a class="btn btn-block" ng-class="'btn-avail'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-plus'"></i> 
-                                </a>
+                            <!--  -->
+                            <td class="text-center">
+                                <i class="fa fa-calendar-o fa-2x"></i> <span style="position: relative; left: -20px; font-size: 12px; ">{{i.ttlShifts}}</span>
                             </td>
-                            <td>
-                                <a class="btn btn-block" ng-class="'btn-avail'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-plus'"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-block" ng-class="'btn-avail'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-plus'"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-block" ng-class="'btn-muted'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-times'"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-block" ng-class="'btn-muted'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-times'"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-block" ng-class="'btn-muted'" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="'fa-times'"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> {{i.shifts}}</a>
-                            </td>
+                            
                         </tr>
                         </tbody>
                     </table>

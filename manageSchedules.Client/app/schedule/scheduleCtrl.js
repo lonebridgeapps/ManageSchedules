@@ -3,7 +3,7 @@
 
     angular
         .module('app')
-        .controller('scheduleCtrl', ['$http', '$q', function($http, $q) {
+        .controller('scheduleCtrl', ['$http', '$q', '$filter', function($http, $q, $filter) {
                 var vm = this;
 
                 vm.showStaffStats = false;
@@ -15,17 +15,7 @@
                 // 2 = scheduled
                 // 3 = requested off
 
-                vm.shifts = [
-                    { 'Sun': { 'AM': 0, 'PM': 0 } },
-                    { 'Mon': { 'AM': 0, 'PM': 0 } },
-                    { 'Tue': { 'AM': 0, 'PM': 0 } },
-                    { 'Wed': { 'AM': 0, 'PM': 0 } },
-                    { 'Thu': { 'AM': 0, 'PM': 0 } },
-                    { 'Fri': { 'AM': 0, 'PM': 0 } },
-                    { 'Sat': { 'AM': 0, 'PM': 0 } }
-                ];
-
-
+                vm.days = [0,1,2,3,4,5,6];
                 vm.employeeObj = [];
                 vm.employee = [];
 
@@ -35,6 +25,7 @@
                 vm.getStatusIcon = getStatusIcon;
                 vm.updSchedule = updSchedule;
 
+                vm.getShiftDays = getShiftDays;
 
                 function activate() {
                     getEmployeeWithAvailability();
@@ -73,11 +64,8 @@
 
                     getData("SELECT * FROM employee", [])
                         .then(function (employeeObj) {
-                            //console.log(employeeObj);
                             getData("SELECT schedule.*, shift.* FROM schedule INNER JOIN shift ON schedule.shiftid = shift.shiftid", [])
                                 .then(function(availObj) {
-                                    //console.log(availObj);
-
                                     if (employeeObj.length > 0) {
                                         for (var i = 0; i < employeeObj.length; i++) {
                                             vm.employee.push({
@@ -100,31 +88,41 @@
                 //return array of objects filtered by empid
                 function getShiftsFilterByEmpid(id, arr) {
                     var employeeShifts = [];
-
-                    for (var i = 0; i > arr.length; i++) {
-                        if (arr[i].empid == id) {
+                    for (var i = 0; i < arr.length; i++) {
+                        if (arr.item(i).empid == id) {
                             employeeShifts.push(
                             {
-                                "dayid" : arr[i].dayid, 
-                                "segment" : arr[i].segment,
-                                "status" : arr[i].status
+                                "dayid" : arr.item(i).dayid, 
+                                "segment": arr.item(i).segment,
+                                "status": arr.item(i).status
                             });
                         }
                     }
-                    //employeeShifts = [{ "dayid": 0, "segment": 0, "status": 0 }];
-
                     return employeeShifts;
                 }
 
 
-                function getStatusColor(p, i, e) {
-                    var status = vm.employeeObj[p].day[i].shift[e].status;
-                    switch (status) {
+                function getShiftDays(empIndex, dayIndex) {
+                    var shiftDays = 0;
+
+                    var tmpObj = vm.employee[empIndex].aShifts;
+                    var emp = $filter('filter')(tmpObj, { dayid: dayIndex });
+
+                    if (emp.length > 0) {
+                        shiftDays = 1;
+                    }
+                    
+                    return shiftDays;
+                }
+
+
+                function getStatusColor(empIndex, dayid) {
+                    switch (getShiftDays(empIndex, dayid)) {
                     case 0:
-                        return 'btn-disabled';
+                        return 'btn-muted';
                         break;
                     case 1:
-                        return 'btn-default';
+                        return 'btn-avail';
                         break;
                     case 2:
                         return 'btn-scheduled';
@@ -133,27 +131,26 @@
                         return 'btn-requestOff';
                         break;
                     default:
-                        return 'btn-default';
+                        return 'btn-muted';
                     }
                 }
 
-                function getStatusIcon(p, i, e) {
-                    var status = vm.employeeObj[p].day[i].shift[e].status;
-                    switch (status) {
+                function getStatusIcon(empIndex, dayid) {
+                    switch (getShiftDays(empIndex, dayid)) {
                     case 0:
                         return 'fa-times';
                         break;
                     case 1:
-                        return 'fa-plus-circle';
+                        return 'fa-plus';
                         break;
                     case 2:
-                        return 'fa-minus-circle';
+                        return 'fa-plus';
                         break;
                     case 3:
-                        return 'fa-plus-circle';
+                        return 'fa-times';
                         break;
                     default:
-                        return 'fa-plus-circle';
+                        return 'fa-times';
                     }
                 }
 

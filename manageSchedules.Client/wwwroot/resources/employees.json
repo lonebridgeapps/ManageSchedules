@@ -2,180 +2,203 @@
   {
     "id": 1,
     "name": "Barb J",
+    "type": 1,
     "hiredate": "", 
     "shifts": 5
   },
   {
     "id": 2,
     "name": "Heather G",
+    "type": 1,
     "hiredate": "", 
     "shifts": 8
   },
   {
     "id": 3,
     "name": "Lisa H",
+    "type": 1,
     "hiredate": "", 
     "shifts": 5
   },
   {
     "id": 4,
     "name": "Robin M",
+    "type": 1,
     "hiredate": "", 
     "shifts": 7
   },
   {
     "id": 5,
     "name": "Tara G",
+    "type": 1,
     "hiredate": "", 
     "shifts": 5
   },
   {
     "id": 6,
     "name": "Jordan B",
+    "type": 1,
     "hiredate": "", 
     "shifts": 5
   },
   {
     "id": 7,
     "name": "Jaime M",
+    "type": 1,
     "hiredate": "", 
     "shifts": 5
   },
   {
     "id": 8,
     "name": "Beverly H",
+    "type": 1,
     "hiredate": "", 
     "shifts": 5
   },
   {
     "id": 9,
     "name": "Diana D",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 10,
     "name": "Gabby P",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 11,
     "name": "Dawn M",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 12,
     "name": "Sarah T",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 13,
     "name": "Karyl P",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 14,
     "name": "Carol W",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 15,
     "name": "Thomas B",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 16,
     "name": "Amanda D",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 17,
     "name": "Stephanie",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 18,
     "name": "April B",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 19,
     "name": "Alex M",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 20,
     "name": "Chelsea S",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 21,
     "name": "Becca Skyward",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 22,
     "name": "Kelsey",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 23,
     "name": "Nicole",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 24,
     "name": "Rachel H",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 25,
     "name": "Amanda G",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 26,
     "name": "Josh",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 27,
     "name": "Steph B",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 28,
     "name": "Chris",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   },
   {
     "id": 29,
     "name": "Katie",
-    "hiredate": "", 
-    "shifts": 0
-  },
-  {
-    "id": 30,
-    "name": "<blank>",
+    "type": 1,
     "hiredate": "", 
     "shifts": 0
   }

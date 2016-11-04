@@ -190,34 +190,39 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "        border-radius: 0 !important;\n" +
     "    }\n" +
     "\n" +
-    "    .btn-disabled {\n" +
-    "        color: #b5b5b5;\n" +
-    "        background-color: #cfcfcf;\n" +
-    "        border-color: #b5b5b5;\n" +
+    "    .btn-muted {\n" +
+    "        color: #777777;\n" +
+    "        background-color: #fff;\n" +
+    "        border-color: #ccc;\n" +
+    "    }\n" +
+    "\n" +
+    "    .btn-muted:hover {\n" +
+    "        color: #fff;\n" +
+    "        background-color: #777777;\n" +
+    "        border-color: #777777;\n" +
     "    }\n" +
     "\n" +
     "    .btn-avail {\n" +
-    "      color: #0094ff;\n" +
+    "      color: #337ab7;\n" +
     "      background-color: #fff;\n" +
-    "      border-color: #0094ff;\n" +
+    "      border-color: #337ab7;\n" +
     "    }\n" +
     "\n" +
     "    .btn-avail:hover {\n" +
-    "      color: #082f9c;\n" +
-    "      background-color: #91c7fb;\n" +
-    "      border-color: #082f9c;\n" +
+    "      color: #ffffff;\n" +
+    "      background-color: #337ab7;\n" +
     "    }\n" +
     "\n" +
     "    .btn-scheduled {\n" +
-    "        color: #2DA127;\n" +
-    "        background-color: #EDEDED;\n" +
-    "        border-color :#2DA127;\n" +
+    "        color: #3c763d;\n" +
+    "        background-color: #fff;\n" +
+    "        border-color :#3c763d;\n" +
     "    }\n" +
     "\n" +
     "    .btn-requestOff {\n" +
-    "        color: #ff0000;\n" +
-    "        background-color: #EDEDED;\n" +
-    "        border-color :#ff0000;\n" +
+    "        color: #a94442;\n" +
+    "        background-color: #fff;\n" +
+    "        border-color :#a94442;\n" +
     "    }\n" +
     "        \n" +
     "    .loadingBar {\n" +
@@ -240,6 +245,25 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "            <div class=\"list-group\">\n" +
     "                <a class=\"list-group-item\" ui-sref=\"main.schedule\">\n" +
     "                    <i class=\"fa fa-calendar-o\"></i> Schedules</a>\n" +
+    "\n" +
+    "                <a id=\"scheduleLegend\" class=\"list-group-item\" ng-if=\"vm.isCurrentState('main.schedule');\">\n" +
+    "                    <p>Scheduling Legend</p>\n" +
+    "                    <div class=\"row\">\n" +
+    "                        <div class=\"col-xs-12 text-primary\">\n" +
+    "                            <i class=\"fa fa-square\"></i> Available\n" +
+    "                        </div>\n" +
+    "                        <div class=\"col-xs-12 text-success\">\n" +
+    "                            <i class=\"fa fa-square\"></i> Scheduled\n" +
+    "                        </div>\n" +
+    "                        <div class=\"col-xs-12 text-danger\">\n" +
+    "                            <i class=\"fa fa-square\"></i> Request Off\n" +
+    "                        </div>\n" +
+    "                        <div class=\"col-xs-12 text-muted\">\n" +
+    "                            <i class=\"fa fa-square\"></i> Unavailable\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                </a>\n" +
+    "\n" +
     "                <a class=\"list-group-item\" ui-sref=\"main.shift\">\n" +
     "                    <i class=\"fa fa-clock-o\"></i> Shifts</a>\n" +
     "\n" +
@@ -361,13 +385,19 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                    <div class=\"clearfix\"></div>\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\" ng-show=\"vm.showStaffStats\">\n" +
-    "                    <div>\n" +
-    "                        <h4>AM Shifts</h4>\n" +
-    "                        <nvd3 options=\"vm.chartOptions\" data=\"vm.chartDataAM\"></nvd3>\n" +
-    "                    </div>\n" +
-    "                    <div>\n" +
-    "                        <h4>PM Shifts</h4>\n" +
-    "                        <nvd3 options=\"vm.chartOptions\" data=\"vm.chartDataPM\"></nvd3>\n" +
+    "                    <div class=\"row\">\n" +
+    "                        <div class=\"col-xs-12 col-sm-6\">\n" +
+    "                            <div class=\"well\">\n" +
+    "                                <h4>AM Shifts</h4>\n" +
+    "                                <nvd3 options=\"vm.chartOptions\" data=\"vm.chartDataAM\"></nvd3>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                        <div class=\"col-xs-12 col-sm-6\">\n" +
+    "                            <div class=\"well\">\n" +
+    "                                <h4>PM Shifts</h4>\n" +
+    "                                <nvd3 options=\"vm.chartOptions\" data=\"vm.chartDataPM\"></nvd3>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "\n" +
@@ -387,7 +417,6 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                    <div class=\"clearfix\"></div>\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\">\n" +
-    "\n" +
     "                    <table class=\"table table-striped\">\n" +
     "                        <thead>\n" +
     "                            <tr class=\"\">\n" +
@@ -399,12 +428,12 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                                <th class=\"text-center\"><button type=\"button\" class=\"btn btn-default btn-block\">Thu</button></th>\n" +
     "                                <th class=\"text-center\"><button type=\"button\" class=\"btn btn-default btn-block\">Fri</button></th>\n" +
     "                                <th class=\"text-center\"><button type=\"button\" class=\"btn btn-default btn-block\">Sat</button></th>\n" +
-    "                                <th class=\"text-center\">Totals</th>\n" +
+    "                                <th></th>\n" +
     "                            </tr>\n" +
     "                           \n" +
     "                        </thead>\n" +
     "                        <tbody>\n" +
-    "                        <tr ng-repeat=\"i in vm.employee\">\n" +
+    "                        <tr ng-repeat=\"i in vm.employee track by $index\">\n" +
     "                            <!-- employee cell -->\n" +
     "                            <td class=\"text-left\">\n" +
     "                                <a class=\"btn btn-default btn-block\" ng-click=\"vm.showEmployeeDetails = !vm.showEmployeeDetails\">\n" +
@@ -413,44 +442,16 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                            </td>\n" +
     "\n" +
     "                            <!-- days of week cells -->\n" +
-    "                            <td>\n" +
-    "                                <a class=\"btn btn-block\" ng-class=\"'btn-default'\" ng-click=\"vm.updSchedule()\">\n" +
-    "                                    <i class=\"fa\" ng-class=\"'fa-times-circle-o'\"></i> \n" +
+    "                            <td ng-repeat=\"day in vm.days\">\n" +
+    "                                <a class=\"btn btn-block\" ng-class=\"vm.getStatusColor($parent.$index, $index)\" ng-click=\"vm.updSchedule()\">\n" +
+    "                                    <i class=\"fa\" ng-class=\"vm.getStatusIcon($parent.$index, $index)\"></i> \n" +
     "                                </a>\n" +
     "                            </td>\n" +
-    "                            <td>\n" +
-    "                                <a class=\"btn btn-block\" ng-class=\"'btn-default'\" ng-click=\"vm.updSchedule()\">\n" +
-    "                                    <i class=\"fa\" ng-class=\"'fa-plus'\"></i> \n" +
-    "                                </a>\n" +
+    "                            <!--  -->\n" +
+    "                            <td class=\"text-center\">\n" +
+    "                                <i class=\"fa fa-calendar-o fa-2x\"></i> <span style=\"position: relative; left: -20px; font-size: 12px; \">{{i.ttlShifts}}</span>\n" +
     "                            </td>\n" +
-    "                            <td>\n" +
-    "                                <a class=\"btn btn-block\" ng-class=\"'btn-default'\" ng-click=\"vm.updSchedule()\">\n" +
-    "                                    <i class=\"fa\" ng-class=\"'fa-plus-square-o'\"></i>\n" +
-    "                                </a>\n" +
-    "                            </td>\n" +
-    "                            <td>\n" +
-    "                                <a class=\"btn btn-block\" ng-class=\"'btn-default'\" ng-click=\"vm.updSchedule()\">\n" +
-    "                                    <i class=\"fa\" ng-class=\"'fa-plus-circle'\"></i>\n" +
-    "                                </a>\n" +
-    "                            </td>\n" +
-    "                            <td>\n" +
-    "                                <a class=\"btn btn-block\" ng-class=\"'btn-default'\" ng-click=\"vm.updSchedule()\">\n" +
-    "                                    <i class=\"fa\" ng-class=\"'fa-plus-square'\"></i>\n" +
-    "                                </a>\n" +
-    "                            </td>\n" +
-    "                            <td>\n" +
-    "                                <a class=\"btn btn-block\" ng-class=\"'btn-default'\" ng-click=\"vm.updSchedule()\">\n" +
-    "                                    <i class=\"fa\" ng-class=\"'fa-times-circle'\"></i>\n" +
-    "                                </a>\n" +
-    "                            </td>\n" +
-    "                            <td>\n" +
-    "                                <a class=\"btn btn-block\" ng-class=\"'btn-default'\" ng-click=\"vm.updSchedule()\">\n" +
-    "                                    <i class=\"fa\" ng-class=\"'fa-window-close'\"></i>\n" +
-    "                                </a>\n" +
-    "                            </td>\n" +
-    "                            <td>\n" +
-    "                                <a class=\"btn btn-default btn-block\"><i class=\"fa fa-calendar-o \"></i> {{i.shifts}}</a>\n" +
-    "                            </td>\n" +
+    "                            \n" +
     "                        </tr>\n" +
     "                        </tbody>\n" +
     "                    </table>\n" +
