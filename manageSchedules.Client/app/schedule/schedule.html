@@ -42,24 +42,32 @@
         color: #ffffff;
     }
 
-    #employeeDetails .title {
-        font-weight: bold;
+    #employeeDetails .list-group-item {
+        background-color: inherit;
+        border: none;
     }
+
 </style>
 
 <div id="employeeDetails" ng-show="vm.showEmployeeDetails">
-    <div id="heading" class="row">
-        <div class="col-xs-10 title">
-            employee name
-        </div>
-        <div class="col-xs-2 pull-right">
-            <a class="btnCollapse" ng-click="vm.showEmployeeDetails = !vm.showEmployeeDetails"><i class="fa fa-close"></i></a>
-        </div>
-    </div>
+    
 
     <div class="list-group" >
+        <div id="header" class="list-group-item">
+            <div class="row">
+            <div class="col-xs-10">
+                {{vm.employeeDetail[0].name}}
+            </div>
+            <div class="col-xs-2 pull-right">
+                <a class="btnCollapse" ng-click="vm.showEmployeeDetails = !vm.showEmployeeDetails"><i class="fa fa-close"></i></a>
+            </div>
+            </div>
+        </div>
         <div class="list-group-item" ng-repeat="d in vm.days">
             {{$index}} 
+        </div>
+        <div>
+            {{vm.employeeDetail}}
         </div>
     </div>
 
@@ -140,7 +148,7 @@
                         <tr ng-repeat="i in vm.employee track by $index">
                             <!-- employee cell -->
                             <td class="text-left">
-                                <a class="btn btn-default btn-block" ng-click="vm.showEmployeeDetails = !vm.showEmployeeDetails">
+                                <a class="btn btn-default btn-block" ng-click="vm.getEmployeeDetails($index)"><!--vm.employeeDetails($index)-->
                                     <i class="fa fa-user-circle pIcon"></i> {{i.name}}
                                 </a>
                             </td>

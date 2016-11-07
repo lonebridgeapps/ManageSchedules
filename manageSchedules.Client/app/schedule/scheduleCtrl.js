@@ -18,6 +18,7 @@
                 vm.days = [0,1,2,3,4,5,6];
                 vm.employeeObj = [];
                 vm.employee = [];
+                vm.employeeDetail = [];
 
                 activate();
 
@@ -26,6 +27,7 @@
                 vm.updSchedule = updSchedule;
 
                 vm.getShiftDays = getShiftDays;
+                vm.getEmployeeDetails = getEmployeeDetails;
 
                 function activate() {
                     getEmployeeWithAvailability();
@@ -82,6 +84,13 @@
                                 });
                         });
                     
+                }
+
+                //
+                function getEmployeeDetails(index) {
+                    vm.employeeDetail = [];
+                    vm.showEmployeeDetails = true;
+                    vm.employeeDetail.push(vm.employee[index]);
                 }
 
 
