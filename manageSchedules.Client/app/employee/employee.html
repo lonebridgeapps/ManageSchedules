@@ -1,4 +1,4 @@
-﻿<style>
+﻿    <style>
     .panel {
         margin-top: 15px;
     }
@@ -18,17 +18,8 @@
 
 
 <div id="employeeWrapper">
-    <h4>Employees</h4>
-
-    <div></div>
 
     <div class="row">
-        <div class="col-xs-12">
-        </div>
-    </div>
-
-    <div class="row">
-
         <div class="col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -55,6 +46,15 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="txtEmail">Email</label>
+                                    <input type="email" class="form-control" id="txtEmail" placeholder="someone@email.com" ng-model="vm.emp.email">
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-sm-12">
@@ -66,16 +66,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12 ">
                                 <div class="form-group">
                                     <label for="txtShifts">Total Shifts</label>
                                     <input type="number" class="form-control" id="txtShifts" placeholder="Total Shifts" ng-model="vm.emp.shifts" required>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="txtHours">Total Hours</label>
-                                    <input type="number" class="form-control" id="txtHours" placeholder="Total Hours" ng-model="vm.emp.hours" >
                                 </div>
                             </div>
                         </div>
@@ -141,8 +135,18 @@
                     <span class="badge pull-right">{{vm.empCount}}</span>
                 </div>
                 <div class="panel-body">
+
                     <div class="list-group">
-                        <div class="list-group-item" ng-repeat="items in vm.employee">
+                        <div class="list-group-item">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                                <input type="text" class="form-control" id="txtEmployeeSearch" name="txtEmployeeSearch" placeholder="employee search" ng-model="empSearch"/>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item" ng-repeat="items in vm.employee | filter: empSearch">
                             <div class="row">
                                 <div class="col-xs-5">{{items.name}}</div>
                                 <div class="col-xs-2">{{items.shifts}}</div>

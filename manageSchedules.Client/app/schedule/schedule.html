@@ -12,76 +12,49 @@
         padding-right: 10px;
     }
 
+    .btnCollapse {
+        color: #fff;
+        font-weight: bold;
+    }
+
     table td {
         padding:2px;
     }
 
-    #employeeDetails {
-        color: #ffffff;
-        width: 300px;
-        height: 100%;
-        z-index: 100;
+    #panel-body-modal {
         position: absolute;
-        top: 0;
-        right: 0;
-        padding: 15px;
-
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+84,0+100 */
-        background: -moz-linear-gradient(rgba(0,0,0,0.85) 100%, rgba(0,0,0,0.85) 100%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(rgba(0,0,0,0.85) 100%,rgba(0,0,0,0.85) 100%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(rgba(0,0,0,0.85) 100%,rgba(0,0,0,0.85) 100%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-
+        top: 50px;
+        right: 30px;
+        width: 300px;
+        z-index: 100;
+        background-color: #fff;
+        /*border-top: 1px solid #ffffff;*/
+        border-left: 7px solid #5cb85c; /*337ab7*/
+        border-right: 1px solid #696969;
+        border-bottom: 1px solid #696969;
     }
 
-    #employeeDetails .header {
-        font-size: 26px;
+    .panel-body-modal-header {
+        background-color: #5cb85c;
+        color: #fff;
         font-weight: bold;
     }
 
-    #employeeDetails .btnCollapse {
-        color: #ffffff;
+    .runScheduleToolBar {
+        background-color: #f9f9f9;
+        padding: 10px;
+        position: relative;
+        top: -15px;
     }
 
-    #employeeDetails .list-group-item {
-        background-color: inherit;
-        border: none;
+    .date-dayOfWeek {
+        font-weight: bold;
+        text-transform: uppercase;
     }
 
 </style>
 
-<div id="employeeDetails" ng-show="vm.showEmployeeDetails">
-    
-
-    <div class="list-group" >
-        <div id="header" class="list-group-item">
-            <div class="row">
-            <div class="col-xs-10">
-                {{vm.employeeDetail[0].name}}
-            </div>
-            <div class="col-xs-2 pull-right">
-                <a class="btnCollapse" ng-click="vm.showEmployeeDetails = !vm.showEmployeeDetails"><i class="fa fa-close"></i></a>
-            </div>
-            </div>
-        </div>
-        <div class="list-group-item" ng-repeat="d in vm.days">
-            {{$index}} 
-        </div>
-        <div>
-            {{vm.employeeDetail}}
-        </div>
-    </div>
-
-</div>
-
 <div id="scheduleWrapper">
-    <h4>Schedules</h4>
-
-    <div></div>
-
-    <div class="row">
-        <div class="col-xs-12">
-        </div>
-    </div>
 
     <div class="row">
         <div class="col-xs-12">
@@ -97,6 +70,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body" ng-show="vm.showStaffStats">
+                    
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
                             <div class="well">
@@ -123,96 +97,103 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Week of: xx/xx/xxxx - xx/xx/xxxx <button type="button" class="btn btn-primary btn-sm" ng-click=""><i class="fa fa-caret-down"></i> </button>
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-primary btn-sm" ng-click="">Run <i class="fa fa-arrow-right"></i> </button>
-                    </div>
+
+                    <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="">
+                        <i class="fa fa-download"></i> Export
+                    </button>
                     <div class="clearfix"></div>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style="max-height: 600px; overflow-y: scroll;">
+                    
+
+                    <!-- modal popup box -->
+                    <div id="panel-body-modal" class="row" ng-show="vm.showEmployeeDetails">
+                        <div class="col-xs-12">
+                            employee name
+                        </div>
+                        <div class="list-group">
+                            <div id="header" class="list-group-item panel-body-modal-header">
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        {{vm.employeeDetail[0].name}}
+                                    </div>
+                                    <div class="col-xs-3 text-center">
+                                        <a class="btn btn-success btn-sm" ng-click="vm.showEmployeeDetails = !vm.showEmployeeDetails">
+                                            <i class="fa fa-caret-up"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item" ng-repeat="d in vm.days">
+                                <div class="row">
+                                    <div class="col-xs-3" style="padding-top: 10px;">
+                                        <i class="fa fa-2x" ng-class="vm.getStatusIcon(vm.employeeDetail[0].empid, $index)"></i>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <span class="date-dayOfWeek">{{vm.getDayOfWeek(d)}}</span>00/00/00
+                                        <select class="form-control" ng-disable="vm.getShiftsDay(0,0)">
+                                            <option value="0">...</option>
+                                            <option value="1">AM Shift</option>
+                                            <option value="2">PM Shift</option>
+                                            <option value="3">Request Off</option>
+                                            <option value="4">Unavailable</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- scheduling options bar -->
+                    <div id="runScheduleToolBar" class="row runScheduleToolBar" >
+                        <div class="col-sm-3 col-xs-12">
+                            <b>Scheduling Toolbar</b>
+                        </div>
+                        <div class="col-sm-5 col-xs-12">
+                            <label class="checkbox-inline"><input type="checkbox" id="ckHistoricalRotation" name="ckHistoricalRotation" /> Historical Rotation </label>
+                            <label class="checkbox-inline"><input type="checkbox" id="ckAnotherOption" name="ckAnotherOption" /> Another Option </label>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-default btn-sm" ng-click="">
+                                    <i class="fa fa-refresh"></i> Refresh
+                                </button>
+                                <button type="button" class="btn btn-default btn-sm" ng-click="vm.generateSchedule()">
+                                    <i class="fa fa-calendar-o"></i> Run
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <table class="table table-striped">
                         <thead>
-                            <tr class="">
-                                <th class="text-center">Employee</th>
-                                <th class="text-center"><button type="button" class="btn btn-default btn-block">Sun</button></th>
-                                <th class="text-center"><button type="button" class="btn btn-default btn-block">Mon</button></th>
-                                <th class="text-center"><button type="button" class="btn btn-default btn-block">Tue</button></th>
-                                <th class="text-center"><button type="button" class="btn btn-default btn-block">Wed</button></th>
-                                <th class="text-center"><button type="button" class="btn btn-default btn-block">Thu</button></th>
-                                <th class="text-center"><button type="button" class="btn btn-default btn-block">Fri</button></th>
-                                <th class="text-center"><button type="button" class="btn btn-default btn-block">Sat</button></th>
-                                <th></th>
+                            <tr>
+                                <th>Employee</th>
+                                <th class="text-center">Sun</th>
+                                <th class="text-center">Mon</th>
+                                <th class="text-center">Tue</th>
+                                <th class="text-center">Wed</th>
+                                <th class="text-center">Thu</th>
+                                <th class="text-center">Fri</th>
+                                <th class="text-center">Sat</th>
+                                <th class="text-center"></th>
                             </tr>
-                           
                         </thead>
                         <tbody>
-                        <tr ng-repeat="i in vm.employee track by $index">
-                            <!-- employee cell -->
-                            <td class="text-left">
-                                <a class="btn btn-default btn-block" ng-click="vm.getEmployeeDetails($index)"><!--vm.employeeDetails($index)-->
-                                    <i class="fa fa-user-circle pIcon"></i> {{i.name}}
-                                </a>
-                            </td>
-
-                            <!-- days of week cells -->
-                            <td ng-repeat="day in vm.days">
-                                <a class="btn btn-block" ng-class="vm.getStatusColor($parent.$index, $index)" ng-click="vm.updSchedule()">
-                                    <i class="fa" ng-class="vm.getStatusIcon($parent.$index, $index)"></i> 
-                                </a>
-                            </td>
-                            <!--  -->
-                            <td class="text-center">
-                                <i class="fa fa-calendar-o fa-2x"></i> <span style="position: relative; left: -20px; font-size: 12px; ">{{i.ttlShifts}}</span>
-                            </td>
-                            
-                        </tr>
+                            <tr ng-repeat="i in vm.employee track by $index" ng-click="vm.getEmployeeDetails($index)">
+                                <td>{{i.name}}</td>
+                                <td ng-repeat="day in vm.days" class="text-center">
+                                    <i class="fa" ng-class="vm.getStatusIcon(i.empid, $index)"></i> {{vm.getEmployeeShiftTime($parent.$index, $index)}}
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-
-
-                <!--
-                <table class="table table-striped text-center">
-                    <thead>
-                    <tr class="text-center">
-                        <th class="text-center">Employee</th>
-                        <th class="text-center">Sun</th>
-                        <th class="text-center">Mon</th>
-                        <th class="text-center">Tue</th>
-                        <th class="text-center">Wed</th>
-                        <th class="text-center">Thu</th>
-                        <th class="text-center">Fri</th>
-                        <th class="text-center">Sat</th>
-                        <th class="text-center">Totals</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="x in vm.employeeObj">
-                        <td>
-                            <a class="btn btn-block" ng-class="" ng-click="">
-                                <h5 class="">{{x.name}}</h5>
-                                <div class="">available</div>
-                                <div class="">scheduled</div>
-                            </a>
-                        </td>
-
-                        <td ng-repeat="z in x.day">
-                            <a class="btn btn-block" ng-class="vm.getStatusColor($parent.$index, $index, 0)" ng-click="vm.updSchedule($parent.$index, $index, 0)">
-                                <i class="fa" ng-class="vm.getStatusIcon($parent.$index, $index, 0)"></i> {{z.shift[0].name}}
-                            </a>
-                            <a class="btn btn-block" ng-class="vm.getStatusColor($parent.$index, $index, 1)" ng-click="vm.updSchedule($parent.$index, $index, 1)">
-                                <i class="fa" ng-class="vm.getStatusIcon($parent.$index, $index, 1)"></i> {{z.shift[1].name}}
-                            </a>
-                        </td>
-
-                        <td>
-                            <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> 0</a>
-                            <a class="btn btn-default btn-block"><i class="fa fa-calendar-o "></i> 0</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                 -->
-
-
+                    
+                   
                 </div>
             </div>
         </div>

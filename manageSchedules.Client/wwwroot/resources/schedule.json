@@ -1,10 +1,6 @@
 ﻿[
   {
     "empid": 1,
-    "shiftid": 2
-  },
-  {
-    "empid": 1,
     "shiftid": 3
   },
   {
@@ -37,11 +33,11 @@
   },
   {
     "empid": 1,
-    "shiftid": 9 
+    "shiftid": 11
   },
   {
-    "empid": 2,
-    "shiftid": 0
+    "empid": 1,
+    "shiftid": 12
   },
   {
     "empid": 2,
@@ -57,15 +53,7 @@
   },
   {
     "empid": 2,
-    "shiftid": 6
-  },
-  {
-    "empid": 2,
-    "shiftid": 7
-  },
-  {
-    "empid": 2,
-    "shiftid": 8
+    "shiftid": 4
   },
   {
     "empid": 2,
@@ -88,8 +76,8 @@
     "shiftid": 13
   },
   {
-    "empid": 3,
-    "shiftid": 2
+    "empid": 2,
+    "shiftid": 14
   },
   {
     "empid": 3,
@@ -110,6 +98,922 @@
   {
     "empid": 3,
     "shiftid": 7
+  },
+  {
+    "empid": 3,
+    "shiftid": 8
+  },
+  {
+    "empid": 4,
+    "shiftid": 1
+  },
+  {
+    "empid": 4,
+    "shiftid": 2
+  },
+  {
+    "empid": 4,
+    "shiftid": 11
+  },
+  {
+    "empid": 4,
+    "shiftid": 12
+  },
+  {
+    "empid": 5,
+    "shiftid": 3
+  },
+  {
+    "empid": 5,
+    "shiftid": 4
+  },
+  {
+    "empid": 5,
+    "shiftid": 5
+  },
+  {
+    "empid": 5,
+    "shiftid": 6
+  },
+  {
+    "empid": 5,
+    "shiftid": 9
+  },
+  {
+    "empid": 5,
+    "shiftid": 10
+  },
+  {
+    "empid": 5,
+    "shiftid": 11
+  },
+  {
+    "empid": 5,
+    "shiftid": 12
+  },
+  {
+    "empid": 5,
+    "shiftid": 13
+  },
+  {
+    "empid": 5,
+    "shiftid": 14
+  },
+  {
+    "empid": 6,
+    "shiftid": 5
+  },  
+  {
+    "empid": 6,
+    "shiftid": 6
+  }, 
+  {
+    "empid": 6,
+    "shiftid": 7
+  },
+  {
+    "empid": 6,
+    "shiftid": 8
+  }, 
+  {
+    "empid": 6,
+    "shiftid": 11
+  }, 
+  {
+    "empid": 6,
+    "shiftid": 12
+  }, 
+  {
+    "empid": 6,
+    "shiftid": 13
+  },
+  {
+    "empid": 6,
+    "shiftid": 14
+  },
+  {
+    "empid": 7,
+    "shiftid": 1
+  },
+  {
+    "empid": 7,
+    "shiftid": 2
+  },
+  {
+    "empid": 7,
+    "shiftid": 7
+  },
+  {
+    "empid": 7,
+    "shiftid": 8
+  },
+  {
+    "empid": 8,
+    "shiftid": 1
+  },
+  {
+    "empid": 8,
+    "shiftid": 2
+  },
+  {
+    "empid": 8,
+    "shiftid": 3
+  },
+  {
+    "empid": 8,
+    "shiftid": 4
+  },
+  {
+    "empid": 8,
+    "shiftid": 5
+  },
+  {
+    "empid": 8,
+    "shiftid": 6
+  },
+  {
+    "empid": 8,
+    "shiftid": 7
+  },
+  {
+    "empid": 8,
+    "shiftid": 8
+  },
+  {
+    "empid": 8,
+    "shiftid": 9
+  },
+  {
+    "empid": 8,
+    "shiftid": 10
+  },
+  {
+    "empid": 8,
+    "shiftid": 11
+  },
+  {
+    "empid": 8,
+    "shiftid": 12
+  },
+  {
+    "empid": 8,
+    "shiftid": 13
+  },
+  {
+    "empid": 8,
+    "shiftid": 14
+  },
+  {
+    "empid": 9,
+    "shiftid": 5
+  },
+  {
+    "empid": 9,
+    "shiftid": 6
+  },
+  {
+    "empid": 9,
+    "shiftid": 9
+  },
+  {
+    "empid": 9,
+    "shiftid": 10
+  },
+  {
+    "empid": 10,
+    "shiftid": 1
+  },
+  {
+    "empid": 10,
+    "shiftid": 2
+  },
+  {
+    "empid": 10,
+    "shiftid": 9
+  },
+  {
+    "empid": 10,
+    "shiftid": 10
+  },
+  {
+    "empid": 10,
+    "shiftid": 11
+  },
+  {
+    "empid": 10,
+    "shiftid": 12
+  },
+  {
+    "empid": 10,
+    "shiftid": 13
+  },
+  {
+    "empid": 10,
+    "shiftid": 14
+  },
+  {
+    "empid": 11,
+    "shiftid": 3
+  },
+  {
+    "empid": 11,
+    "shiftid": 4
+  },
+  {
+    "empid": 11,
+    "shiftid": 11
+  },
+  {
+    "empid": 11,
+    "shiftid": 12
+  },
+  {
+    "empid": 11,
+    "shiftid": 13
+  },
+  {
+    "empid": 11,
+    "shiftid": 14
+  },
+  {
+    "empid": 12,
+    "shiftid": 1
+  },
+  {
+    "empid": 12,
+    "shiftid": 2
+  },
+  {
+    "empid": 12,
+    "shiftid": 5
+  },
+  {
+    "empid": 12,
+    "shiftid": 6
+  },
+  {
+    "empid": 12,
+    "shiftid": 7
+  },
+  {
+    "empid": 12,
+    "shiftid": 8
+  },
+  {
+    "empid": 12,
+    "shiftid": 9
+  },
+  {
+    "empid": 12,
+    "shiftid": 10
+  },
+  {
+    "empid": 12,
+    "shiftid": 11
+  },
+  {
+    "empid": 12,
+    "shiftid": 12
+  },
+  {
+    "empid": 12,
+    "shiftid": 13
+  },
+  {
+    "empid": 12,
+    "shiftid": 14
+  },
+  {
+    "empid": 13,
+    "shiftid": 1
+  },
+  {
+    "empid": 13,
+    "shiftid": 2
+  },
+  {
+    "empid": 13,
+    "shiftid": 3
+  },
+  {
+    "empid": 13,
+    "shiftid": 4
+  },
+  {
+    "empid": 13,
+    "shiftid": 5
+  },
+  {
+    "empid": 13,
+    "shiftid": 6
+  },
+  {
+    "empid": 13,
+    "shiftid": 7
+  },
+  {
+    "empid": 13,
+    "shiftid": 8
+  },
+  {
+    "empid": 13,
+    "shiftid": 9
+  },
+  {
+    "empid": 13,
+    "shiftid": 10
+  },
+  {
+    "empid": 13,
+    "shiftid": 11
+  },
+  {
+    "empid": 13,
+    "shiftid": 12
+  },
+  {
+    "empid": 13,
+    "shiftid": 13
+  },
+  {
+    "empid": 13,
+    "shiftid": 14
+  },
+  {
+    "empid": 14,
+    "shiftid": 1
+  },
+  {
+    "empid": 14,
+    "shiftid": 2
+  },
+  {
+    "empid": 14,
+    "shiftid": 3
+  },
+  {
+    "empid": 14,
+    "shiftid": 4
+  },
+  {
+    "empid": 14,
+    "shiftid": 5
+  },
+  {
+    "empid": 14,
+    "shiftid": 6
+  },
+  {
+    "empid": 14,
+    "shiftid": 7
+  },
+  {
+    "empid": 14,
+    "shiftid": 8
+  },
+  {
+    "empid": 14,
+    "shiftid": 9
+  },
+  {
+    "empid": 14,
+    "shiftid": 10
+  },
+  {
+    "empid": 14,
+    "shiftid": 11
+  },
+  {
+    "empid": 14,
+    "shiftid": 12
+  },
+  {
+    "empid": 14,
+    "shiftid": 13
+  },
+  {
+    "empid": 14,
+    "shiftid": 14
+  },
+  {
+    "empid": 15,
+    "shiftid": 3
+  },
+  {
+    "empid": 15,
+    "shiftid": 4
+  },
+  {
+    "empid": 15,
+    "shiftid": 5
+  },
+  {
+    "empid": 15,
+    "shiftid": 6
+  },
+  {
+    "empid": 15,
+    "shiftid": 7
+  },
+  {
+    "empid": 15,
+    "shiftid": 8
+  },
+  {
+    "empid": 15,
+    "shiftid": 9
+  },
+  {
+    "empid": 15,
+    "shiftid": 10
+  },
+  {
+    "empid": 15,
+    "shiftid": 10
+  },
+  {
+    "empid": 15,
+    "shiftid": 12
+  },
+  {
+    "empid": 15,
+    "shiftid": 13
+  },
+  {
+    "empid": 15,
+    "shiftid": 14
+  },
+  {
+    "empid": 16,
+    "shiftid": 1
+  },
+  {
+    "empid": 16,
+    "shiftid": 2
+  },
+  {
+    "empid": 16,
+    "shiftid": 3
+  },
+  {
+    "empid": 16,
+    "shiftid": 4
+  },
+  {
+    "empid": 16,
+    "shiftid": 5
+  },
+  {
+    "empid": 16,
+    "shiftid": 6
+  },
+  {
+    "empid": 16,
+    "shiftid": 7
+  },
+  {
+    "empid": 16,
+    "shiftid": 8
+  },
+  {
+    "empid": 16,
+    "shiftid": 9
+  },
+  {
+    "empid": 16,
+    "shiftid": 10
+  },
+  {
+    "empid": 16,
+    "shiftid": 11
+  },
+  {
+    "empid": 16,
+    "shiftid": 12
+  },
+  {
+    "empid": 16,
+    "shiftid": 13
+  },
+  {
+    "empid": 16,
+    "shiftid": 14
+  },
+  {
+    "empid": 17,
+    "shiftid": 3
+  },
+  {
+    "empid": 17,
+    "shiftid": 4
+  },
+  {
+    "empid": 17,
+    "shiftid": 5
+  },
+  {
+    "empid": 17,
+    "shiftid": 6
+  },
+  {
+    "empid": 17,
+    "shiftid": 7
+  },
+  {
+    "empid": 17,
+    "shiftid": 8
+  },
+  {
+    "empid": 17,
+    "shiftid": 9
+  },
+  {
+    "empid": 17,
+    "shiftid": 10
+  },
+  {
+    "empid": 17,
+    "shiftid": 11
+  },
+  {
+    "empid": 17,
+    "shiftid": 12
+  },
+  {
+    "empid": 17,
+    "shiftid": 13
+  },
+  {
+    "empid": 17,
+    "shiftid": 14
+  },
+  {
+    "empid": 18,
+    "shiftid": 5
+  },
+  {
+    "empid": 18,
+    "shiftid": 6
+  },
+  {
+    "empid": 18,
+    "shiftid": 9
+  },
+  {
+    "empid": 18,
+    "shiftid": 10
+  },
+  {
+    "empid": 18,
+    "shiftid": 13
+  },
+  {
+    "empid": 18,
+    "shiftid": 14
+  },
+  {
+    "empid": 19,
+    "shiftid": 9
+  },
+  {
+    "empid": 19,
+    "shiftid": 10
+  },
+  {
+    "empid": 20,
+    "shiftid": 5
+  },
+  {
+    "empid": 20,
+    "shiftid": 6
+  },
+  {
+    "empid": 20,
+    "shiftid": 7
+  },
+  {
+    "empid": 20,
+    "shiftid": 8
+  },
+  {
+    "empid": 20,
+    "shiftid": 9
+  },
+  {
+    "empid": 20,
+    "shiftid": 10
+  },
+  {
+    "empid": 21,
+    "shiftid": 1
+  },
+  {
+    "empid": 21,
+    "shiftid": 2
+  },
+  {
+    "empid": 21,
+    "shiftid": 13
+  },
+  {
+    "empid": 21,
+    "shiftid": 14
+  },
+  {
+    "empid": 22,
+    "shiftid": 1
+  },
+  {
+    "empid": 22,
+    "shiftid": 2
+  },
+  {
+    "empid": 22,
+    "shiftid": 3
+  },
+  {
+    "empid": 22,
+    "shiftid": 4
+  },
+  {
+    "empid": 22,
+    "shiftid": 7
+  },
+  {
+    "empid": 22,
+    "shiftid": 8
+  },
+  {
+    "empid": 22,
+    "shiftid": 11
+  },
+  {
+    "empid": 22,
+    "shiftid": 12
+  },
+  {
+    "empid": 22,
+    "shiftid": 13
+  },
+  {
+    "empid": 22,
+    "shiftid": 14
+  },
+  {
+    "empid": 23,
+    "shiftid": 1
+  },
+  {
+    "empid": 23,
+    "shiftid": 2
+  },
+  {
+    "empid": 23,
+    "shiftid": 3
+  },
+  {
+    "empid": 23,
+    "shiftid": 4
+  },
+  {
+    "empid": 23,
+    "shiftid": 7
+  },
+  {
+    "empid": 23,
+    "shiftid": 8
+  },
+  {
+    "empid": 23,
+    "shiftid": 9
+  },
+  {
+    "empid": 23,
+    "shiftid": 10
+  },
+  {
+    "empid": 23,
+    "shiftid": 11
+  },
+  {
+    "empid": 23,
+    "shiftid": 12
+  },
+  {
+    "empid": 23,
+    "shiftid": 13
+  },
+  {
+    "empid": 23,
+    "shiftid": 14
+  },
+  {
+    "empid": 24,
+    "shiftid": 1
+  },
+  {
+    "empid": 24,
+    "shiftid": 2
+  },
+  {
+    "empid": 24,
+    "shiftid": 3
+  },
+  {
+    "empid": 24,
+    "shiftid": 4
+  },
+  {
+    "empid": 24,
+    "shiftid": 5
+  },
+  {
+    "empid": 24,
+    "shiftid": 6
+  },
+  {
+    "empid": 24,
+    "shiftid": 7
+  },
+  {
+    "empid": 24,
+    "shiftid": 8
+  },
+  {
+    "empid": 24,
+    "shiftid": 9
+  },
+  {
+    "empid": 24,
+    "shiftid": 10
+  },
+  {
+    "empid": 24,
+    "shiftid": 11
+  },
+  {
+    "empid": 24,
+    "shiftid": 12
+  },
+  {
+    "empid": 24,
+    "shiftid": 13
+  },
+  {
+    "empid": 24,
+    "shiftid": 14
+  },
+  {
+    "empid": 25,
+    "shiftid": 1
+  },
+  {
+    "empid": 25,
+    "shiftid": 2
+  },
+  {
+    "empid": 25,
+    "shiftid": 7
+  },
+  {
+    "empid": 25,
+    "shiftid": 8
+  },
+  {
+    "empid": 25,
+    "shiftid": 9
+  },
+  {
+    "empid": 25,
+    "shiftid": 10
+  },
+  {
+    "empid": 25,
+    "shiftid": 11
+  },
+  {
+    "empid": 25,
+    "shiftid": 12
+  },
+  {
+    "empid": 25,
+    "shiftid": 13
+  },
+  {
+    "empid": 25,
+    "shiftid": 14
+  },
+  {
+    "empid": 26,
+    "shiftid": 1
+  },
+  {
+    "empid": 26,
+    "shiftid": 2
+  },
+  {
+    "empid": 26,
+    "shiftid": 3
+  },
+  {
+    "empid": 26,
+    "shiftid": 4
+  },
+  {
+    "empid": 26,
+    "shiftid": 5
+  },
+  {
+    "empid": 26,
+    "shiftid": 6
+  },
+  {
+    "empid": 26,
+    "shiftid": 7
+  },
+  {
+    "empid": 26,
+    "shiftid": 8
+  },
+  {
+    "empid": 26,
+    "shiftid": 9
+  },
+  {
+    "empid": 26,
+    "shiftid": 10
+  },
+  {
+    "empid": 26,
+    "shiftid": 11
+  },
+  {
+    "empid": 26,
+    "shiftid": 12
+  },
+  {
+    "empid": 26,
+    "shiftid": 13
+  },
+  {
+    "empid": 26,
+    "shiftid": 14
+  },
+  {
+    "empid": 27,
+    "shiftid": 11
+  },
+  {
+    "empid": 27,
+    "shiftid": 12
+  },
+  {
+    "empid": 27,
+    "shiftid": 13
+  },
+  {
+    "empid": 27,
+    "shiftid": 14
+  },
+  {
+    "empid": 28,
+    "shiftid": 1
+  },
+  {
+    "empid": 28,
+    "shiftid": 2
+  },
+  {
+    "empid": 28,
+    "shiftid": 5
+  },
+  {
+    "empid": 28,
+    "shiftid": 6
+  },
+  {
+    "empid": 28,
+    "shiftid": 7
+  },
+  {
+    "empid": 28,
+    "shiftid": 8
+  },
+  {
+    "empid": 28,
+    "shiftid": 9
+  },
+  {
+    "empid": 28,
+    "shiftid": 10
+  },
+  {
+    "empid": 28,
+    "shiftid": 11
+  },
+  {
+    "empid": 28,
+    "shiftid": 12
   }
 ]
   

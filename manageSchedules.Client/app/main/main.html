@@ -5,27 +5,20 @@
         border-radius: 0 !important;
     }
 
-    .btn-muted {
-        color: #777777;
-        background-color: #fff;
-        border-color: #ccc;
+    .main-container {
+        padding-top: 60px;
     }
 
-    .btn-muted:hover {
-        color: #fff;
-        background-color: #777777;
-        border-color: #777777;
+    .btn-muted {
+        color: #dedede;
+        background-color: #fff;
+        border-color: #ccc;
     }
 
     .btn-avail {
       color: #337ab7;
       background-color: #fff;
       border-color: #337ab7;
-    }
-
-    .btn-avail:hover {
-      color: #ffffff;
-      background-color: #337ab7;
     }
 
     .btn-scheduled {
@@ -48,15 +41,21 @@
 
 </style>
 
-<div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Scheduling Manager</a>
+    </div>
+</nav>
+
+<div class="container-fluid main-container">
+    
     <div class="row loadingBar" ng-show="vm.showLoadingBar">
         <div class="col-xs-12 text-center">
             <i class="fa fa-gear fa-spin"></i> {{vm.headerMsg}}
         </div>
     </div>
     <div class="row">
-        <div id="sideNavWrapper" class="col-xs-12 col-sm-4 col-md-3">
-            <h4>Schedule Manager</h4>
+        <div id="sideNavWrapper" class="col-xs-12 col-sm-4 col-md-3 ">
             <div class="list-group">
                 <a class="list-group-item" ui-sref="main.schedule">
                     <i class="fa fa-calendar-o"></i> Schedules</a>
@@ -82,26 +81,11 @@
                 <a class="list-group-item" ui-sref="main.shift">
                     <i class="fa fa-clock-o"></i> Shifts</a>
 
-                <a href="#" class="list-group-item active">
-                    <p class="list-group-item-text">Save shift options</p>
-                    <p class="list-group-item-text">Higlight changed items</p>
-                </a>
-
                 <a class="list-group-item" ui-sref="main.employee">
                     <i class="fa fa-users"></i> Employees</a>
 
-                <a class="list-group-item">
-                    <button class="btn btn-block btn-default" ng-click="vm.createDb()"><i class="fa fa-database"></i> Create Database</button>
-                </a>
-
-                <a href="#" class="list-group-item active">
-                    <h4 class="list-group-item-heading">Generate Steps</h4>
-                    <p class="list-group-item-text" style="text-decoration: line-through">Load Employee Data</p>
-                    <p class="list-group-item-text">Add Employee Availability</p>
-                    <p class="list-group-item-text">Prioritize days / shifts</p>
-                    <p class="list-group-item-text">Populate shifts</p>
-                    <p class="list-group-item-text">Optimize shifts</p>
-                </a>
+                <a class="list-group-item" ng-click="vm.createDb()">
+                    <i class="fa fa-database"></i> Create Database</a>
 
             </div>
 

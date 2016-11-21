@@ -22,17 +22,8 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "\n" +
     "\n" +
     "<div id=\"employeeWrapper\">\n" +
-    "    <h4>Employees</h4>\n" +
-    "\n" +
-    "    <div></div>\n" +
     "\n" +
     "    <div class=\"row\">\n" +
-    "        <div class=\"col-xs-12\">\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "\n" +
-    "    <div class=\"row\">\n" +
-    "\n" +
     "        <div class=\"col-md-6\">\n" +
     "            <div class=\"panel panel-primary\">\n" +
     "                <div class=\"panel-heading\">\n" +
@@ -59,6 +50,15 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
+    "                        \n" +
+    "                        <div class=\"row\">\n" +
+    "                            <div class=\"col-sm-12\">\n" +
+    "                                <div class=\"form-group\">\n" +
+    "                                    <label for=\"txtEmail\">Email</label>\n" +
+    "                                    <input type=\"email\" class=\"form-control\" id=\"txtEmail\" placeholder=\"someone@email.com\" ng-model=\"vm.emp.email\">\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
     "\n" +
     "                        <div class=\"row\">\n" +
     "                            <div class=\"col-sm-12\">\n" +
@@ -70,16 +70,10 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                        </div>\n" +
     "\n" +
     "                        <div class=\"row\">\n" +
-    "                            <div class=\"col-sm-6\">\n" +
+    "                            <div class=\"col-sm-12 \">\n" +
     "                                <div class=\"form-group\">\n" +
     "                                    <label for=\"txtShifts\">Total Shifts</label>\n" +
     "                                    <input type=\"number\" class=\"form-control\" id=\"txtShifts\" placeholder=\"Total Shifts\" ng-model=\"vm.emp.shifts\" required>\n" +
-    "                                </div>\n" +
-    "                            </div>\n" +
-    "                            <div class=\"col-sm-6\">\n" +
-    "                                <div class=\"form-group\">\n" +
-    "                                    <label for=\"txtHours\">Total Hours</label>\n" +
-    "                                    <input type=\"number\" class=\"form-control\" id=\"txtHours\" placeholder=\"Total Hours\" ng-model=\"vm.emp.hours\" >\n" +
     "                                </div>\n" +
     "                            </div>\n" +
     "                        </div>\n" +
@@ -145,8 +139,18 @@ angular.module("../app/employee/employee.html", []).run(["$templateCache", funct
     "                    <span class=\"badge pull-right\">{{vm.empCount}}</span>\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\">\n" +
+    "\n" +
     "                    <div class=\"list-group\">\n" +
-    "                        <div class=\"list-group-item\" ng-repeat=\"items in vm.employee\">\n" +
+    "                        <div class=\"list-group-item\">\n" +
+    "                            <div class=\"input-group\">\n" +
+    "                                <span class=\"input-group-addon\">\n" +
+    "                                    <i class=\"fa fa-search\"></i>\n" +
+    "                                </span>\n" +
+    "                                <input type=\"text\" class=\"form-control\" id=\"txtEmployeeSearch\" name=\"txtEmployeeSearch\" placeholder=\"employee search\" ng-model=\"empSearch\"/>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "\n" +
+    "                        <div class=\"list-group-item\" ng-repeat=\"items in vm.employee | filter: empSearch\">\n" +
     "                            <div class=\"row\">\n" +
     "                                <div class=\"col-xs-5\">{{items.name}}</div>\n" +
     "                                <div class=\"col-xs-2\">{{items.shifts}}</div>\n" +
@@ -190,27 +194,20 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "        border-radius: 0 !important;\n" +
     "    }\n" +
     "\n" +
-    "    .btn-muted {\n" +
-    "        color: #777777;\n" +
-    "        background-color: #fff;\n" +
-    "        border-color: #ccc;\n" +
+    "    .main-container {\n" +
+    "        padding-top: 60px;\n" +
     "    }\n" +
     "\n" +
-    "    .btn-muted:hover {\n" +
-    "        color: #fff;\n" +
-    "        background-color: #777777;\n" +
-    "        border-color: #777777;\n" +
+    "    .btn-muted {\n" +
+    "        color: #dedede;\n" +
+    "        background-color: #fff;\n" +
+    "        border-color: #ccc;\n" +
     "    }\n" +
     "\n" +
     "    .btn-avail {\n" +
     "      color: #337ab7;\n" +
     "      background-color: #fff;\n" +
     "      border-color: #337ab7;\n" +
-    "    }\n" +
-    "\n" +
-    "    .btn-avail:hover {\n" +
-    "      color: #ffffff;\n" +
-    "      background-color: #337ab7;\n" +
     "    }\n" +
     "\n" +
     "    .btn-scheduled {\n" +
@@ -233,15 +230,21 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "\n" +
     "</style>\n" +
     "\n" +
-    "<div class=\"container-fluid\">\n" +
+    "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n" +
+    "    <div class=\"container-fluid\">\n" +
+    "        <a class=\"navbar-brand\" href=\"#\">Scheduling Manager</a>\n" +
+    "    </div>\n" +
+    "</nav>\n" +
+    "\n" +
+    "<div class=\"container-fluid main-container\">\n" +
+    "    \n" +
     "    <div class=\"row loadingBar\" ng-show=\"vm.showLoadingBar\">\n" +
     "        <div class=\"col-xs-12 text-center\">\n" +
     "            <i class=\"fa fa-gear fa-spin\"></i> {{vm.headerMsg}}\n" +
     "        </div>\n" +
     "    </div>\n" +
     "    <div class=\"row\">\n" +
-    "        <div id=\"sideNavWrapper\" class=\"col-xs-12 col-sm-4 col-md-3\">\n" +
-    "            <h4>Schedule Manager</h4>\n" +
+    "        <div id=\"sideNavWrapper\" class=\"col-xs-12 col-sm-4 col-md-3 \">\n" +
     "            <div class=\"list-group\">\n" +
     "                <a class=\"list-group-item\" ui-sref=\"main.schedule\">\n" +
     "                    <i class=\"fa fa-calendar-o\"></i> Schedules</a>\n" +
@@ -267,26 +270,11 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "                <a class=\"list-group-item\" ui-sref=\"main.shift\">\n" +
     "                    <i class=\"fa fa-clock-o\"></i> Shifts</a>\n" +
     "\n" +
-    "                <a href=\"#\" class=\"list-group-item active\">\n" +
-    "                    <p class=\"list-group-item-text\">Save shift options</p>\n" +
-    "                    <p class=\"list-group-item-text\">Higlight changed items</p>\n" +
-    "                </a>\n" +
-    "\n" +
     "                <a class=\"list-group-item\" ui-sref=\"main.employee\">\n" +
     "                    <i class=\"fa fa-users\"></i> Employees</a>\n" +
     "\n" +
-    "                <a class=\"list-group-item\">\n" +
-    "                    <button class=\"btn btn-block btn-default\" ng-click=\"vm.createDb()\"><i class=\"fa fa-database\"></i> Create Database</button>\n" +
-    "                </a>\n" +
-    "\n" +
-    "                <a href=\"#\" class=\"list-group-item active\">\n" +
-    "                    <h4 class=\"list-group-item-heading\">Generate Steps</h4>\n" +
-    "                    <p class=\"list-group-item-text\" style=\"text-decoration: line-through\">Load Employee Data</p>\n" +
-    "                    <p class=\"list-group-item-text\">Add Employee Availability</p>\n" +
-    "                    <p class=\"list-group-item-text\">Prioritize days / shifts</p>\n" +
-    "                    <p class=\"list-group-item-text\">Populate shifts</p>\n" +
-    "                    <p class=\"list-group-item-text\">Optimize shifts</p>\n" +
-    "                </a>\n" +
+    "                <a class=\"list-group-item\" ng-click=\"vm.createDb()\">\n" +
+    "                    <i class=\"fa fa-database\"></i> Create Database</a>\n" +
     "\n" +
     "            </div>\n" +
     "\n" +
@@ -319,57 +307,49 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "        padding-right: 10px;\n" +
     "    }\n" +
     "\n" +
+    "    .btnCollapse {\n" +
+    "        color: #fff;\n" +
+    "        font-weight: bold;\n" +
+    "    }\n" +
+    "\n" +
     "    table td {\n" +
     "        padding:2px;\n" +
     "    }\n" +
     "\n" +
-    "    #employeeDetails {\n" +
-    "        color: #ffffff;\n" +
-    "        width: 300px;\n" +
-    "        height: 100%;\n" +
-    "        z-index: 100;\n" +
+    "    #panel-body-modal {\n" +
     "        position: absolute;\n" +
-    "        top: 0;\n" +
-    "        right: 0;\n" +
-    "        padding: 15px;\n" +
-    "\n" +
-    "        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+84,0+100 */\n" +
-    "        background: -moz-linear-gradient(rgba(0,0,0,0.85) 100%, rgba(0,0,0,0.85) 100%, rgba(0,0,0,0) 100%); /* FF3.6-15 */\n" +
-    "        background: -webkit-linear-gradient(rgba(0,0,0,0.85) 100%,rgba(0,0,0,0.85) 100%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */\n" +
-    "        background: linear-gradient(rgba(0,0,0,0.85) 100%,rgba(0,0,0,0.85) 100%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n" +
-    "\n" +
+    "        top: 50px;\n" +
+    "        right: 30px;\n" +
+    "        width: 300px;\n" +
+    "        z-index: 100;\n" +
+    "        background-color: #fff;\n" +
+    "        /*border-top: 1px solid #ffffff;*/\n" +
+    "        border-left: 7px solid #5cb85c; /*337ab7*/\n" +
+    "        border-right: 1px solid #696969;\n" +
+    "        border-bottom: 1px solid #696969;\n" +
     "    }\n" +
     "\n" +
-    "    #employeeDetails .header {\n" +
-    "        font-size: 26px;\n" +
+    "    .panel-body-modal-header {\n" +
+    "        background-color: #5cb85c;\n" +
+    "        color: #fff;\n" +
     "        font-weight: bold;\n" +
     "    }\n" +
     "\n" +
-    "    #employeeDetails .btnCollapse {\n" +
-    "        color: #ffffff;\n" +
+    "    .runScheduleToolBar {\n" +
+    "        background-color: #f9f9f9;\n" +
+    "        padding: 10px;\n" +
+    "        position: relative;\n" +
+    "        top: -15px;\n" +
     "    }\n" +
+    "\n" +
+    "    .date-dayOfWeek {\n" +
+    "        font-weight: bold;\n" +
+    "        text-transform: uppercase;\n" +
+    "    }\n" +
+    "\n" +
     "</style>\n" +
     "\n" +
-    "<div id=\"employeeDetails\" ng-show=\"vm.showEmployeeDetails\">\n" +
-    "    <div id=\"heading\" class=\"row\">\n" +
-    "        <div class=\"col-xs-10\">\n" +
-    "            employee name\n" +
-    "        </div>\n" +
-    "        <div class=\"col-xs-2 pull-right\">\n" +
-    "            <a class=\"btnCollapse\" ng-click=\"vm.showEmployeeDetails = !vm.showEmployeeDetails\"><i class=\"fa fa-close\"></i></a>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "</div>\n" +
-    "\n" +
     "<div id=\"scheduleWrapper\">\n" +
-    "    <h4>Schedules</h4>\n" +
-    "\n" +
-    "    <div></div>\n" +
-    "\n" +
-    "    <div class=\"row\">\n" +
-    "        <div class=\"col-xs-12\">\n" +
-    "        </div>\n" +
-    "    </div>\n" +
     "\n" +
     "    <div class=\"row\">\n" +
     "        <div class=\"col-xs-12\">\n" +
@@ -385,6 +365,7 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                    <div class=\"clearfix\"></div>\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\" ng-show=\"vm.showStaffStats\">\n" +
+    "                    \n" +
     "                    <div class=\"row\">\n" +
     "                        <div class=\"col-xs-12 col-sm-6\">\n" +
     "                            <div class=\"well\">\n" +
@@ -411,96 +392,103 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "            <div class=\"panel panel-primary\">\n" +
     "                <div class=\"panel-heading\">\n" +
     "                    Week of: xx/xx/xxxx - xx/xx/xxxx <button type=\"button\" class=\"btn btn-primary btn-sm\" ng-click=\"\"><i class=\"fa fa-caret-down\"></i> </button>\n" +
-    "                    <div class=\"btn-group pull-right\">\n" +
-    "                        <button type=\"button\" class=\"btn btn-primary btn-sm\" ng-click=\"\">Run <i class=\"fa fa-arrow-right\"></i> </button>\n" +
-    "                    </div>\n" +
+    "\n" +
+    "                    <button type=\"button\" class=\"btn btn-primary btn-sm pull-right\" ng-click=\"\">\n" +
+    "                        <i class=\"fa fa-download\"></i> Export\n" +
+    "                    </button>\n" +
     "                    <div class=\"clearfix\"></div>\n" +
     "                </div>\n" +
-    "                <div class=\"panel-body\">\n" +
+    "                <div class=\"panel-body\" style=\"max-height: 600px; overflow-y: scroll;\">\n" +
+    "                    \n" +
+    "\n" +
+    "                    <!-- modal popup box -->\n" +
+    "                    <div id=\"panel-body-modal\" class=\"row\" ng-show=\"vm.showEmployeeDetails\">\n" +
+    "                        <div class=\"col-xs-12\">\n" +
+    "                            employee name\n" +
+    "                        </div>\n" +
+    "                        <div class=\"list-group\">\n" +
+    "                            <div id=\"header\" class=\"list-group-item panel-body-modal-header\">\n" +
+    "                                <div class=\"row\">\n" +
+    "                                    <div class=\"col-xs-9\">\n" +
+    "                                        {{vm.employeeDetail[0].name}}\n" +
+    "                                    </div>\n" +
+    "                                    <div class=\"col-xs-3 text-center\">\n" +
+    "                                        <a class=\"btn btn-success btn-sm\" ng-click=\"vm.showEmployeeDetails = !vm.showEmployeeDetails\">\n" +
+    "                                            <i class=\"fa fa-caret-up\"></i>\n" +
+    "                                        </a>\n" +
+    "                                    </div>\n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                            <div class=\"list-group-item\" ng-repeat=\"d in vm.days\">\n" +
+    "                                <div class=\"row\">\n" +
+    "                                    <div class=\"col-xs-3\" style=\"padding-top: 10px;\">\n" +
+    "                                        <i class=\"fa fa-2x\" ng-class=\"vm.getStatusIcon(vm.employeeDetail[0].empid, $index)\"></i>\n" +
+    "                                    </div>\n" +
+    "                                    <div class=\"col-xs-9\">\n" +
+    "                                        <span class=\"date-dayOfWeek\">{{vm.getDayOfWeek(d)}}</span>00/00/00\n" +
+    "                                        <select class=\"form-control\" ng-disable=\"vm.getShiftsDay(0,0)\">\n" +
+    "                                            <option value=\"0\">...</option>\n" +
+    "                                            <option value=\"1\">AM Shift</option>\n" +
+    "                                            <option value=\"2\">PM Shift</option>\n" +
+    "                                            <option value=\"3\">Request Off</option>\n" +
+    "                                            <option value=\"4\">Unavailable</option>\n" +
+    "                                        </select>\n" +
+    "                                    </div>\n" +
+    "                                </div>\n" +
+    "                                <div>\n" +
+    "                                   \n" +
+    "                                </div>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                    \n" +
+    "                    <!-- scheduling options bar -->\n" +
+    "                    <div id=\"runScheduleToolBar\" class=\"row runScheduleToolBar\" >\n" +
+    "                        <div class=\"col-sm-3 col-xs-12\">\n" +
+    "                            <b>Scheduling Toolbar</b>\n" +
+    "                        </div>\n" +
+    "                        <div class=\"col-sm-5 col-xs-12\">\n" +
+    "                            <label class=\"checkbox-inline\"><input type=\"checkbox\" id=\"ckHistoricalRotation\" name=\"ckHistoricalRotation\" /> Historical Rotation </label>\n" +
+    "                            <label class=\"checkbox-inline\"><input type=\"checkbox\" id=\"ckAnotherOption\" name=\"ckAnotherOption\" /> Another Option </label>\n" +
+    "                        </div>\n" +
+    "                        <div class=\"col-sm-4 col-xs-12\">\n" +
+    "                            <div class=\"btn-group pull-right\">\n" +
+    "                                <button type=\"button\" class=\"btn btn-default btn-sm\" ng-click=\"\">\n" +
+    "                                    <i class=\"fa fa-refresh\"></i> Refresh\n" +
+    "                                </button>\n" +
+    "                                <button type=\"button\" class=\"btn btn-default btn-sm\" ng-click=\"vm.generateSchedule()\">\n" +
+    "                                    <i class=\"fa fa-calendar-o\"></i> Run\n" +
+    "                                </button>\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "\n" +
+    "\n" +
     "                    <table class=\"table table-striped\">\n" +
     "                        <thead>\n" +
-    "                            <tr class=\"\">\n" +
-    "                                <th class=\"text-center\">Employee</th>\n" +
-    "                                <th class=\"text-center\"><button type=\"button\" class=\"btn btn-default btn-block\">Sun</button></th>\n" +
-    "                                <th class=\"text-center\"><button type=\"button\" class=\"btn btn-default btn-block\">Mon</button></th>\n" +
-    "                                <th class=\"text-center\"><button type=\"button\" class=\"btn btn-default btn-block\">Tue</button></th>\n" +
-    "                                <th class=\"text-center\"><button type=\"button\" class=\"btn btn-default btn-block\">Wed</button></th>\n" +
-    "                                <th class=\"text-center\"><button type=\"button\" class=\"btn btn-default btn-block\">Thu</button></th>\n" +
-    "                                <th class=\"text-center\"><button type=\"button\" class=\"btn btn-default btn-block\">Fri</button></th>\n" +
-    "                                <th class=\"text-center\"><button type=\"button\" class=\"btn btn-default btn-block\">Sat</button></th>\n" +
-    "                                <th></th>\n" +
+    "                            <tr>\n" +
+    "                                <th>Employee</th>\n" +
+    "                                <th class=\"text-center\">Sun</th>\n" +
+    "                                <th class=\"text-center\">Mon</th>\n" +
+    "                                <th class=\"text-center\">Tue</th>\n" +
+    "                                <th class=\"text-center\">Wed</th>\n" +
+    "                                <th class=\"text-center\">Thu</th>\n" +
+    "                                <th class=\"text-center\">Fri</th>\n" +
+    "                                <th class=\"text-center\">Sat</th>\n" +
+    "                                <th class=\"text-center\"></th>\n" +
     "                            </tr>\n" +
-    "                           \n" +
     "                        </thead>\n" +
     "                        <tbody>\n" +
-    "                        <tr ng-repeat=\"i in vm.employee track by $index\">\n" +
-    "                            <!-- employee cell -->\n" +
-    "                            <td class=\"text-left\">\n" +
-    "                                <a class=\"btn btn-default btn-block\" ng-click=\"vm.showEmployeeDetails = !vm.showEmployeeDetails\">\n" +
-    "                                    <i class=\"fa fa-user-circle pIcon\"></i> {{i.name}}\n" +
-    "                                </a>\n" +
-    "                            </td>\n" +
-    "\n" +
-    "                            <!-- days of week cells -->\n" +
-    "                            <td ng-repeat=\"day in vm.days\">\n" +
-    "                                <a class=\"btn btn-block\" ng-class=\"vm.getStatusColor($parent.$index, $index)\" ng-click=\"vm.updSchedule()\">\n" +
-    "                                    <i class=\"fa\" ng-class=\"vm.getStatusIcon($parent.$index, $index)\"></i> \n" +
-    "                                </a>\n" +
-    "                            </td>\n" +
-    "                            <!--  -->\n" +
-    "                            <td class=\"text-center\">\n" +
-    "                                <i class=\"fa fa-calendar-o fa-2x\"></i> <span style=\"position: relative; left: -20px; font-size: 12px; \">{{i.ttlShifts}}</span>\n" +
-    "                            </td>\n" +
-    "                            \n" +
-    "                        </tr>\n" +
+    "                            <tr ng-repeat=\"i in vm.employee track by $index\" ng-click=\"vm.getEmployeeDetails($index)\">\n" +
+    "                                <td>{{i.name}}</td>\n" +
+    "                                <td ng-repeat=\"day in vm.days\" class=\"text-center\">\n" +
+    "                                    <i class=\"fa\" ng-class=\"vm.getStatusIcon(i.empid, $index)\"></i> {{vm.getEmployeeShiftTime($parent.$index, $index)}}\n" +
+    "                                </td>\n" +
+    "                            </tr>\n" +
     "                        </tbody>\n" +
     "                    </table>\n" +
-    "\n" +
-    "\n" +
-    "                <!--\n" +
-    "                <table class=\"table table-striped text-center\">\n" +
-    "                    <thead>\n" +
-    "                    <tr class=\"text-center\">\n" +
-    "                        <th class=\"text-center\">Employee</th>\n" +
-    "                        <th class=\"text-center\">Sun</th>\n" +
-    "                        <th class=\"text-center\">Mon</th>\n" +
-    "                        <th class=\"text-center\">Tue</th>\n" +
-    "                        <th class=\"text-center\">Wed</th>\n" +
-    "                        <th class=\"text-center\">Thu</th>\n" +
-    "                        <th class=\"text-center\">Fri</th>\n" +
-    "                        <th class=\"text-center\">Sat</th>\n" +
-    "                        <th class=\"text-center\">Totals</th>\n" +
-    "                    </tr>\n" +
-    "                    </thead>\n" +
-    "                    <tbody>\n" +
-    "                    <tr ng-repeat=\"x in vm.employeeObj\">\n" +
-    "                        <td>\n" +
-    "                            <a class=\"btn btn-block\" ng-class=\"\" ng-click=\"\">\n" +
-    "                                <h5 class=\"\">{{x.name}}</h5>\n" +
-    "                                <div class=\"\">available</div>\n" +
-    "                                <div class=\"\">scheduled</div>\n" +
-    "                            </a>\n" +
-    "                        </td>\n" +
-    "\n" +
-    "                        <td ng-repeat=\"z in x.day\">\n" +
-    "                            <a class=\"btn btn-block\" ng-class=\"vm.getStatusColor($parent.$index, $index, 0)\" ng-click=\"vm.updSchedule($parent.$index, $index, 0)\">\n" +
-    "                                <i class=\"fa\" ng-class=\"vm.getStatusIcon($parent.$index, $index, 0)\"></i> {{z.shift[0].name}}\n" +
-    "                            </a>\n" +
-    "                            <a class=\"btn btn-block\" ng-class=\"vm.getStatusColor($parent.$index, $index, 1)\" ng-click=\"vm.updSchedule($parent.$index, $index, 1)\">\n" +
-    "                                <i class=\"fa\" ng-class=\"vm.getStatusIcon($parent.$index, $index, 1)\"></i> {{z.shift[1].name}}\n" +
-    "                            </a>\n" +
-    "                        </td>\n" +
-    "\n" +
-    "                        <td>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-calendar-o \"></i> 0</a>\n" +
-    "                            <a class=\"btn btn-default btn-block\"><i class=\"fa fa-calendar-o \"></i> 0</a>\n" +
-    "                        </td>\n" +
-    "                    </tr>\n" +
-    "                    </tbody>\n" +
-    "                </table>\n" +
-    "                 -->\n" +
-    "\n" +
-    "\n" +
+    "                    \n" +
+    "                   \n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
@@ -521,22 +509,6 @@ angular.module("../app/shift/shift.html", []).run(["$templateCache", function($t
     "\n" +
     "\n" +
     "<div id=\"shiftWrapper\">\n" +
-    "    <h4>Shifts</h4>\n" +
-    "\n" +
-    "    <div></div>\n" +
-    "\n" +
-    "    <!--<div class=\"row\">\n" +
-    "        <div class=\"col-xs-12\">\n" +
-    "            <div class=\"panel panel-primary\">\n" +
-    "                <div class=\"panel-heading\">\n" +
-    "                    <i class=\"fa fa-cogs\"></i> ToolBox\n" +
-    "                </div>\n" +
-    "                <div class=\"panel-body\">\n" +
-    "                   \n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "        </div>\n" +
-    "    </div>-->\n" +
     "\n" +
     "    <div class=\"row\">\n" +
     "        <div class=\"col-xs-12\">\n" +

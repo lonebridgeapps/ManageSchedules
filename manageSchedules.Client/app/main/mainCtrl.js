@@ -23,7 +23,7 @@
                     var db = openDatabase("mainDB", "1.0", "application main database", 10 * 1024 * 1024);
                     db.transaction(function(tx) {
                         //create employee table
-                        tx.executeSql("CREATE TABLE IF NOT EXISTS employee (empid INTEGER PRIMARY KEY NOT NULL, name TEXT, type INTEGER, hiredate TEXT, shifts INTEGER)", []);
+                        tx.executeSql("CREATE TABLE IF NOT EXISTS employee (empid INTEGER PRIMARY KEY NOT NULL, name TEXT, type INTEGER, email TEXT, hiredate TEXT, shifts INTEGER)", []);
                         //populate employee table with defaults
                         uploadEmployeeJson()
                             .then(function (empList) {
@@ -31,10 +31,11 @@
                                     for (var i = 0; i < empList.data.length; i++) {
                                         var empName = empList.data[i].name;
                                         var empType = empList.data[i].type;
+                                        var empEmail = empList.data[i].email;
                                         var empHiredate = empList.data[i].hiredate;
                                         var empShifts = empList.data[i].shifts;
-                                        tx.executeSql("INSERT INTO employee (name, type, hiredate, shifts) VALUES (?,?,?,?)",
-                                            [empName, empType, empHiredate, empShifts],
+                                        tx.executeSql("INSERT INTO employee (name, type, email, hiredate, shifts) VALUES (?,?,?,?,?)",
+                                            [empName, empType, empEmail, empHiredate, empShifts],
                                             function(tx, results) {
                                                 var insertId = results.insertId;
                                             });
@@ -45,7 +46,7 @@
 
                     db.transaction(function(tx) {
                         //create shift table
-                        tx.executeSql("CREATE TABLE IF NOT EXISTS shift (shiftid INTEGER PRIMARY KEY NOT NULL, name TEXT, dayid INTEGER, segment INTEGER, staff INTEGER, priority INTEGER)", []);
+                        tx.executeSql("CREATE TABLE IF NOT EXISTS shift (shiftid INTEGER PRIMARY KEY NOT NULL, name TEXT, dayid INTEGER, timespan text, hours INTEGER, segment INTEGER, staff INTEGER, priority INTEGER)", []);
                         //populate shift table with defaults
                         uploadShiftJson()
                             .then(function (shiftList) {
@@ -54,10 +55,12 @@
                                         var shiftName = shiftList.data[i].name;
                                         var shiftDay = shiftList.data[i].day;
                                         var shiftSegment = shiftList.data[i].segment;
+                                        var shiftTimespan = shiftList.data[i].timespan;
+                                        var shiftHours = shiftList.data[i].hours;
                                         var shiftStaffing = shiftList.data[i].staffing;
                                         var shiftPriority = shiftList.data[i].order;
-                                        tx.executeSql("INSERT INTO shift (name, dayid, segment, staff, priority) VALUES (?,?,?,?,?)",
-                                            [shiftName, shiftDay, shiftSegment, shiftStaffing, shiftPriority],
+                                        tx.executeSql("INSERT INTO shift (name, dayid, segment, timespan, hours, staff, priority) VALUES (?,?,?,?,?,?,?)",
+                                            [shiftName, shiftDay, shiftSegment, shiftTimespan, shiftHours, shiftStaffing, shiftPriority],
                                             function(tx, results) {
                                                 var insertId = results.insertId;
                                             });
