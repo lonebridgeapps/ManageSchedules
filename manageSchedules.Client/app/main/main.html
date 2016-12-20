@@ -43,8 +43,44 @@
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Scheduling Manager</a>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+            <a class="navbar-brand" href="#">Scheduling Manager</a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a ui-sref="main.schedule">
+                        <i class="fa fa-calendar-o"></i> Schedules
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="main.shift">
+                        <i class="fa fa-clock-o"></i> Shifts
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="main.employee">
+                        <i class="fa fa-users"></i> Employees
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="vm.createDb()">
+                        <i class="fa fa-database"></i> Create Database
+                    </a>
+                </li>
+            </ul>
+        </div>
+
     </div>
+    
 </nav>
 
 <div class="container-fluid main-container">
@@ -55,7 +91,7 @@
         </div>
     </div>
     <div class="row">
-        <div id="sideNavWrapper" class="col-xs-12 col-sm-4 col-md-3 ">
+        <div id="sideNavWrapper" class="hidden-xs col-sm-4 col-md-3 ">
             <div class="list-group">
                 <a class="list-group-item" ui-sref="main.schedule">
                     <i class="fa fa-calendar-o"></i> Schedules</a>

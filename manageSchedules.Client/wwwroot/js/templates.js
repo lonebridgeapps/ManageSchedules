@@ -232,8 +232,44 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "\n" +
     "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n" +
     "    <div class=\"container-fluid\">\n" +
-    "        <a class=\"navbar-brand\" href=\"#\">Scheduling Manager</a>\n" +
+    "        <div class=\"navbar-header\">\n" +
+    "            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">\n" +
+    "                <span class=\"sr-only\">Toggle navigation</span>\n" +
+    "                <span class=\"icon-bar\"></span>\n" +
+    "                <span class=\"icon-bar\"></span>\n" +
+    "                <span class=\"icon-bar\"></span>\n" +
+    "            </button>\n" +
+    "            \n" +
+    "            <a class=\"navbar-brand\" href=\"#\">Scheduling Manager</a>\n" +
+    "        </div>\n" +
+    "\n" +
+    "        <div class=\"collapse navbar-collapse\">\n" +
+    "            <ul class=\"nav navbar-nav\">\n" +
+    "                <li>\n" +
+    "                    <a ui-sref=\"main.schedule\">\n" +
+    "                        <i class=\"fa fa-calendar-o\"></i> Schedules\n" +
+    "                    </a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    <a ui-sref=\"main.shift\">\n" +
+    "                        <i class=\"fa fa-clock-o\"></i> Shifts\n" +
+    "                    </a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    <a ui-sref=\"main.employee\">\n" +
+    "                        <i class=\"fa fa-users\"></i> Employees\n" +
+    "                    </a>\n" +
+    "                </li>\n" +
+    "                <li>\n" +
+    "                    <a ng-click=\"vm.createDb()\">\n" +
+    "                        <i class=\"fa fa-database\"></i> Create Database\n" +
+    "                    </a>\n" +
+    "                </li>\n" +
+    "            </ul>\n" +
+    "        </div>\n" +
+    "\n" +
     "    </div>\n" +
+    "    \n" +
     "</nav>\n" +
     "\n" +
     "<div class=\"container-fluid main-container\">\n" +
@@ -244,7 +280,7 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
     "        </div>\n" +
     "    </div>\n" +
     "    <div class=\"row\">\n" +
-    "        <div id=\"sideNavWrapper\" class=\"col-xs-12 col-sm-4 col-md-3 \">\n" +
+    "        <div id=\"sideNavWrapper\" class=\"hidden-xs col-sm-4 col-md-3 \">\n" +
     "            <div class=\"list-group\">\n" +
     "                <a class=\"list-group-item\" ui-sref=\"main.schedule\">\n" +
     "                    <i class=\"fa fa-calendar-o\"></i> Schedules</a>\n" +
@@ -294,9 +330,13 @@ angular.module("../app/main/main.html", []).run(["$templateCache", function($tem
 angular.module("../app/schedule/schedule.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("../app/schedule/schedule.html",
     "<style>\n" +
-    "    .gridbox {\n" +
-    "        margin-top: 2px;\n" +
+    "    .schedule-wrapper {\n" +
+    "        font-size: 12px;\n" +
     "    }\n" +
+    "\n" +
+    "     .gridbox {\n" +
+    "         margin-top: 2px;\n" +
+    "     }\n" +
     "\n" +
     "    .gridbox a {\n" +
     "        text-decoration: none;\n" +
@@ -347,39 +387,37 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "        text-transform: uppercase;\n" +
     "    }\n" +
     "\n" +
+    "    .table-employee-name {\n" +
+    "        color: darkgray;\n" +
+    "        font-weight: bold;\n" +
+    "    }\n" +
+    "\n" +
+    "    .table__schedule-detail-text {\n" +
+    "        color: darkgray;\n" +
+    "        font-weight: bold;\n" +
+    "    }\n" +
+    "\n" +
+    "    emp-sub-details {\n" +
+    "        font-size: 8px;\n" +
+    "    }\n" +
+    "\n" +
     "</style>\n" +
     "\n" +
-    "<div id=\"scheduleWrapper\">\n" +
+    "<div id=\"scheduleWrapper\" class=\"schedule-wrapper\">\n" +
     "\n" +
     "    <div class=\"row\">\n" +
     "        <div class=\"col-xs-12\">\n" +
     "            <div class=\"panel panel-primary\">\n" +
     "                <div class=\"panel-heading\">\n" +
+    "                    <button type=\"button\" class=\"btn btn-primary btn-sm\" ng-click=\"vm.showStaffStats = !vm.showStaffStats\">\n" +
+    "                        <i class=\"fa\" ng-class=\"{'fa-plus':!vm.showStaffStats, 'fa-minus':vm.showStaffStats}\"></i>\n" +
+    "                    </button>\n" +
     "                    Staffing Statistics -\n" +
     "                    Week of: xx/xx/xxxx - xx/xx/xxxx\n" +
-    "                    <div class=\"btn-group pull-right\">\n" +
-    "                        <button type=\"button\" class=\"btn btn-primary btn-sm\" ng-click=\"vm.showStaffStats = !vm.showStaffStats\">\n" +
-    "                            <i class=\"fa\" ng-class=\"{'fa-plus':!vm.showStaffStats, 'fa-minus':vm.showStaffStats}\"></i>\n" +
-    "                        </button>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"clearfix\"></div>\n" +
     "                </div>\n" +
     "                <div class=\"panel-body\" ng-show=\"vm.showStaffStats\">\n" +
     "                    \n" +
-    "                    <div class=\"row\">\n" +
-    "                        <div class=\"col-xs-12 col-sm-6\">\n" +
-    "                            <div class=\"well\">\n" +
-    "                                <h4>AM Shifts</h4>\n" +
-    "                                <nvd3 options=\"vm.chartOptions\" data=\"vm.chartDataAM\"></nvd3>\n" +
-    "                            </div>\n" +
-    "                        </div>\n" +
-    "                        <div class=\"col-xs-12 col-sm-6\">\n" +
-    "                            <div class=\"well\">\n" +
-    "                                <h4>PM Shifts</h4>\n" +
-    "                                <nvd3 options=\"vm.chartOptions\" data=\"vm.chartDataPM\"></nvd3>\n" +
-    "                            </div>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
+    "                    \n" +
     "                </div>\n" +
     "\n" +
     "            </div>\n" +
@@ -392,13 +430,22 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "            <div class=\"panel panel-primary\">\n" +
     "                <div class=\"panel-heading\">\n" +
     "                    Week of: xx/xx/xxxx - xx/xx/xxxx <button type=\"button\" class=\"btn btn-primary btn-sm\" ng-click=\"\"><i class=\"fa fa-caret-down\"></i> </button>\n" +
-    "\n" +
+    "                    \n" +
+    "                    <button type=\"button\" class=\"btn btn-primary btn-sm pull-right\" ng-click=\"\">\n" +
+    "                        <i class=\"fa fa-bar-chart\"></i> Schedule Analysis\n" +
+    "                    </button>\n" +
+    "                    <button type=\"button\" class=\"btn btn-primary btn-sm pull-right\" ng-click=\"\">\n" +
+    "                        <i class=\"fa fa-refresh\"></i> Refresh\n" +
+    "                    </button>\n" +
+    "                    <button type=\"button\" class=\"btn btn-primary btn-sm pull-right\" ng-click=\"vm.generateSchedule()\">\n" +
+    "                        <i class=\"fa fa-calendar-o\"></i> Run\n" +
+    "                    </button>\n" +
     "                    <button type=\"button\" class=\"btn btn-primary btn-sm pull-right\" ng-click=\"\">\n" +
     "                        <i class=\"fa fa-download\"></i> Export\n" +
     "                    </button>\n" +
     "                    <div class=\"clearfix\"></div>\n" +
     "                </div>\n" +
-    "                <div class=\"panel-body\" style=\"max-height: 600px; overflow-y: scroll;\">\n" +
+    "                <div class=\"panel-body\" style=\"max-height: 700px; overflow-y: scroll;\">\n" +
     "                    \n" +
     "\n" +
     "                    <!-- modal popup box -->\n" +
@@ -419,14 +466,15 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                                    </div>\n" +
     "                                </div>\n" +
     "                            </div>\n" +
-    "                            <div class=\"list-group-item\" ng-repeat=\"d in vm.days\">\n" +
+    "                            <div class=\"list-group-item\" ng-repeat=\"d in vm.employeeDetail[0].schedule\">\n" +
     "                                <div class=\"row\">\n" +
     "                                    <div class=\"col-xs-3\" style=\"padding-top: 10px;\">\n" +
-    "                                        <i class=\"fa fa-2x\" ng-class=\"vm.getStatusIcon(vm.employeeDetail[0].empid, $index)\"></i>\n" +
+    "                                        <i class=\"fa fa-2x\" ng-class=\"d.iconClass\"></i>\n" +
+    "                                        <div>{{d.detail}}</div>\n" +
     "                                    </div>\n" +
     "                                    <div class=\"col-xs-9\">\n" +
-    "                                        <span class=\"date-dayOfWeek\">{{vm.getDayOfWeek(d)}}</span>00/00/00\n" +
-    "                                        <select class=\"form-control\" ng-disable=\"vm.getShiftsDay(0,0)\">\n" +
+    "                                        <span class=\"date-dayOfWeek\">{{}}</span>00/00/00\n" +
+    "                                        <select class=\"form-control\" >\n" +
     "                                            <option value=\"0\">...</option>\n" +
     "                                            <option value=\"1\">AM Shift</option>\n" +
     "                                            <option value=\"2\">PM Shift</option>\n" +
@@ -443,26 +491,7 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                    </div>\n" +
     "                    \n" +
     "                    <!-- scheduling options bar -->\n" +
-    "                    <div id=\"runScheduleToolBar\" class=\"row runScheduleToolBar\" >\n" +
-    "                        <div class=\"col-sm-3 col-xs-12\">\n" +
-    "                            <b>Scheduling Toolbar</b>\n" +
-    "                        </div>\n" +
-    "                        <div class=\"col-sm-5 col-xs-12\">\n" +
-    "                            <label class=\"checkbox-inline\"><input type=\"checkbox\" id=\"ckHistoricalRotation\" name=\"ckHistoricalRotation\" /> Historical Rotation </label>\n" +
-    "                            <label class=\"checkbox-inline\"><input type=\"checkbox\" id=\"ckAnotherOption\" name=\"ckAnotherOption\" /> Another Option </label>\n" +
-    "                        </div>\n" +
-    "                        <div class=\"col-sm-4 col-xs-12\">\n" +
-    "                            <div class=\"btn-group pull-right\">\n" +
-    "                                <button type=\"button\" class=\"btn btn-default btn-sm\" ng-click=\"\">\n" +
-    "                                    <i class=\"fa fa-refresh\"></i> Refresh\n" +
-    "                                </button>\n" +
-    "                                <button type=\"button\" class=\"btn btn-default btn-sm\" ng-click=\"vm.generateSchedule()\">\n" +
-    "                                    <i class=\"fa fa-calendar-o\"></i> Run\n" +
-    "                                </button>\n" +
-    "                            </div>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "\n" +
+    "                    <div id=\"runScheduleToolBar\" class=\"row runScheduleToolBar\" ></div>\n" +
     "\n" +
     "                    <table class=\"table table-striped\">\n" +
     "                        <thead>\n" +
@@ -479,16 +508,26 @@ angular.module("../app/schedule/schedule.html", []).run(["$templateCache", funct
     "                            </tr>\n" +
     "                        </thead>\n" +
     "                        <tbody>\n" +
-    "                            <tr ng-repeat=\"i in vm.employee track by $index\" ng-click=\"vm.getEmployeeDetails($index)\">\n" +
-    "                                <td>{{i.name}}</td>\n" +
-    "                                <td ng-repeat=\"day in vm.days\" class=\"text-center\">\n" +
-    "                                    <i class=\"fa\" ng-class=\"vm.getStatusIcon(i.empid, $index)\"></i> {{vm.getEmployeeShiftTime($parent.$index, $index)}}\n" +
+    "                            <tr ng-repeat=\"i in vm.schedule track by $index\" ng-click=\"vm.getEmployeeDetails($index)\">\n" +
+    "                                <td class=\"table-employee-name\">\n" +
+    "                                    <div>{{i.name}} {{}}</div>\n" +
+    "                                    <div ng-show=\"true\">\n" +
+    "                                        <div class=\"emp-sub-details\"> Days : Shifts : Hours</div>\n" +
+    "                                        <div class=\"emp-sub-details\">\n" +
+    "                                            {{i.scheduledDays}} / {{i.availableDays}} : {{i.scheduledShifts}} / {{i.availableShifts}} : {{i.scheduledHours}} / {{i.availableHours}}\n" +
+    "                                        </div>\n" +
+    "                                    </div>\n" +
+    "                                </td>\n" +
+    "                                <td ng-repeat=\"s in i.dailyDetails\" class=\"text-center\">\n" +
+    "                                    <div><i class=\"fa fa-2x\" ng-class=\"s.iconClass\"></i></div> \n" +
+    "                                    <div class=\"table__schedule-detail-text\">{{s.detail}}</div>\n" +
     "                                </td>\n" +
     "                            </tr>\n" +
     "                        </tbody>\n" +
     "                    </table>\n" +
     "                    \n" +
-    "                   \n" +
+    "                    \n" +
+    "\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +

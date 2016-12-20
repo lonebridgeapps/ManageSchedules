@@ -1,7 +1,11 @@
 ﻿<style>
-    .gridbox {
-        margin-top: 2px;
+    .schedule-wrapper {
+        font-size: 12px;
     }
+
+     .gridbox {
+         margin-top: 2px;
+     }
 
     .gridbox a {
         text-decoration: none;
@@ -52,39 +56,37 @@
         text-transform: uppercase;
     }
 
+    .table-employee-name {
+        color: darkgray;
+        font-weight: bold;
+    }
+
+    .table__schedule-detail-text {
+        color: darkgray;
+        font-weight: bold;
+    }
+
+    emp-sub-details {
+        font-size: 8px;
+    }
+
 </style>
 
-<div id="scheduleWrapper">
+<div id="scheduleWrapper" class="schedule-wrapper">
 
     <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
+                    <button type="button" class="btn btn-primary btn-sm" ng-click="vm.showStaffStats = !vm.showStaffStats">
+                        <i class="fa" ng-class="{'fa-plus':!vm.showStaffStats, 'fa-minus':vm.showStaffStats}"></i>
+                    </button>
                     Staffing Statistics -
                     Week of: xx/xx/xxxx - xx/xx/xxxx
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-primary btn-sm" ng-click="vm.showStaffStats = !vm.showStaffStats">
-                            <i class="fa" ng-class="{'fa-plus':!vm.showStaffStats, 'fa-minus':vm.showStaffStats}"></i>
-                        </button>
-                    </div>
-                    <div class="clearfix"></div>
                 </div>
                 <div class="panel-body" ng-show="vm.showStaffStats">
                     
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="well">
-                                <h4>AM Shifts</h4>
-                                <nvd3 options="vm.chartOptions" data="vm.chartDataAM"></nvd3>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6">
-                            <div class="well">
-                                <h4>PM Shifts</h4>
-                                <nvd3 options="vm.chartOptions" data="vm.chartDataPM"></nvd3>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
 
             </div>
@@ -97,13 +99,22 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Week of: xx/xx/xxxx - xx/xx/xxxx <button type="button" class="btn btn-primary btn-sm" ng-click=""><i class="fa fa-caret-down"></i> </button>
-
+                    
+                    <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="">
+                        <i class="fa fa-bar-chart"></i> Schedule Analysis
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="">
+                        <i class="fa fa-refresh"></i> Refresh
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.generateSchedule()">
+                        <i class="fa fa-calendar-o"></i> Run
+                    </button>
                     <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="">
                         <i class="fa fa-download"></i> Export
                     </button>
                     <div class="clearfix"></div>
                 </div>
-                <div class="panel-body" style="max-height: 600px; overflow-y: scroll;">
+                <div class="panel-body" style="max-height: 700px; overflow-y: scroll;">
                     
 
                     <!-- modal popup box -->
@@ -124,14 +135,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="list-group-item" ng-repeat="d in vm.days">
+                            <div class="list-group-item" ng-repeat="d in vm.employeeDetail[0].schedule">
                                 <div class="row">
                                     <div class="col-xs-3" style="padding-top: 10px;">
-                                        <i class="fa fa-2x" ng-class="vm.getStatusIcon(vm.employeeDetail[0].empid, $index)"></i>
+                                        <i class="fa fa-2x" ng-class="d.iconClass"></i>
+                                        <div>{{d.detail}}</div>
                                     </div>
                                     <div class="col-xs-9">
-                                        <span class="date-dayOfWeek">{{vm.getDayOfWeek(d)}}</span>00/00/00
-                                        <select class="form-control" ng-disable="vm.getShiftsDay(0,0)">
+                                        <span class="date-dayOfWeek">{{}}</span>00/00/00
+                                        <select class="form-control" >
                                             <option value="0">...</option>
                                             <option value="1">AM Shift</option>
                                             <option value="2">PM Shift</option>
@@ -148,26 +160,7 @@
                     </div>
                     
                     <!-- scheduling options bar -->
-                    <div id="runScheduleToolBar" class="row runScheduleToolBar" >
-                        <div class="col-sm-3 col-xs-12">
-                            <b>Scheduling Toolbar</b>
-                        </div>
-                        <div class="col-sm-5 col-xs-12">
-                            <label class="checkbox-inline"><input type="checkbox" id="ckHistoricalRotation" name="ckHistoricalRotation" /> Historical Rotation </label>
-                            <label class="checkbox-inline"><input type="checkbox" id="ckAnotherOption" name="ckAnotherOption" /> Another Option </label>
-                        </div>
-                        <div class="col-sm-4 col-xs-12">
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-default btn-sm" ng-click="">
-                                    <i class="fa fa-refresh"></i> Refresh
-                                </button>
-                                <button type="button" class="btn btn-default btn-sm" ng-click="vm.generateSchedule()">
-                                    <i class="fa fa-calendar-o"></i> Run
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
+                    <div id="runScheduleToolBar" class="row runScheduleToolBar" ></div>
 
                     <table class="table table-striped">
                         <thead>
@@ -184,16 +177,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="i in vm.employee track by $index" ng-click="vm.getEmployeeDetails($index)">
-                                <td>{{i.name}}</td>
-                                <td ng-repeat="day in vm.days" class="text-center">
-                                    <i class="fa" ng-class="vm.getStatusIcon(i.empid, $index)"></i> {{vm.getEmployeeShiftTime($parent.$index, $index)}}
+                            <tr ng-repeat="i in vm.schedule track by $index" ng-click="vm.getEmployeeDetails($index)">
+                                <td class="table-employee-name">
+                                    <div>{{i.name}} {{}}</div>
+                                    <div ng-show="true">
+                                        <div class="emp-sub-details"> Days : Shifts : Hours</div>
+                                        <div class="emp-sub-details">
+                                            {{i.scheduledDays}} / {{i.availableDays}} : {{i.scheduledShifts}} / {{i.availableShifts}} : {{i.scheduledHours}} / {{i.availableHours}}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td ng-repeat="s in i.dailyDetails" class="text-center">
+                                    <div><i class="fa fa-2x" ng-class="s.iconClass"></i></div> 
+                                    <div class="table__schedule-detail-text">{{s.detail}}</div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     
-                   
+                    
+
                 </div>
             </div>
         </div>
