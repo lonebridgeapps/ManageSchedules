@@ -39,6 +39,17 @@
         color: #ffffff;
     }
 
+    .siteDetail {
+        text-align: center;
+        border: solid 1px #696969;
+        padding: 5px 0;
+    }
+
+    .siteDetail__section {
+        padding: 10px;
+        font-weight: bold;
+    }
+
 </style>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -51,7 +62,7 @@
                 <span class="icon-bar"></span>
             </button>
             
-            <a class="navbar-brand" href="#">Scheduling Manager</a>
+            <a class="navbar-brand" href="#">Tru Staff</a>
         </div>
 
         <div class="collapse navbar-collapse">
@@ -92,40 +103,22 @@
     </div>
     <div class="row">
         <div id="sideNavWrapper" class="hidden-xs col-sm-4 col-md-3 ">
-            <div class="list-group">
-                <a class="list-group-item" ui-sref="main.schedule">
-                    <i class="fa fa-calendar-o"></i> Schedules</a>
-
-                <a id="scheduleLegend" class="list-group-item" ng-if="vm.isCurrentState('main.schedule');">
-                    <p>Scheduling Legend</p>
-                    <div class="row">
-                        <div class="col-xs-12 text-primary">
-                            <i class="fa fa-square"></i> Available
-                        </div>
-                        <div class="col-xs-12 text-success">
-                            <i class="fa fa-square"></i> Scheduled
-                        </div>
-                        <div class="col-xs-12 text-danger">
-                            <i class="fa fa-square"></i> Request Off
-                        </div>
-                        <div class="col-xs-12 text-muted">
-                            <i class="fa fa-square"></i> Unavailable
-                        </div>
-                    </div>
-                </a>
-
-                <a class="list-group-item" ui-sref="main.shift">
-                    <i class="fa fa-clock-o"></i> Shifts</a>
-
-                <a class="list-group-item" ui-sref="main.employee">
-                    <i class="fa fa-users"></i> Employees</a>
-
-                <a class="list-group-item" ng-click="vm.createDb()">
-                    <i class="fa fa-database"></i> Create Database</a>
-
+            <!--  -->
+            <div class="siteDetail">
+                <div class="siteDetail__section"><i class="fa fa-3x fa-calendar"></i></div>
+                <div class="siteDetail__section">Tru Staff</div>
             </div>
-
-        </div>
+            
+            <div class="siteNav">
+                <ul class="nav nav-pills nav-stacked">
+                    <li ui-sref-active="active"><a ui-sref="main.schedule"><i class="fa fa-calendar-o"></i> Schedules</a></li>
+                    <li ui-sref-active="active"><a ui-sref="main.shift"><i class="fa fa-clock-o"></i> Shifts</a></liui-sref-active="active">
+                    <li ui-sref-active="active"><a ui-sref="main.employee"><i class="fa fa-users"></i> Employees</a></li>
+                    <li><a ng-click="vm.createDb()"><i class="fa fa-database"></i> Create Web Database</a></li>
+                    <li><a ng-click=""><i class="fa fa-database"></i> Create SQL Database</a></li>
+                </ul>
+            </div>
+</div>
         <div id="mainContentWrapper" class="col-xs-12 col-sm-8 col-md-9">
             <div ui-view></div>
         </div>

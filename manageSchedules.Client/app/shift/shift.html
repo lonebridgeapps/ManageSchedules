@@ -3,13 +3,32 @@
         font-weight: bold;
         color: #696969;
     }
+
+    .shift-form {
+        border: solid 2px #337ab7;
+        background-color: #ffffff;
+    }
+
+    .shift-form__heading {
+        font-size: 16px;
+        font-weight: bold;
+        color: #337ab7;
+        padding: 0 15px;
+         
+    }
+
+    .shift-form__body {
+        padding: 15px;
+    }
+
 </style>
 
 
 <div id="shiftWrapper">
 
     <div class="row">
-        <div class="col-xs-12">
+        <div class=" col-sm-6 col-xs-12">
+            <!-- shift list -->
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Priority Scheduling (top to bottom)
@@ -40,6 +59,83 @@
                 </div>
             </div>
 
+        </div>
+        
+        <div class="col-sm-6 col-xs-12">
+            <!-- shift form -->
+            <div class="shift-form">
+                <h2 class="shift-form__heading">
+                    <a class="fa fa-2x fa-list-alt"></a>
+                    Shift Form
+                </h2>
+                <div class="shift-form__body">
+                    <form id="frmShift" name="frmShift">
+                        <div class="form-group">
+                            <label for="txtName">Name</label>
+                            <input type="text" class="form-control" id="txtName" placeholder="Name" ng-model="vm.shift.name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtDoW">Day of Week</label>
+                            <input type="text" class="form-control" id="txtDoW" placeholder="Day of Week" ng-model="vm.shift.dayid" required>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="txtStartTime">Start Time</label>
+                                    <input type="text" class="form-control" id="txtStartTime" placeholder="Start Time" ng-model="vm.shift.startTime" required>
+                                </div>   
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="txtEndTime">End Time</label>
+                                    <input type="text" class="form-control" id="txtEndTime" placeholder="End Time" ng-model="vm.shift.endTime" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label for="txtHours">Length (in hours)</label>
+                                    <input type="number" class="form-control" id="txtHours" placeholder="Shift Length" ng-model="vm.shift.hours" required>
+                                </div> 
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label for="txtSegment">Segment</label>
+                                    <input type="number" class="form-control" id="txtSegment" placeholder="Segment" ng-model="vm.shift.segment" required>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="form-group">
+                                    <label for="txtOrder">Priority</label>
+                                    <input type="number" class="form-control" id="txtOrder" placeholder="Priority" ng-model="vm.shift.order" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        
+                        
+                        
+                        
+
+                        <div class="form-group">
+                            <label for="txtNotes">Notes</label>
+                            <input type="text" class="form-control" id="txtNotes" placeholder="Notes" ng-model="vm.shift.notes" required>
+                        </div>
+                       
+                        <div>
+                            <button type="submit" class="btn btn-default" ng-click="vm.resetForm()"><i class="fa" ng-class="'fa-undo'"></i> Reset</button>
+                            <button type="submit" class="btn btn-success" ng-disabled="frmShift.$invalid"><i class="fa" ng-class="'fa-save'"></i> Save</button>
+                        </div>
+
+                    </form>
+                </div>    
+            </div>
         </div>
     </div>
 

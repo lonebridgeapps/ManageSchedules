@@ -413,6 +413,7 @@
 
                 vm.showStaffStats = false;
                 vm.showEmployeeDetails = false;
+                vm.toggleEmployeeDetails = true;
 
             //configuration variables
                 var configAvgShift = 0;
@@ -420,22 +421,29 @@
                 var configAutoStaff = 0;
                 var configAutoStaffPercentage = 0.5; //default value
 
+                var config = {};
+                config.schedulePartialAvailableEmployees = true;
+                config.allowDoubleShift = false;
+
                 vm.days = [0,1,2,3,4,5,6];
                 vm.employeeObj = [];
                 vm.employee = [];
                 vm.schedule = [];
                 vm.employeeDetail = [];
+                vm.shifts = [];
 
                 activate();
 
                 vm.getShiftDays = getShiftDays;
                 vm.getIcon = getIcon;
                 vm.getEmployeeDetails = getEmployeeDetails;
-                vm.generateSchedule = generateSchedule;
+                vm.getSchedules = getSchedules;
+
+                
 
                 function activate() {
                     getEmployeeWithAvailability();
-
+                    getShiftReqDefaults();
 
                 }
 
@@ -476,15 +484,7 @@
                                         for (var i = 0; i < employeeObj.length; i++) {
                                             var availableShifts = getShiftsFilterByEmpid(employeeObj.item(i).empid, availObj);
                                             var dailyAvailability = createEmployeeDailyAvailability(availableShifts);
-                                            vm.employee.push({
-                                                "empid": employeeObj.item(i).empid,
-                                                "name": employeeObj.item(i).name,
-                                                "days": getDaysFilterByEmpid(availableShifts),
-                                                "shifts": availableShifts,
-                                                "schedule": dailyAvailability
-                                            });
-
-
+                                            
                                             vm.schedule.push({
                                                 "empid": employeeObj.item(i).empid,
                                                 "name": employeeObj.item(i).name,
@@ -494,18 +494,40 @@
                                                 "scheduledShifts": 0,
                                                 "availableHours": 40,
                                                 "scheduledHours": 0,
-                                                "dailyDetails": dailyAvailability
+                                                "dailyDetails": dailyAvailability,
+                                                "shifts": availableShifts
                                             });
-                                            
                                         }
                                     }
                                 })
                                 .then(function() {
-                                    console.log("finished loading employees", vm.employee);
                                     console.log("finished loading schedule", vm.schedule);
                                 });
                         });
                     
+                }
+
+
+                function getShiftReqDefaults() {
+                    getData("SELECT * FROM shift ORDER BY dayid", [])
+                       .then(function (allShifts) {
+                            for (var i = 0; i < allShifts.length; i++) {
+                                vm.shifts.push({
+                                    "shiftid": allShifts[i].shiftid,
+                                    "name": allShifts[i].name,
+                                    "details": allShifts[i].timespan,
+                                    "hours": allShifts[i].hours,
+                                    "staffRequirements": allShifts[i].staff,
+                                    "staffScheduled": 0
+                                });
+                            }
+                        })
+                       .then(function () {
+
+                           //dump shifts 
+                           console.log("shifts", vm.shifts);
+
+                       });
                 }
 
                 //get average length of shift
@@ -580,9 +602,127 @@
                     return dayCount.length;
                 }
 
+                //
+                function getPartialAvailableEmployeesList(configAutoStaff, empList) {
+                    var partialEmployees = [];
+                    for (var i = 0; i < empList.length; i++) {
+                        if (empList[i].availableDays <= configAutoStaff) {
+                            partialEmployees.push(empList[i]);
+                        }
+                    }
+                    return partialEmployees;
+                }
 
                 //
-                function generateSchedule() {
+                function getUnscheduledEmployees(empList) {
+                    var unscheduledEmployees = [];
+                    for (var i = 0; i < empList.length; i++) {
+                        if (empList[i].scheduledHours <= 0) {
+                            unscheduledEmployees.push(empList[i]);
+                        }
+                    }
+                    return unscheduledEmployees;
+                }
+
+
+                //
+                function getScheduledHours() {
+                    var ttlScheduledHours = 0;
+                    for (var i = 0; i < vm.schedule.length; i++) {
+                        ttlScheduledHours += vm.schedule[i].scheduledHours;
+                    }
+                    return ttlScheduledHours;
+                }
+
+                //
+                function chkShiftStaffing(shifts) {
+                    var underScheduled = [];
+                    for(var i = 0; i < shifts.length; i++)
+                    {
+                        if (shifts[i].staffScheduled < shifts[i].staffRequirements) {
+                            underScheduled.push(shifts[i].shiftid);
+                        }
+                    }
+                    return underScheduled;
+                }
+
+            //
+                function getEligibleEmployeesList(employeeList, shiftsDetails, shiftRatio) {
+                    var eligibleEmployees = [];
+                    for (var e = 0; e < employeeList.length; e++) {
+                        //check if current employee has shift available
+                        if (getArrIndexOf(employeeList[e].shifts, shiftsDetails.shiftid, "shiftid") < 0) {
+                            continue;
+                        }
+                        //check if employee is already scheduled on this day and not scheduled over 40 hours
+                        else if (isScheduledToday(shiftsDetails.dayid, employeeList[e].dailyDetails) &&
+                            !config.allowDoubleShift) {
+                            continue;
+                        }
+                        //check if employee has been scheduled over 40 hours (configurable)
+                        else if ((employeeList[e].scheduledHours + shiftsDetails.hours) >= 40) {
+                            continue;
+                        }
+                        //check if employee has been scheduled for max allowable shifts (configurable)
+                        else if (employeeList[e].scheduledShifts >= shiftRatio) {
+                            continue;
+                        }
+                        //check if current employee is not request off and remove
+                        else if (1 === 2) {
+                            continue;
+                        } else {
+                            eligibleEmployees.push({
+                                "empid": employeeList[e].empid,
+                                "shiftCount": employeeList[e].availableShifts,
+                                "shiftRatio": employeeList[e].scheduledHours / 40
+                                //NEED CALCULATION AND VARIABLE FOR THIS BASED ON DAYS AND WHETHER OR NOT DOUBLE SHIFTING IS ALLOWED      
+                            });
+                        }
+                    }
+                    return eligibleEmployees;
+                }
+
+
+                //
+                function generateSchedule(employeeList, shiftsDetails, shiftRatio) {
+                    shiftRatio = 4;
+                    for (var s = 0; s < shiftsDetails.length; s++) {
+
+                        var eligibleEmployees = getEligibleEmployeesList(employeeList, shiftsDetails[s], shiftRatio);
+                        
+                        var idx = getArrIndexOf(vm.shifts, shiftsDetails[s].shiftid, "shiftid");
+                        if (eligibleEmployees.length > 0) {
+                            //sort eligible employee lowest to highest shift count then shift ratio
+                            //selectionSortDesc(eligibleEmployees);
+
+                            //truncate to staffing requirements
+                            eligibleEmployees = eligibleEmployees.slice(0, (shiftsDetails[s].staff - vm.shifts[idx].staffScheduled));
+                        }
+
+                        for (var emps = 0; emps < eligibleEmployees.length; emps++) {
+                            var empIndex = getArrIndexOf(employeeList, eligibleEmployees[emps].empid, "empid");
+                            var dayIndex = getArrIndexOf(employeeList[empIndex].dailyDetails, shiftsDetails[s].dayid, "dayid");
+
+                            //update employee schedule object
+                            if (dayIndex >= 0) {
+                                employeeList[empIndex].dailyDetails[dayIndex].status = 2;
+                                employeeList[empIndex].dailyDetails[dayIndex].iconClass = getIcon(2);
+                                employeeList[empIndex].dailyDetails[dayIndex].detail = shiftsDetails[s].timespan;
+                                employeeList[empIndex].dailyDetails[dayIndex].shiftid = shiftsDetails[s].shiftid;
+                            }
+                            //update employee scheduled objects
+                            employeeList[empIndex].scheduledHours = employeeList[empIndex].scheduledHours + shiftsDetails[s].hours;
+                            employeeList[empIndex].scheduledShifts += 1;
+                            employeeList[empIndex].scheduledDays += 1;
+
+                            //update shifts staffing 
+                            vm.shifts[idx].staffScheduled += 1;
+                        }
+                    }
+                }
+
+                //
+                function getSchedules() {
                     //get shift requirements
                     getData("SELECT * FROM shift ORDER BY priority", [])
                         .then(function(shiftsDetails) {
@@ -591,103 +731,67 @@
                             configTotalShiftHours = getTotalShiftHours(shiftsDetails);
                             configAutoStaff = getAutoStaffDefinition(shiftsDetails);
 
+                            var employees = [];
+                            employees.push(randomize(vm.schedule));
 
-                            //create object to track each employee by hours scheduled
-                            var empHours = [];
+                            if (config.schedulePartialAvailableEmployees) {
+                                //first schedule employees with partial weekly availablity
+                                var partialEmployees = getPartialAvailableEmployeesList(configAutoStaff, vm.schedule);
+                                partialEmployees = randomize(partialEmployees);
 
+                                //loop through shifts and switch availability to scheduled
+                                generateSchedule(partialEmployees, shiftsDetails, configAvgShift);
 
-
-                            //loop through shifts for staffing
-                            for (var s = 0; s < shiftsDetails.length; s++) {
-
-
-                                //loop through employees and get all eligible to work shifts
-                                var eligibleEmployees = [];
-                                empHours = getEmployeeScheduleHours(vm.employee, empHours);
-                                for (var e = 0; e < vm.employee.length; e++) {
-                                    
-                                    //check if current employee has shift available
-                                    if (getArrIndexOf(vm.employee[e].shifts, shiftsDetails[s].shiftid, "shiftid") >= 0) {
-                                        //check if employee is already scheduled on this day and not scheduled over 40 hours
-                                        if (!isScheduledToday(shiftsDetails[s].dayid, vm.employee[e].schedule)
-                                            && empHours[e].scheduledHours < 40) {
-                                            /**
-                                             ADD VARIABLE FOR MAX AMOUNT OF SHIFTS TO BE SCHEDULED ON FIRST POPULATION
-                                             */
-
-                                            //push into scheduled employee list
-                                            eligibleEmployees.push({
-                                                "empid": vm.employee[e].empid,
-                                                "shiftCount": empHours[e].shiftCount,
-                                                "shiftRatio": empHours[e].scheduledHours / empHours[e].maxHours
-                                            });
-                                            //check if current employee is not request off and remove
-
-                                        }
-                                    }
-
-                                }
-
-                                if (eligibleEmployees.length > 0) {
-                                    //sort eligible employee lowest to highest shift count then shift ratio
-                                    selectionSortDesc(eligibleEmployees);
-
-                                    //truncate to staffing requirements
-                                    eligibleEmployees = eligibleEmployees.slice(0, shiftsDetails[s].staff);
-
-                                }
-
-
-                                ////check if employee has already been scheduled over allowed time limit (usually 40 hours)
-                                //if (empHours[e].hours > 40) { /* needs to be global variable that can be set in config by user */
-                                //    var eIndex = getArrIndexOf(eligibleEmployees, vm.employee[e].empid, "empid");
-                                //    eligibleEmployees.splice(eIndex, 1);
-                                //    console.log("removed emoloyee: " + vm.employee[e].empid + " from shift id: " + shiftsDetails[s].shiftid);
-                                //}
-
-
-                                var shiftTime = shiftsDetails[s].timespan;
-                                var shiftid = shiftsDetails[s].shiftid; 
-
+                                //adjust staffing numbers
+                                var availableScheduleHours = configTotalShiftHours - getScheduledHours();
                                 
-                                for (var emps = 0; emps < eligibleEmployees.length; emps++) {
-                                    var empIndex = getArrIndexOf(vm.employee, eligibleEmployees[emps].empid, "empid");
-                                    var dayIndex = getArrIndexOf(vm.employee[empIndex].schedule, shiftsDetails[s].dayid, "dayid");
+                                //adjust employee list to staff rremaining unscheduled employees
+                                employees = [];
+                                employees = randomize(getUnscheduledEmployees(vm.schedule));
 
-                                    //update employee schedule object
-                                    if (dayIndex >= 0) {
-                                        vm.employee[empIndex].schedule[dayIndex].status = 2;
-                                        vm.employee[empIndex].schedule[dayIndex].iconClass = getIcon(2);
-                                        vm.employee[empIndex].schedule[dayIndex].detail = shiftTime;
-                                        vm.employee[empIndex].schedule[dayIndex].shiftid = shiftid;
+                            }
+
+                            generateSchedule(employees, shiftsDetails);
+
+                            //shift scheduling
+                            //loop through shifts and ensure coverage
+                            var underStaffedShifts = chkShiftStaffing(vm.shifts);
+
+                            if (underStaffedShifts.length > 0) {
+                                var shiftRatio = 5;  //?? need algorithm - or maybe set to max? ??//
+                                for (var j = 0; j < underStaffedShifts.length; j++) {
+
+                                    var ptr = getArrIndexOf(vm.shifts, underStaffedShifts[j], "shiftid");
+                                    var emps = getEligibleEmployeesList(employees, vm.shifts[ptr], shiftRatio);
+                                    emps = selectionSortDesc(emps);
+
+                                    var k = 0;
+                                    while (vm.shifts[ptr].staffScheduled < vm.shifts[ptr].staffRequirements) {
+
+                                        var empIndex = getArrIndexOf(vm.schedule, emps[k].empid, "empid");
+                                        var shiftIndex = getArrIndexOf(shiftsDetails, underStaffedShifts[j], "shiftid");
+                                        var dayIndex = getArrIndexOf(shiftsDetails, shiftsDetails[shiftIndex].dayid, "dayid"); 
+
+                                        vm.schedule[empIndex].dailyDetails[dayIndex].status = 2;
+                                        vm.schedule[empIndex].dailyDetails[dayIndex].iconClass = getIcon(2);
+                                        vm.schedule[empIndex].dailyDetails[dayIndex].detail = shiftsDetails[ptr].timespan;
+                                        vm.schedule[empIndex].dailyDetails[dayIndex].shiftid = shiftsDetails[ptr].shiftid;
+
+                                        //update employee scheduled objects
+                                        vm.schedule[empIndex].scheduledHours = vm.schedule[empIndex].scheduledHours + shiftsDetails[ptr].hours;
+                                        vm.schedule[empIndex].scheduledShifts += 1;
+                                        vm.schedule[empIndex].scheduledDays += 1;
+
+                                        //update shifts staffing 
+                                        vm.shifts[ptr].staffScheduled += 1;
+                                        k++;
                                     }
-                                    //update employee hours object
-                                    empHours[empIndex].scheduledHours = empHours[empIndex].scheduledHours + shiftsDetails[s].hours;
                                 }
                             }
-                            //employee fairness algorithm
-                            //start at most available shifts with least scheduled
-                            //excluded people scheduled for 3 or fewer shifts
-                            //balance opening shifts and closes (when availability allows)
-                            var unscheduledEmployees = [];
-                            for (var idx = 0; idx < vm.employee.length; idx++) {
-                                var notScheduledShifts = 0;
-                                angular.forEach(vm.employee.schedule, function(key, value) {
-                                    if (value.status === 1) {
-                                        notScheduledShifts = notScheduledShifts + 1;
-                                    }
-                                });
 
-                                if (notScheduledShifts < 1) {
-                                    unscheduledEmployees.push(vm.employee[idx]);
-                                }
-                            }
                         })
                         .then(function() {
-
-
-                            //dump employee schedules
-                            console.log("scheduled employees", vm.employee);
+                            console.log("Schedules Run!", vm.schedule);
 
                         });
 
@@ -705,11 +809,11 @@
 
                         //check the rest of the array to see if anything is smaller
                         for (var j = i + 1; j < len; j++) {
-                            if (arr[j].shiftCount < arr[min].shiftCount) {
+                            if (arr[j].shiftCount > arr[min].shiftCount) {
                                 min = j;
                             }
                             else if (arr[j].shiftCount === arr[min].shiftCount) {
-                                if (arr[j].shiftRatio < arr[min].shiftRatio) {
+                                if (arr[j].shiftRatio > arr[min].shiftRatio) {
                                     min = j;
                                 }
                             }
@@ -834,7 +938,8 @@
                                 "status": status,
                                 "iconClass": getIcon(status),
                                 "detail": "",
-                                "shiftid": 0
+                                "shiftid": 0,
+                                "segment": 0
                             });
                     }
 
@@ -875,19 +980,20 @@
                 function getIcon(status) {
                     switch (status) {
                     case 0:
-                        return 'fa-minus-circle fa-2x btn-muted';
+                        return 'fa-minus-circle  btn-muted';
                         break;
                     case 1:
-                        return 'fa-plus-circle fa-2x btn-avail';
+                        return 'fa-plus-circle  btn-avail';
                         break;
                     case 2:
-                        return 'fa-check-circle fa-2x btn-scheduled';
+                        //return 'fa-check-circle  btn-scheduled';
+                        return "no-show";
                         break;
                     case 3:
-                        return 'fa-times-circle fa-2x btn-requestOff';
+                        return 'fa-times-circle  btn-requestOff';
                         break;
                     default:
-                        return 'fa-times-circle fa-2x btn-muted';
+                        return 'fa-times-circle  btn-muted';
                     }
                 }
 

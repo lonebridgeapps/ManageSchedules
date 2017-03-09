@@ -62,12 +62,12 @@
     }
 
     .table__schedule-detail-text {
-        color: darkgray;
+        color: #3c763d;
         font-weight: bold;
     }
 
-    emp-sub-details {
-        font-size: 8px;
+    .no-show {
+        display: none;
     }
 
 </style>
@@ -85,8 +85,22 @@
                     Week of: xx/xx/xxxx - xx/xx/xxxx
                 </div>
                 <div class="panel-body" ng-show="vm.showStaffStats">
-                    
-                    
+                    <div class="row">
+                        <div class="shiftStats col-xs-12 col-sm-6">
+                            <ul>
+                                <li ng-repeat="s in vm.shifts">
+                                    {{s.name}} : {{s.details}} : {{s.staffScheduled}} / {{s.staffRequirements}}
+                                </li>
+                            </ul>
+                            <p>maybe utilize stacked column charts to display shifts needing staffing</p>
+                        </div>
+
+                        <div class="empStats col-xs-12 col-sm-6">
+                            <p>show employees scheduled off</p>
+                            <p>average hours scheduled per employee</p>
+                            <p>staffing ratios (both shifts and days)</p>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -101,22 +115,23 @@
                     Week of: xx/xx/xxxx - xx/xx/xxxx <button type="button" class="btn btn-primary btn-sm" ng-click=""><i class="fa fa-caret-down"></i> </button>
                     
                     <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="">
-                        <i class="fa fa-bar-chart"></i> Schedule Analysis
+                        <i class="fa fa-pie-chart"></i> Refine Shifts
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="">
+                        <i class="fa fa-bar-chart"></i> Analysis
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.getSchedules()">
+                        <i class="fa fa-calendar-o"></i> Run
                     </button>
                     <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="">
                         <i class="fa fa-refresh"></i> Refresh
-                    </button>
-                    <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="vm.generateSchedule()">
-                        <i class="fa fa-calendar-o"></i> Run
                     </button>
                     <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="">
                         <i class="fa fa-download"></i> Export
                     </button>
                     <div class="clearfix"></div>
                 </div>
-                <div class="panel-body" style="max-height: 700px; overflow-y: scroll;">
-                    
-
+                <div class="panel-body" > <!-- style="max-height: 700px; overflow-y: scroll;" -->
                     <!-- modal popup box -->
                     <div id="panel-body-modal" class="row" ng-show="vm.showEmployeeDetails">
                         <div class="col-xs-12">
@@ -158,14 +173,18 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- scheduling options bar -->
-                    <div id="runScheduleToolBar" class="row runScheduleToolBar" ></div>
 
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Employee</th>
+                                <th>Employee 
+                                    <a ng-click="vm.toggleEmployeeDetails = !vm.toggleEmployeeDetails">
+                                        (<i ng-class="vm.toggleEmployeeDetails?'fa fa-minus':'fa fa fa-plus'"></i> Details)
+                                    </a>
+                                </th>
+                                <th ng-show="vm.toggleEmployeeDetails">Days</th>
+                                <th ng-show="vm.toggleEmployeeDetails">Shifts</th>
+                                <th ng-show="vm.toggleEmployeeDetails">Hours</th>
                                 <th class="text-center">Sun</th>
                                 <th class="text-center">Mon</th>
                                 <th class="text-center">Tue</th>
@@ -177,19 +196,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="i in vm.schedule track by $index" ng-click="vm.getEmployeeDetails($index)">
+                            <tr ng-repeat="i in vm.schedule | orderBy :'name'" ng-click="vm.getEmployeeDetails($index)">
                                 <td class="table-employee-name">
-                                    <div>{{i.name}} {{}}</div>
-                                    <div ng-show="true">
-                                        <div class="emp-sub-details"> Days : Shifts : Hours</div>
-                                        <div class="emp-sub-details">
-                                            {{i.scheduledDays}} / {{i.availableDays}} : {{i.scheduledShifts}} / {{i.availableShifts}} : {{i.scheduledHours}} / {{i.availableHours}}
-                                        </div>
-                                    </div>
+                                    <span ng-show="vm.toggleEmployeeDetails">{{i.empid}} : </span>{{i.name}} {{}}
                                 </td>
+                                <td ng-show="vm.toggleEmployeeDetails">
+                                    {{i.scheduledDays}} / {{i.availableDays}}
+                                </td>
+                                <td ng-show="vm.toggleEmployeeDetails">
+                                    {{i.scheduledShifts}} / {{i.availableShifts}}
+                                </td>
+                                <td ng-show="vm.toggleEmployeeDetails">
+                                    {{i.scheduledHours}} / {{i.availableHours}}
+                                </td>
+
                                 <td ng-repeat="s in i.dailyDetails" class="text-center">
                                     <div><i class="fa fa-2x" ng-class="s.iconClass"></i></div> 
-                                    <div class="table__schedule-detail-text">{{s.detail}}</div>
+                                    <div class="table__schedule-detail-text emp-sub-details">{{s.detail}}</div>
                                 </td>
                             </tr>
                         </tbody>
